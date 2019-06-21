@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LibData
 {
-    public class Class1
+    public class BaseDato
     {
     }
 }
