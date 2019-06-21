@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LibNegocio
 {
-    public class Class1
+    class Pedido_Articulos
     {
     }
 }
