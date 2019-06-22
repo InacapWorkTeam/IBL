@@ -29,7 +29,7 @@ namespace LibNegocio
         //Método para el ingreso del objeto en la capa de datos
         public Pedido_Articulos ingresar()
         {
-            Pedido_Articulos objPedido_Articulo = new Pedido_Articulos;
+            Pedido_Articulos objPedido_Articulo = new Pedido_Articulos();
 
             //Método de ingreso desde lib data
 
@@ -40,7 +40,7 @@ namespace LibNegocio
         //Método para obtener los resultados desde la capa de dato
         public Pedido_Articulos listar()
         {
-            Pedido_Articulos objPedido_Articulo = new Pedido_Articulos;
+            Pedido_Articulos objPedido_Articulo = new Pedido_Articulos();
 
             //Método de ingreso desde lib data
 
@@ -51,7 +51,7 @@ namespace LibNegocio
         //Método para generar la modificación desde la capa de dato
         public Pedido_Articulos modificar()
         {
-            Pedido_Articulos objPedido_Articulo = new Pedido_Articulos;
+            Pedido_Articulos objPedido_Articulo = new Pedido_Articulos();
 
             //Método de ingreso desde lib data
 
@@ -62,7 +62,7 @@ namespace LibNegocio
         //Método para generar la petición de borrado lógico en la capa de dato
         public Pedido_Articulos eliminar()
         {
-            Pedido_Articulos objPedido_Articulo = new Pedido_Articulos;
+            Pedido_Articulos objPedido_Articulo = new Pedido_Articulos();
 
             //Método de ingreso desde lib data
 
