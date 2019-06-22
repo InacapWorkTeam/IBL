@@ -9,24 +9,79 @@ namespace LibNegocio
     public class Pedido
     {
         #region Atributos
-        DateTime fecha;
-        int total;
-        int id_vendedor;
-        int id_cliente;
-        bool estado;
+        int _id_pedido;
+        string _mensaje;
+        DateTime _fecha;
+        bool _exito = false;
+        int _total;
+        int _id_vendedor;
+        int _id_cliente;
+        bool _estado;
+        DataSet _ds = new DataSet();
         #endregion
 
         #region Propiedades
-        public DateTime Fecha
+        public string Mensaje
         {
             get
             {
-                return fecha;
+                return _mensaje;
             }
 
             set
             {
-                fecha = value;
+                _mensaje = value;
+            }
+        }
+        public Pedido(DateTime _fecha, int _total, int _id_vendedor, int _id_cliente, bool _estado)
+        {
+            this._fecha = _fecha;
+            this._total = _total;
+            this._id_vendedor = _id_vendedor;
+            this._id_cliente = _id_cliente;
+            this._estado = _estado;
+        }
+
+        public DataSet Ds
+        {
+            get
+            {
+                return _ds;
+            }
+
+            set
+            {
+                _ds = value;
+            }
+        }
+
+        public Pedido(int _id_pedido)
+        {
+            this._id_pedido = _id_pedido;
+        }
+
+        public DateTime Fecha
+        {
+            get
+            {
+                return _fecha;
+            }
+
+            set
+            {
+                _fecha = value;
+            }
+        }
+        public bool Exito
+        {
+            get
+            {
+                return _exito;
+            }
+
+            set
+            {
+                _exito = value;
             }
         }
 
@@ -34,12 +89,12 @@ namespace LibNegocio
         {
             get
             {
-                return total;
+                return _total;
             }
 
             set
             {
-                total = value;
+                _total = value;
             }
         }
 
@@ -47,12 +102,12 @@ namespace LibNegocio
         {
             get
             {
-                return id_vendedor;
+                return _id_vendedor;
             }
 
             set
             {
-                id_vendedor = value;
+                _id_vendedor = value;
             }
         }
 
@@ -60,12 +115,12 @@ namespace LibNegocio
         {
             get
             {
-                return id_cliente;
+                return _id_cliente;
             }
 
             set
             {
-                id_cliente = value;
+                _id_cliente = value;
             }
         }
 
@@ -73,25 +128,29 @@ namespace LibNegocio
         {
             get
             {
-                return estado;
+                return _estado;
             }
 
             set
             {
-                estado = value;
+                _estado = value;
             }
         }
 
-        public Pedido(DateTime fecha, int total, int id_vendedor, int id_cliente, bool estado)
+        public int Id_pedido
         {
-            this.Fecha = fecha;
-            this.Total = total;
-            this.Id_vendedor = id_vendedor;
-            this.Id_cliente = id_cliente;
-            this.Estado = estado;
+            get
+            {
+                return _id_pedido;
+            }
+
+            set
+            {
+                _id_pedido = value;
+            }
         }
-        
         #endregion
+
 
         //metodo ingresar pedido
         public Pedido ingresarPedido(Pedido objPedido)
