@@ -15,4 +15,9 @@ public partial class IngresarPedido : System.Web.UI.Page
     {
         Response.Redirect("Pedido.aspx");
     }
+
+    protected void TextBox2_TextChanged(object sender, EventArgs e)
+    {
+        TextBox1.Text=DateTime.
+    }
 }

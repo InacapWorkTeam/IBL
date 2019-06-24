@@ -18,7 +18,8 @@
         <tr>
             <td class="auto-style10">Ingrese Fecha de realizacion</td>
             <td>
-                <asp:Label ID="Label1" runat="server" Text="Fecha"></asp:Label>
+                <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+                
             </td>
         </tr>
         <tr>
