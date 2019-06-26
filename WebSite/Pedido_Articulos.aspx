@@ -216,7 +216,7 @@
                         <td class="auto-style29">
                             &nbsp;</td>
                         <td class="auto-style28">
-                            <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" Width="111px" />
+                            <asp:Button ID="btnIngresar" runat="server" OnClick="btnIngresar_Click" Text="Ingresar" Width="111px" />
                         </td>
                     </tr>
                 </table>

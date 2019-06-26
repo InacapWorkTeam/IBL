@@ -278,6 +278,44 @@ namespace LibData
             return objPedidoArticulos;
         }
 
+
+        public PedidoArticulos ingresarPedidoArticulos(PedidoArticulos objPedidoArticulos)
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_ingresarPedidoArticulo";
+                cmd.Parameters.Add("@id_pedido", SqlDbType.Int).Value = objPedidoArticulos.Id_pedido;
+                cmd.Parameters.Add("@id_articulo", SqlDbType.Int).Value = objPedidoArticulos.Id_articulo;
+                cmd.Parameters.Add("@tamano_articulo", SqlDbType.VarChar).Value = objPedidoArticulos.Tamano_articulo;
+                cmd.Parameters.Add("@color_articulo", SqlDbType.VarChar).Value = objPedidoArticulos.Color_articulo;
+                cmd.Parameters.Add("@unidades_articulo", SqlDbType.Int).Value = objPedidoArticulos.Unidades_articulo;
+                cmd.Parameters.Add("@precio_u_articulo", SqlDbType.Int).Value = objPedidoArticulos.Precio_u_articulo;
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+
+                cmd.Connection.Close();
+                objPedidoArticulos.Exito = true;
+
+            }
+            catch (Exception ex)
+            {
+                objPedidoArticulos.Exito = false;
+                objPedidoArticulos.Mensaje = "Excepcion capturada:   " + ex.Message;
+            }
+
+            return objPedidoArticulos;
+        }
+
+
+
+
         #endregion
 
 

@@ -173,4 +173,46 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         }
        
     }
+
+    protected void btnIngresar_Click(object sender, EventArgs e)
+    {
+        PedidoArticulos objPedidoArticulos = new PedidoArticulos();
+
+        if (!(txtUnidades.Text.Equals("")))
+        {
+
+            objPedidoArticulos.Id_pedido = Convert.ToInt32(dropListPedidos.SelectedItem.ToString());
+            objPedidoArticulos.Id_articulo = Convert.ToInt32(droplistArticulos.SelectedItem.ToString().Substring(0, 1));
+            objPedidoArticulos.Tamano_articulo = txtTamano.Text;
+            objPedidoArticulos.Color_articulo = txtColor.Text;
+            objPedidoArticulos.Unidades_articulo = Convert.ToInt32(txtUnidades.Text);
+            objPedidoArticulos.Precio_u_articulo = Convert.ToInt32(txtPrecio.Text);
+
+            objPedidoArticulos.ingresar(objPedidoArticulos);
+
+            if (objPedidoArticulos.Exito)
+            {
+
+                lblMensajeIngreso.Text = "Se ha ingresado el articulo al pedido exitosamente";
+                lblMensajeIngreso.Visible = true;
+                txtTamano.Text = "";
+                txtColor.Text = "";
+                txtUnidades.Text = "";
+                txtPrecio.Text = "";
+
+            }else
+            {
+
+                lblMensajeIngreso.Text = objPedidoArticulos.Mensaje;
+                lblMensajeIngreso.Visible = true;
+            }
+
+        }
+        else
+        {
+            lblMensajeIngreso.Text = "No pueden quedar campos vacios";
+            lblMensajeIngreso.Visible = true;
+        }
+
+    }
 }

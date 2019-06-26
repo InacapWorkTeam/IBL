@@ -30,13 +30,21 @@ namespace LibNegocio
 
 
         //Método para el ingreso del objeto en la capa de datos
-        public PedidoArticulos ingresar()
+        public PedidoArticulos ingresar(PedidoArticulos objPedidoArticulos)
         {
-            PedidoArticulos objPedido_Articulo = new PedidoArticulos();
+          try
+            {
+                BaseDato bd = new BaseDato();
 
-            //Método de ingreso desde lib data
+                objPedidoArticulos = bd.ingresarPedidoArticulos(objPedidoArticulos);
 
-            return objPedido_Articulo;
+            }
+            catch (Exception e)
+            {
+                objPedidoArticulos.Mensaje = e.Message;
+            }
+
+            return objPedidoArticulos;
         }//Fin ingresar
 
 
