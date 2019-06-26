@@ -1,11 +1,12 @@
-﻿using System;
+﻿using LibData;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
 namespace LibNegocio
 {
-    class Pedido_Articulos
+    public class PedidoArticulos
     {
         #region atributos
         long _id_pedido_articulos;
@@ -16,20 +17,22 @@ namespace LibNegocio
         int _unidades_articulo;
         int _precio_u_articulo;
         string _Mensaje;
+        bool _exito;
         DataSet _ds = new DataSet();
 
         #endregion
 
         //Constructor por defecto
-        public Pedido_Articulos()
+        public PedidoArticulos()
         {
+
         }
 
 
         //Método para el ingreso del objeto en la capa de datos
-        public Pedido_Articulos ingresar()
+        public PedidoArticulos ingresar()
         {
-            Pedido_Articulos objPedido_Articulo = new Pedido_Articulos();
+            PedidoArticulos objPedido_Articulo = new PedidoArticulos();
 
             //Método de ingreso desde lib data
 
@@ -38,20 +41,47 @@ namespace LibNegocio
 
 
         //Método para obtener los resultados desde la capa de dato
-        public Pedido_Articulos listar()
+        public PedidoArticulos listar(PedidoArticulos objPedidoArticulos)
         {
-            Pedido_Articulos objPedido_Articulo = new Pedido_Articulos();
+            try
+            {
+                BaseDato bd = new BaseDato();
 
-            //Método de ingreso desde lib data
+                objPedidoArticulos = bd.listarPedidoArticulos(objPedidoArticulos);
 
-            return objPedido_Articulo;
+            }
+            catch (Exception e)
+            {
+                objPedidoArticulos.Mensaje = e.Message;
+            }
+            
+            return objPedidoArticulos;
         }//Fin listar
 
 
-        //Método para generar la modificación desde la capa de dato
-        public Pedido_Articulos modificar()
+        public PedidoArticulos listarPorPedido(PedidoArticulos objPedidoArticulos)
         {
-            Pedido_Articulos objPedido_Articulo = new Pedido_Articulos();
+            try
+            {
+                BaseDato bd = new BaseDato();
+
+                objPedidoArticulos = bd.listarPedidoArticulosPorPedido(objPedidoArticulos);
+
+
+            }catch(Exception e)
+            {
+                objPedidoArticulos.Mensaje = e.Message;
+            }
+
+
+            return objPedidoArticulos;
+        }
+
+
+        //Método para generar la modificación desde la capa de dato
+        public PedidoArticulos modificar()
+        {
+            PedidoArticulos objPedido_Articulo = new PedidoArticulos();
 
             //Método de ingreso desde lib data
 
@@ -60,9 +90,9 @@ namespace LibNegocio
 
 
         //Método para generar la petición de borrado lógico en la capa de dato
-        public Pedido_Articulos eliminar()
+        public PedidoArticulos eliminar()
         {
-            Pedido_Articulos objPedido_Articulo = new Pedido_Articulos();
+            PedidoArticulos objPedido_Articulo = new PedidoArticulos();
 
             //Método de ingreso desde lib data
 
@@ -184,6 +214,19 @@ namespace LibNegocio
             set
             {
                 _ds = value;
+            }
+        }
+
+        public bool Exito
+        {
+            get
+            {
+                return _exito;
+            }
+
+            set
+            {
+                _exito = value;
             }
         }
 

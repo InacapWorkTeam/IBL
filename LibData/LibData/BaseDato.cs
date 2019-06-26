@@ -131,6 +131,69 @@ namespace LibData
         }//Fin metodo eliminar logico pedido
 
 
+        #region Pedido_Articulos
+
+        public PedidoArticulos listarPedidoArticulos(PedidoArticulos objPedidoArticulos)
+        {
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_listarPedidoArticulos";
+
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = objPedidoArticulos.Id_pedido_articulos;
+              //  cmd.Parameters.Add("@id_pedido", SqlDbType.Int).Value = 0;
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                sda.Fill(objPedidoArticulos.Ds);
+                cmd.Connection.Close();
+                objPedidoArticulos.Exito = true;
+
+            }
+            catch (Exception ex)
+            {
+                objPedidoArticulos.Exito = false;
+                objPedidoArticulos.Mensaje = "Excepcion capturada:   " + ex.Message;
+            }
+
+            return objPedidoArticulos;
+        }
+
+        public PedidoArticulos listarPedidoArticulosPorPedido(PedidoArticulos objPedidoArticulos)
+        {
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_listarPedidoArticulosPorPedido";
+
+                cmd.Parameters.Add("@id_pedido", SqlDbType.Int).Value = objPedidoArticulos.Id_pedido;
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                sda.Fill(objPedidoArticulos.Ds);
+                cmd.Connection.Close();
+                objPedidoArticulos.Exito = true;
+
+            }
+            catch (Exception ex)
+            {
+                objPedidoArticulos.Exito = false;
+                objPedidoArticulos.Mensaje = "Excepcion capturada:   " + ex.Message;
+            }
+
+            return objPedidoArticulos;
+        }
+
+        #endregion
+
 
     }
 }

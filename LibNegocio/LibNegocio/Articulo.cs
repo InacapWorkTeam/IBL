@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LibNegocio
 {
-    class Articulo
+    public class Articulo
     {
     }
 }
