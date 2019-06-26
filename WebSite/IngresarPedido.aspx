@@ -26,18 +26,26 @@
             <td class="auto-style10">Ingrese costo total del pedido</td>
             <td>
                 <asp:TextBox ID="TextBox1" runat="server" Width="215px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtboxrut" ErrorMessage="Ingrese un valor"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td class="auto-style10">Seleccione vendedor asociado</td>
-            <td>&nbsp;</td>
+            <td>
+                <asp:DropDownList ID="DropDownListVendedor" runat="server" Height="16px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="222px">
+                </asp:DropDownList>
+            </td>
         </tr>
         <tr>
             <td class="auto-style10">Seleccione cliente asociado</td>
-            <td>&nbsp;</td>
+            <td>
+                <asp:DropDownList ID="DropDownListCliente" runat="server" Height="16px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged1" Width="223px">
+                </asp:DropDownList>
+            </td>
         </tr>
     </table>
     <p>
-        &nbsp;</p>
+        <asp:Label ID="lblaviso" runat="server" Text="Label"></asp:Label>
+    </p>
 </asp:Content>
 

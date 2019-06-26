@@ -9,6 +9,7 @@ namespace LibNegocio
     public class Pedido
     {
         #region Atributos
+        //Variables para datos de pedido
         int _id_pedido;
         string _mensaje;
         DateTime _fecha;
@@ -18,6 +19,10 @@ namespace LibNegocio
         int _id_cliente;
         bool _estado;
         DataSet _ds = new DataSet();
+
+        //Variables para obtener nombres de cliente y vendedor asociado
+        int _nombreCliente;
+        int _nombreVendedor;
         #endregion
 
         #region Propiedades
@@ -41,6 +46,13 @@ namespace LibNegocio
             this._id_cliente = _id_cliente;
             this._estado = _estado;
         }
+
+        public Pedido()
+        {
+
+        }
+
+
 
         public DataSet Ds
         {
@@ -149,6 +161,32 @@ namespace LibNegocio
                 _id_pedido = value;
             }
         }
+
+        public int NombreCliente
+        {
+            get
+            {
+                return _nombreCliente;
+            }
+
+            set
+            {
+                _nombreCliente = value;
+            }
+        }
+
+        public int NombreVendedor
+        {
+            get
+            {
+                return _nombreVendedor;
+            }
+
+            set
+            {
+                _nombreVendedor = value;
+            }
+        }
         #endregion
 
 
@@ -169,6 +207,24 @@ namespace LibNegocio
 
             return objPedido;
         }//fin metodo listar
+
+        //metodo listar Cliente
+        public Pedido listarCliente(Pedido objCliente)
+        {
+            BaseDato objDB = new BaseDato();
+            objCliente = objDB.listarCliente(objCliente);
+
+            return objCliente;
+        }//fin metodo listar Cliente
+
+        //metodo listar Vendedor
+        public Pedido listarVendedor(Pedido objVendedor)
+        {
+            BaseDato objDB = new BaseDato();
+            objVendedor = objDB.listarVendedor(objVendedor);
+
+            return objVendedor;
+        }//fin metodo listar Vendedor
 
         //metodo modificar
         public Pedido modificarPedido(Pedido objPedido)

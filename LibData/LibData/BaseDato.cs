@@ -72,6 +72,64 @@ namespace LibData
             return objPedido;
         }//Fin metodo listar pedido
 
+        //Inicio metodo listar Clientes
+        public Pedido listarCliente(Pedido objPedido)
+        {
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_listarCliente";
+
+                //cmd.Parameters.Add("@Id", SqlDbType.Int).Value = objPedido.Id_pedido;
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                sda.Fill(objPedido.Ds);     //llenamos el dataset
+                cmd.Connection.Close();
+                objPedido.Exito = true;
+
+            }
+            catch (Exception ex)
+            {
+                objPedido.Exito = false;
+                objPedido.Mensaje = "Excepcion capturada:   " + ex.Message;
+            }
+            return objPedido;
+        }//Fin metodo listar Clientes
+
+        //Inicio metodo listar Vendedores
+        public Pedido listarVendedor(Pedido objPedido)
+        {
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_listarVendedor";
+
+                //cmd.Parameters.Add("@Id", SqlDbType.Int).Value = objPedido.Id_pedido;
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                sda.Fill(objPedido.Ds);     //llenamos el dataset
+                cmd.Connection.Close();
+                objPedido.Exito = true;
+
+            }
+            catch (Exception ex)
+            {
+                objPedido.Exito = false;
+                objPedido.Mensaje = "Excepcion capturada:   " + ex.Message;
+            }
+            return objPedido;
+        }//Fin metodo listar Vendedores
+
         //Inicio metodo modificar pedido
         public Pedido modificarPedido(Pedido objPedido)
         {
