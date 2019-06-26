@@ -46,12 +46,47 @@
             height: 24px;
             width: 31%;
         }
+        .auto-style26 {
+            width: 103px;
+        }
+        .auto-style28 {
+            width: 319px;
+        }
+        .auto-style29 {
+            width: 24px;
+            text-align: center;
+        }
+        .auto-style30 {
+            width: 695px;
+            height: 23px;
+        }
+        .auto-style31 {
+            width: 690px;
+            height: 23px;
+        }
+        .auto-style32 {
+            width: 492px;
+            height: 23px;
+        }
+        .auto-style33 {
+            width: 103px;
+            height: 26px;
+        }
+        .auto-style34 {
+            width: 24px;
+            text-align: center;
+            height: 26px;
+        }
+        .auto-style35 {
+            width: 319px;
+            height: 26px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="auto-style1">
         <tr>
-            <td colspan="2">
+            <td colspan="6">
                 <div class="auto-style24">
                 <asp:Label ID="Label1" runat="server" Text="Listar"></asp:Label>
                 <br />
@@ -107,28 +142,128 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style16">
+            <td class="auto-style16" colspan="4">
                 <asp:Label ID="Label3" runat="server" Text="Ingresar"></asp:Label>
+                <br />
+                <table class="auto-style1">
+                    <tr>
+                        <td class="auto-style26">ID Pedido Asoc.</td>
+                        <td class="auto-style29">
+                            <h4><strong>:</strong></h4>
+                        </td>
+                        <td class="auto-style28">
+                            <asp:DropDownList ID="dropListPedidos" runat="server" Height="16px" Width="125px">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style26">ID Articulo</td>
+                        <td class="auto-style29">
+                            <h4><strong>:</strong></h4>
+                        </td>
+                        <td class="auto-style28">
+                            <asp:DropDownList ID="droplistArticulos" runat="server" AutoPostBack="True" Height="16px" OnSelectedIndexChanged="droplistArticulos_SelectedIndexChanged" Width="128px">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style26">Tamaño</td>
+                        <td class="auto-style29">
+                            <h4><strong>:</strong></h4>
+                        </td>
+                        <td class="auto-style28">
+                            <asp:TextBox ID="txtTamano" runat="server" ReadOnly="True"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style26">Color:</td>
+                        <td class="auto-style29">
+                            <h4><strong>:</strong></h4>
+                        </td>
+                        <td class="auto-style28">
+                            <asp:TextBox ID="txtColor" runat="server" ReadOnly="True"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style26">Unidades</td>
+                        <td class="auto-style29">
+                            <h4><strong>:</strong></h4>
+                        </td>
+                        <td class="auto-style28">
+                            <asp:TextBox ID="txtUnidades" runat="server"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtUnidades" ErrorMessage="Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style33">Precio</td>
+                        <td class="auto-style34">
+                            <h4><strong>:</strong></h4>
+                        </td>
+                        <td class="auto-style35">
+                            <asp:TextBox ID="txtPrecio" runat="server" ReadOnly="True"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style26">&nbsp;</td>
+                        <td class="auto-style29">
+                            &nbsp;</td>
+                        <td class="auto-style28">
+                            <asp:Label ID="lblMensajeIngreso" runat="server" Text="[lblMensaje]" Visible="False"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style26">&nbsp;</td>
+                        <td class="auto-style29">
+                            &nbsp;</td>
+                        <td class="auto-style28">
+                            <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" Width="111px" />
+                        </td>
+                    </tr>
+                </table>
             </td>
+            <td class="auto-style16">
+            </td>
+            <td class="auto-style5">
+                </td>
+        </tr>
+        <tr>
+            <td class="auto-style32">
+                &nbsp;</td>
+            <td class="auto-style31">
+                &nbsp;</td>
+            <td class="auto-style30">
+                &nbsp;</td>
+            <td class="auto-style16">
+                &nbsp;</td>
+            <td class="auto-style16">
+                &nbsp;</td>
             <td class="auto-style5">
                 &nbsp;</td>
         </tr>
         <tr>
+            <td class="auto-style16" colspan="4">
+                </td>
             <td class="auto-style16">
+                </td>
+            <td class="auto-style5">
+                </td>
+        </tr>
+        <tr>
+            <td class="auto-style16" colspan="5">
                 <asp:Label ID="Label2" runat="server" Text="Modificar"></asp:Label>
             </td>
             <td class="auto-style5">
                 &nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style16">
+            <td class="auto-style16" colspan="5">
                 <asp:Label ID="Label4" runat="server" Text="Eliminar"></asp:Label>
             </td>
             <td class="auto-style5">
                 &nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style16">
+            <td class="auto-style16" colspan="5">
                 &nbsp;</td>
             <td class="auto-style5">
                 &nbsp;</td>

@@ -78,6 +78,67 @@ namespace LibNegocio
         }
 
 
+        public PedidoArticulos listarPedidosListBox(PedidoArticulos objPedidoArticulos)
+        {
+
+            try
+            {
+
+                BaseDato bd = new BaseDato();
+
+                objPedidoArticulos = bd.listarPedidosListBox(objPedidoArticulos);
+
+            }
+            catch(Exception e)
+            {
+                objPedidoArticulos.Mensaje = e.Message;
+            }
+
+
+
+            return objPedidoArticulos;
+        }
+
+
+        public PedidoArticulos listarArticulosDropList(PedidoArticulos objPedidoArticulos)
+        {
+
+            try
+            {
+                BaseDato bd = new BaseDato();
+
+                objPedidoArticulos = bd.listaArticulosDropList(objPedidoArticulos);
+
+            }
+            catch (Exception e)
+            {
+                objPedidoArticulos.Mensaje = e.Message;
+            }
+
+
+
+            return objPedidoArticulos;
+        }
+
+
+        public PedidoArticulos listarDatosArticulo(PedidoArticulos objPedidoArticulos)
+        {
+
+            try
+            {
+                BaseDato bd = new BaseDato();
+
+                objPedidoArticulos = bd.listarDatosArticulo(objPedidoArticulos);
+
+            }
+            catch (Exception e)
+            {
+                objPedidoArticulos.Mensaje = e.Message;
+            }
+
+            return objPedidoArticulos;
+        }
+
         //Método para generar la modificación desde la capa de dato
         public PedidoArticulos modificar()
         {
