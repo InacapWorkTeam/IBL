@@ -193,7 +193,7 @@ namespace LibNegocio
         //metodo ingresar pedido
         public Pedido ingresarPedido(Pedido objPedido)
         {
-            BaseDato objDB = new BaseDato();
+           BaseDato objDB = new BaseDato();
             objPedido = objPedido.ingresarPedido(objPedido);
 
             return objPedido;

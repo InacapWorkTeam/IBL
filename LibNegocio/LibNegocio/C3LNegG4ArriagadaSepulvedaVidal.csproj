@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5A92E607-26FB-4009-BAF2-83F0B5187B64}</ProjectGuid>
+    <ProjectGuid>{02AB853B-C013-4CCE-874F-2602E9DE3E3A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LibData</RootNamespace>
-    <AssemblyName>LibData</AssemblyName>
+    <RootNamespace>LibNegocio</RootNamespace>
+    <AssemblyName>LibNegocio</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,16 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LibNegocio">
-      <HintPath>..\..\LibNegocio\LibNegocio\obj\Debug\LibNegocio.dll</HintPath>
+    <Reference Include="LibData">
+      <HintPath>..\..\LibData\LibData\obj\Debug\LibData.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseDato.cs" />
+    <Compile Include="Articulo.cs" />
+    <Compile Include="Pedido.cs" />
+    <Compile Include="PedidoArticulos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -189,6 +189,193 @@ namespace LibData
         }//Fin metodo eliminar logico pedido
 
 
+        #region Pedido_Articulos
+
+        public PedidoArticulos listarPedidoArticulos(PedidoArticulos objPedidoArticulos)
+        {
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_listarPedidoArticulos";
+
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = objPedidoArticulos.Id_pedido_articulos;
+              //  cmd.Parameters.Add("@id_pedido", SqlDbType.Int).Value = 0;
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                sda.Fill(objPedidoArticulos.Ds);
+                cmd.Connection.Close();
+                objPedidoArticulos.Exito = true;
+
+            }
+            catch (Exception ex)
+            {
+                objPedidoArticulos.Exito = false;
+                objPedidoArticulos.Mensaje = "Excepcion capturada:   " + ex.Message;
+            }
+
+            return objPedidoArticulos;
+        }
+
+        public PedidoArticulos listarPedidoArticulosPorPedido(PedidoArticulos objPedidoArticulos)
+        {
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_listarPedidoArticulosPorPedido";
+
+                cmd.Parameters.Add("@id_pedido", SqlDbType.Int).Value = objPedidoArticulos.Id_pedido;
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                sda.Fill(objPedidoArticulos.Ds);
+                cmd.Connection.Close();
+                objPedidoArticulos.Exito = true;
+
+            }
+            catch (Exception ex)
+            {
+                objPedidoArticulos.Exito = false;
+                objPedidoArticulos.Mensaje = "Excepcion capturada:   " + ex.Message;
+            }
+
+            return objPedidoArticulos;
+        }
+
+        public PedidoArticulos listarPedidosListBox(PedidoArticulos objPedidoArticulos)
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_listarPedidos";
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                sda.Fill(objPedidoArticulos.Ds);
+                cmd.Connection.Close();
+                objPedidoArticulos.Exito = true;
+
+            }
+            catch (Exception ex)
+            {
+                objPedidoArticulos.Exito = false;
+                objPedidoArticulos.Mensaje = "Excepcion capturada:   " + ex.Message;
+            }
+
+            return objPedidoArticulos;
+        }
+
+        public PedidoArticulos listaArticulosDropList(PedidoArticulos objPedidoArticulos)
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_listarArticulos";
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                sda.Fill(objPedidoArticulos.Ds);
+                cmd.Connection.Close();
+                objPedidoArticulos.Exito = true;
+
+            }
+            catch (Exception ex)
+            {
+                objPedidoArticulos.Exito = false;
+                objPedidoArticulos.Mensaje = "Excepcion capturada:   " + ex.Message;
+            }
+
+            return objPedidoArticulos;
+        }
+
+
+        public PedidoArticulos listarDatosArticulo(PedidoArticulos objPedidoArticulos)
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_listarDatosArticulo";
+                cmd.Parameters.Add("@id_articulo", SqlDbType.Int).Value = objPedidoArticulos.Id_articulo;
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                sda.Fill(objPedidoArticulos.Ds);
+                cmd.Connection.Close();
+                objPedidoArticulos.Exito = true;
+
+            }
+            catch (Exception ex)
+            {
+                objPedidoArticulos.Exito = false;
+                objPedidoArticulos.Mensaje = "Excepcion capturada:   " + ex.Message;
+            }
+
+            return objPedidoArticulos;
+        }
+
+
+        public PedidoArticulos ingresarPedidoArticulos(PedidoArticulos objPedidoArticulos)
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_ingresarPedidoArticulo";
+                cmd.Parameters.Add("@id_pedido", SqlDbType.Int).Value = objPedidoArticulos.Id_pedido;
+                cmd.Parameters.Add("@id_articulo", SqlDbType.Int).Value = objPedidoArticulos.Id_articulo;
+                cmd.Parameters.Add("@tamano_articulo", SqlDbType.VarChar).Value = objPedidoArticulos.Tamano_articulo;
+                cmd.Parameters.Add("@color_articulo", SqlDbType.VarChar).Value = objPedidoArticulos.Color_articulo;
+                cmd.Parameters.Add("@unidades_articulo", SqlDbType.Int).Value = objPedidoArticulos.Unidades_articulo;
+                cmd.Parameters.Add("@precio_u_articulo", SqlDbType.Int).Value = objPedidoArticulos.Precio_u_articulo;
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+
+                cmd.Connection.Close();
+                objPedidoArticulos.Exito = true;
+
+            }
+            catch (Exception ex)
+            {
+                objPedidoArticulos.Exito = false;
+                objPedidoArticulos.Mensaje = "Excepcion capturada:   " + ex.Message;
+            }
+
+            return objPedidoArticulos;
+        }
+
+
+
+
+        #endregion
+
 
     }
 }
