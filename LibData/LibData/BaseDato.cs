@@ -12,9 +12,9 @@ namespace LibData
     public class BaseDato
     {
         string strConn = ConfigurationManager.AppSettings["strConn"];
-
+        
         //Inicio metodo ingresar Pedidos
-        public Pedido ingresarPedido(Pedido objPedido)
+        public PedidoN ingresarPedido(PedidoN objPedido)
         {
             SqlCommand cmd = new SqlCommand();
             try
@@ -44,7 +44,7 @@ namespace LibData
         }//Fin metodo ingresar pedido
 
         //Inicio metodo listar pedido
-        public Pedido listarPedido(Pedido objPedido)
+        public PedidoN listarPedido(PedidoN objPedido)
         {
             SqlCommand cmd = new SqlCommand();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -55,7 +55,7 @@ namespace LibData
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "pa_listarPedido";
 
-                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = objPedido.Id_pedido;
+                cmd.Parameters.Add("@id_pedido", SqlDbType.Int).Value = objPedido.Id_pedido;
 
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
@@ -73,7 +73,7 @@ namespace LibData
         }//Fin metodo listar pedido
 
         //Inicio metodo listar Clientes
-        public Pedido listarCliente(Pedido objPedido)
+        public PedidoN listarCliente(PedidoN objPedido)
         {
             SqlCommand cmd = new SqlCommand();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -102,7 +102,7 @@ namespace LibData
         }//Fin metodo listar Clientes
 
         //Inicio metodo listar Vendedores
-        public Pedido listarVendedor(Pedido objPedido)
+        public PedidoN listarVendedor(PedidoN objPedido)
         {
             SqlCommand cmd = new SqlCommand();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -131,7 +131,7 @@ namespace LibData
         }//Fin metodo listar Vendedores
 
         //Inicio metodo modificar pedido
-        public Pedido modificarPedido(Pedido objPedido)
+        public PedidoN modificarPedido(PedidoN objPedido)
         {
             SqlCommand cmd = new SqlCommand();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -162,7 +162,7 @@ namespace LibData
         }//Fin metodo modificar pedido
 
         //Inicio metodo eliminar logico pedido
-        public Pedido eliminarPedido(Pedido objPedido)
+        public PedidoN eliminarPedido(PedidoN objPedido)
         {
             SqlCommand cmd = new SqlCommand();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -373,9 +373,9 @@ namespace LibData
 
 
 
-
+        
         #endregion
-
+        
 
     }
 }

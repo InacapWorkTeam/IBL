@@ -152,7 +152,7 @@
                             <h4><strong>:</strong></h4>
                         </td>
                         <td class="auto-style28">
-                            <asp:DropDownList ID="dropListPedidos" runat="server" Height="16px" Width="125px">
+                            <asp:DropDownList ID="dropListPedidos" runat="server" Height="16px" Width="125px" OnSelectedIndexChanged="dropListPedidos_SelectedIndexChanged">
                             </asp:DropDownList>
                         </td>
                     </tr>

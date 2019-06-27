@@ -215,4 +215,9 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         }
 
     }
+
+    protected void dropListPedidos_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

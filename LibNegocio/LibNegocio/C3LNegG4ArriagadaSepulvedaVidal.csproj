@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Articulo.cs" />
-    <Compile Include="Pedido.cs" />
+    <Compile Include="PedidoN.cs" />
     <Compile Include="PedidoArticulos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
