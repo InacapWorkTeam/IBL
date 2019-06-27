@@ -6,7 +6,7 @@ using LibData;
 
 namespace LibNegocio
 {
-    public class Pedido
+    public class PedidoN
     {
         #region Atributos
         //Variables para datos de pedido
@@ -38,7 +38,7 @@ namespace LibNegocio
                 _mensaje = value;
             }
         }
-        public Pedido(DateTime _fecha, int _total, int _id_vendedor, int _id_cliente, bool _estado)
+        public PedidoN(DateTime _fecha, int _total, int _id_vendedor, int _id_cliente, bool _estado)
         {
             this._fecha = _fecha;
             this._total = _total;
@@ -47,7 +47,7 @@ namespace LibNegocio
             this._estado = _estado;
         }
 
-        public Pedido()
+        public PedidoN()
         {
 
         }
@@ -67,7 +67,7 @@ namespace LibNegocio
             }
         }
 
-        public Pedido(int _id_pedido)
+        public PedidoN(int _id_pedido)
         {
             this._id_pedido = _id_pedido;
         }
@@ -189,18 +189,26 @@ namespace LibNegocio
         }
         #endregion
 
-
+        #region getter and setter
         //metodo ingresar pedido
-        public Pedido ingresarPedido(Pedido objPedido)
+        public PedidoN ingresarPedido(PedidoN objPedido)
         {
-           BaseDato objDB = new BaseDato();
-            objPedido = objPedido.ingresarPedido(objPedido);
+            try
+            {
+                BaseDato objDB = new BaseDato();
+                objPedido = objDB.ingresarPedido(objPedido);
+            }
+            catch(Exception e)
+            {
+                objPedido.Mensaje = e.Message;
+            }
+           
 
             return objPedido;
         }//fin metodo ingresar
 
         //metodo listar pedido
-        public Pedido listarPedido(Pedido objPedido)
+        public PedidoN listarPedido(PedidoN objPedido)
         {
             BaseDato objDB = new BaseDato();
             objPedido = objDB.listarPedido(objPedido);
@@ -209,7 +217,7 @@ namespace LibNegocio
         }//fin metodo listar
 
         //metodo listar Cliente
-        public Pedido listarCliente(Pedido objCliente)
+        public PedidoN listarCliente(PedidoN objCliente)
         {
             BaseDato objDB = new BaseDato();
             objCliente = objDB.listarCliente(objCliente);
@@ -218,7 +226,7 @@ namespace LibNegocio
         }//fin metodo listar Cliente
 
         //metodo listar Vendedor
-        public Pedido listarVendedor(Pedido objVendedor)
+        public PedidoN listarVendedor(PedidoN objVendedor)
         {
             BaseDato objDB = new BaseDato();
             objVendedor = objDB.listarVendedor(objVendedor);
@@ -227,7 +235,7 @@ namespace LibNegocio
         }//fin metodo listar Vendedor
 
         //metodo modificar
-        public Pedido modificarPedido(Pedido objPedido)
+        public PedidoN modificarPedido(PedidoN objPedido)
         {
             BaseDato objDB = new BaseDato();
             objPedido = objDB.modificarPedido(objPedido);
@@ -236,13 +244,14 @@ namespace LibNegocio
         }//fin metodo modificar
         
         //metodo eliminar
-        public Pedido eliminar(Pedido objPedido)
+        public PedidoN eliminar(PedidoN objPedido)
         {
             BaseDato objDB = new BaseDato();
             objPedido = objDB.eliminarPedido(objPedido);
 
             return objPedido;
         }//fin metodo eliminar
+        #endregion
 
     }//fin class
 }//fin namespace

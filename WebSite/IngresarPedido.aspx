@@ -25,27 +25,28 @@
         <tr>
             <td class="auto-style10">Ingrese costo total del pedido</td>
             <td>
-                <asp:TextBox ID="TextBox1" runat="server" Width="215px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtboxrut" ErrorMessage="Ingrese un valor"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="txtTotal" runat="server" Width="215px"></asp:TextBox>
+                
             </td>
         </tr>
         <tr>
             <td class="auto-style10">Seleccione vendedor asociado</td>
             <td>
-                <asp:DropDownList ID="DropDownListVendedor" runat="server" Height="16px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="222px">
+                <asp:DropDownList ID="DropVendedor" runat="server" Height="16px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="222px">
                 </asp:DropDownList>
             </td>
         </tr>
         <tr>
             <td class="auto-style10">Seleccione cliente asociado</td>
             <td>
-                <asp:DropDownList ID="DropDownListCliente" runat="server" Height="16px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged1" Width="223px">
+                <asp:DropDownList ID="DropCliente" runat="server" Height="16px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged1" Width="223px">
                 </asp:DropDownList>
             </td>
         </tr>
     </table>
     <p>
         <asp:Label ID="lblaviso" runat="server" Text="Label"></asp:Label>
+        <asp:Button ID="btnRegistrar" runat="server" Height="52px" Text="Registrar Pedido" Width="105px" OnClick="btnRegistrar_Click" />
     </p>
 </asp:Content>
 

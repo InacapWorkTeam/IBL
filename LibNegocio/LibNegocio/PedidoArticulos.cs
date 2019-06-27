@@ -76,7 +76,8 @@ namespace LibNegocio
                 objPedidoArticulos = bd.listarPedidoArticulosPorPedido(objPedidoArticulos);
 
 
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 objPedidoArticulos.Mensaje = e.Message;
             }
@@ -97,7 +98,7 @@ namespace LibNegocio
                 objPedidoArticulos = bd.listarPedidosListBox(objPedidoArticulos);
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 objPedidoArticulos.Mensaje = e.Message;
             }

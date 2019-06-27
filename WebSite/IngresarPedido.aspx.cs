@@ -4,22 +4,63 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LibNegocio;
+using System.Data;
+using System.Text.RegularExpressions;
 
 public partial class IngresarPedido : System.Web.UI.Page
 {
-
-    int edad;
-    bool vacio;
-    string[] valores;
-
+    
 
     protected void Page_Load(object sender, EventArgs e)
     {
-       /// valores = new string[] { txtboxrut.Text, txtboxnombre.Text,  // se inicializa un array valores con los textbox
-          //                       txtboxpaterno.Text, txtboxmaterno.Text,
-         //                        txtboxdireccion.Text, txtboxcomuna.Text,
-            //                     txtboxfono.Text, txtboxemail.Text };
-        //vacio = false;
+        lblaviso.Visible = false;
+        if (!IsPostBack){
+            definirDropListCliente();
+            definirDropListVendedor();
+        }
+        
+
+    }
+
+    private void definirDropListVendedor()
+    {
+        PedidoN objPedido = new PedidoN();
+        objPedido.listarVendedor(objPedido);
+
+        if (objPedido.Exito)
+        {
+            foreach (DataRow row in objPedido.Ds.Tables[0].Rows)
+            {
+                DropVendedor.Items.Add(Convert.ToString(row[0]) + ". " + Convert.ToString(row[1]));
+
+            }
+        }
+        else
+        {
+            lblaviso.Text = objPedido.Mensaje;
+            lblaviso.Visible = true;
+        }
+    }
+
+    private void definirDropListCliente()
+    {
+        PedidoN objPedido = new PedidoN();
+        objPedido.listarCliente(objPedido);
+
+        if (objPedido.Exito)
+        {
+            foreach(DataRow row in objPedido.Ds.Tables[0].Rows)
+            {
+                DropCliente.Items.Add(Convert.ToString(row[0]) + ". " + Convert.ToString(row[1]));
+
+            }
+        }
+        else
+        {
+            lblaviso.Text = objPedido.Mensaje;
+            lblaviso.Visible = true;
+        }
+
     }
 
     protected void Button2_Click(object sender, EventArgs e)
@@ -34,17 +75,53 @@ public partial class IngresarPedido : System.Web.UI.Page
 
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        //barra de despliegue que mostrara los vendedores
-       // Pedido objPedido = new Pedido();
-        //objPedido.Rut = txtRut.Text;
-      //  objVendedor = objVendedor.listarPedido(objAmistades);
-       // dgListar.DataSource = objAmistades.Ds;
-       // dgListar.DataBind();
-
-    }//fin 
+        
+    
+    } 
 
     protected void DropDownList1_SelectedIndexChanged1(object sender, EventArgs e)
     {
 
+    }
+    public string regexNumerico(string input)
+    {
+        string output;
+
+        output = Regex.Replace(input, @"[^\d]", "");
+
+        return output;
+    }
+
+    protected void btnRegistrar_Click(object sender, EventArgs e)
+    {
+        // para guardar el dato del drop = DropCliente.SelectedItem.ToString();
+
+        try
+        {
+
+            PedidoN objPedido = new PedidoN();
+            
+            objPedido.Fecha = Calendar1.SelectedDate;
+            objPedido.Total = Convert.ToInt32(txtTotal.Text);
+            objPedido.Id_vendedor = Convert.ToInt32(regexNumerico(DropVendedor.SelectedItem.ToString().Substring(0, 1)));
+            objPedido.Id_cliente = Convert.ToInt32(regexNumerico(DropCliente.SelectedItem.ToString().Substring(0, 1)));
+
+            objPedido.ingresarPedido(objPedido);
+            lblaviso.Text = objPedido.Mensaje;
+            if (objPedido.Exito)
+            {
+                lblaviso.Visible = true ;
+                lblaviso.Text = "Pedido ingresado";
+            }
+            else
+            {
+                lblaviso.Visible = true;
+                lblaviso.Text = objPedido.Mensaje;
+            }
+        }
+        catch
+        {
+
+        }
     }
 }
