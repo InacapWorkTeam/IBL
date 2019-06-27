@@ -24,6 +24,8 @@ public partial class EliminarPedido : System.Web.UI.Page
     {
         PedidoN objPedido = new PedidoN();
         objPedido.listarPedido(objPedido);
+        DropPedido.Items.Add("-- Selecionar Item --");
+
 
         if (objPedido.Exito)
         {

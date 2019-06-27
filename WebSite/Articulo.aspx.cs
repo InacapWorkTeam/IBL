@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using LibNeg;
+using LibNegocio;
 
 public partial class Articulo : System.Web.UI.Page
 {
@@ -14,8 +14,8 @@ public partial class Articulo : System.Web.UI.Page
 
     protected void btnIngresar_Click(object sender, EventArgs e)
     {
-        Negocio objArticulo = new Negocio();
-        objArticulo.Nombre = txtNombre.Text;
+        LibNegocio.Articulo objArticulo = new LibNegocio.Articulo();
+        objArticulo.Nombre= txtNombre.Text;
         objArticulo.Descripcion = txtDescripcion.Text;
         objArticulo.Color = txtColor.Text;
         objArticulo.Tamaño = txtTamaño.Text;
@@ -28,7 +28,7 @@ public partial class Articulo : System.Web.UI.Page
 
     protected void btnListar_Click(object sender, EventArgs e)
     {
-        Negocio objArticulo = new Negocio();
+        LibNegocio.Articulo objArticulo = new LibNegocio.Articulo();
         objArticulo = objArticulo.listarArticulo(objArticulo);
         dgListar.DataSource = objArticulo.Data;
         dgListar.DataBind();

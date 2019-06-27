@@ -12,7 +12,8 @@ namespace LibData
     public class BaseDato
     {
         string strConn = ConfigurationManager.AppSettings["strConn"];
-        
+
+        #region Pedido
         //Inicio metodo ingresar Pedidos
         public PedidoN ingresarPedido(PedidoN objPedido)
         {
@@ -174,7 +175,7 @@ namespace LibData
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "pa_eliminarPedido";
 
-                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = objPedido.Id_pedido;
+                cmd.Parameters.Add("@id_pedido", SqlDbType.Int).Value = objPedido.Id_pedido;
 
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
@@ -189,6 +190,7 @@ namespace LibData
             return objPedido;
         }//Fin metodo eliminar logico pedido
 
+        #endregion
 
         #region Pedido_Articulos
 

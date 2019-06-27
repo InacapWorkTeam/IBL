@@ -88,7 +88,7 @@
                 <td class="auto-style19">Costo :</td>
                 <td class="auto-style11">
                     <asp:TextBox ID="txtCosto" runat="server" CssClass="auto-style16" Width="115px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="SOLO NUMEROS">*</asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="SOLO NUMEROS" ControlToValidate="txtCosto">*</asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>

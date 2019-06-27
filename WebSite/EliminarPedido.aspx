@@ -11,7 +11,7 @@
         Estamos en Eliminar Pedido&nbsp; </p>
     <p>
         Eliga el pedido que desea eliminar&nbsp;
-        <asp:DropDownList ID="DropPedido" runat="server" Height="16px" Width="144px">
+        <asp:DropDownList ID="DropPedido" runat="server" Height="16px" Width="144px" AutoPostBack="True">
         </asp:DropDownList>
     </p>
     <p>

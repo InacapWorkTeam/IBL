@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <p>
-        Página en construcción</p>
+        <asp:Image ID="Image2" runat="server" ImageUrl="~/Image/construccion.jpg" />
+    </p>
 </asp:Content>
 
