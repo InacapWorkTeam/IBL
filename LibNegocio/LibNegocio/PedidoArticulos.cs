@@ -149,24 +149,39 @@ namespace LibNegocio
         }
 
         //Método para generar la modificación desde la capa de dato
-        public PedidoArticulos modificar()
+        public PedidoArticulos modificar(PedidoArticulos objPedidoArticulos)
         {
-            PedidoArticulos objPedido_Articulo = new PedidoArticulos();
+            try
+            {
+                BaseDato bd = new BaseDato();
 
-            //Método de ingreso desde lib data
+                objPedidoArticulos = bd.modificarPedidoArticulos(objPedidoArticulos);
+            }
+            catch(Exception e)
+            {
+                objPedidoArticulos.Mensaje = e.Message;
+            }
 
-            return objPedido_Articulo;
+            return objPedidoArticulos;
+
         }//Fin modificar
 
 
         //Método para generar la petición de borrado lógico en la capa de dato
-        public PedidoArticulos eliminar()
+        public PedidoArticulos eliminar(PedidoArticulos objPedidoArticulos)
         {
-            PedidoArticulos objPedido_Articulo = new PedidoArticulos();
+            try
+            {
+                BaseDato bd = new BaseDato();
 
-            //Método de ingreso desde lib data
+                objPedidoArticulos = bd.eliminarPedidoArticulos(objPedidoArticulos);
+            }
+            catch (Exception e)
+            {
+                objPedidoArticulos.Mensaje = e.Message;
+            }
 
-            return objPedido_Articulo;
+            return objPedidoArticulos;
         }//Fin eliminar
 
         #region getters & setters
