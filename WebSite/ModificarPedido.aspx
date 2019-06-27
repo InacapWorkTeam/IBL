@@ -17,7 +17,8 @@
     <p>
         Ingrese el ID del pedido que desea modificar =
         <asp:TextBox ID="txtId" runat="server" Width="149px"></asp:TextBox>
-        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
+&nbsp;<asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtId" ErrorMessage="Ingrese un Id valido EJ: 1 " ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
     </p>
     <p>
         <asp:GridView ID="tblListado" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" EnableModelValidation="True" Width="421px">
