@@ -11,6 +11,7 @@ namespace LibData
 {
     public class BaseDato
     {
+
         string strConn = ConfigurationManager.AppSettings["strConn"];
         
         //Inicio metodo ingresar Pedidos
@@ -140,8 +141,9 @@ namespace LibData
             {
                 cmd.Connection = new SqlConnection(strConn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "pa_modificarxId";
+                cmd.CommandText = "pa_modificarPedido";
 
+                cmd.Parameters.Add("@id_pedido", SqlDbType.Int).Value = objPedido.Id_pedido;
                 cmd.Parameters.Add("@Fecha", SqlDbType.DateTime).Value = objPedido.Fecha;
                 cmd.Parameters.Add("@Total", SqlDbType.Int).Value = objPedido.Total;
                 cmd.Parameters.Add("@id_vendedor", SqlDbType.Int).Value = objPedido.Id_vendedor;
@@ -171,9 +173,9 @@ namespace LibData
             {
                 cmd.Connection = new SqlConnection(strConn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "pa_eliminarxId";
+                cmd.CommandText = "pa_eliminarPedido";
 
-                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = objPedido.Id_pedido;
+                cmd.Parameters.Add("@id_pedido", SqlDbType.Int).Value = objPedido.Id_pedido;
 
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
@@ -373,79 +375,9 @@ namespace LibData
 
 
 
-
-        public PedidoArticulos modificarPedidoArticulos(PedidoArticulos objPedidoArticulos)
-        {
-
-            SqlCommand cmd = new SqlCommand();
-            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-
-            try
-            {
-                cmd.Connection = new SqlConnection(strConn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "pa_modificarPedidoArticulo";
-
-                cmd.Parameters.Add("@id_pedido_articulo", SqlDbType.Int).Value = objPedidoArticulos.Id_pedido_articulos;
-                cmd.Parameters.Add("@id_pedido", SqlDbType.Int).Value = objPedidoArticulos.Id_pedido;
-                cmd.Parameters.Add("@id_articulo", SqlDbType.Int).Value = objPedidoArticulos.Id_articulo;
-                cmd.Parameters.Add("@tamano_articulo", SqlDbType.VarChar).Value = objPedidoArticulos.Tamano_articulo;
-                cmd.Parameters.Add("@color_articulo", SqlDbType.VarChar).Value = objPedidoArticulos.Color_articulo;
-                cmd.Parameters.Add("@unidades_articulo", SqlDbType.Int).Value = objPedidoArticulos.Unidades_articulo;
-                cmd.Parameters.Add("@precio_u_articulo", SqlDbType.Int).Value = objPedidoArticulos.Precio_u_articulo;
-
-                cmd.Connection.Open();
-                cmd.ExecuteNonQuery();
-
-                cmd.Connection.Close();
-                objPedidoArticulos.Exito = true;
-
-            }
-            catch (Exception ex)
-            {
-                objPedidoArticulos.Exito = false;
-                objPedidoArticulos.Mensaje = "Excepcion capturada:   " + ex.Message;
-            }
-
-            return objPedidoArticulos;
-        }
-
-
-
-        public PedidoArticulos eliminarPedidoArticulos(PedidoArticulos objPedidoArticulos)
-        {
-
-            SqlCommand cmd = new SqlCommand();
-            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-
-            try
-            {
-                cmd.Connection = new SqlConnection(strConn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "pa_eliminarPedidoArticulos";
-
-                cmd.Parameters.Add("@id_pedido_articulos", SqlDbType.Int).Value = objPedidoArticulos.Id_pedido_articulos;
-
-                cmd.Connection.Open();
-                cmd.ExecuteNonQuery();
-
-                cmd.Connection.Close();
-                objPedidoArticulos.Exito = true;
-
-            }
-            catch (Exception ex)
-            {
-                objPedidoArticulos.Exito = false;
-                objPedidoArticulos.Mensaje = "Excepcion capturada:   " + ex.Message;
-            }
-
-            return objPedidoArticulos;
-        }
-
-
-
+        
         #endregion
-
+        
 
     }
 }

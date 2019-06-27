@@ -27,6 +27,8 @@
             <td>
                 <asp:TextBox ID="txtTotal" runat="server" Width="215px"></asp:TextBox>
                 
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtTotal" ErrorMessage="Ingrese un campo valido" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
+                
             </td>
         </tr>
         <tr>
@@ -34,6 +36,7 @@
             <td>
                 <asp:DropDownList ID="DropVendedor" runat="server" Height="16px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="222px">
                 </asp:DropDownList>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="DropVendedor" ErrorMessage="Seleccione un campo" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
             </td>
         </tr>
         <tr>
@@ -41,12 +44,13 @@
             <td>
                 <asp:DropDownList ID="DropCliente" runat="server" Height="16px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged1" Width="223px">
                 </asp:DropDownList>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="DropCliente" ErrorMessage="Seleccione un campo" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
             </td>
         </tr>
     </table>
     <p>
-        <asp:Label ID="lblaviso" runat="server" Text="Label"></asp:Label>
         <asp:Button ID="btnRegistrar" runat="server" Height="52px" Text="Registrar Pedido" Width="105px" OnClick="btnRegistrar_Click" />
+        <asp:Label ID="lblaviso" runat="server" Text="Label"></asp:Label>
     </p>
 </asp:Content>
 

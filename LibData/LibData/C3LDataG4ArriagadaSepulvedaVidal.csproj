@@ -30,8 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LibNegocio, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="LibNegocio">
       <HintPath>..\..\LibNegocio\LibNegocio\bin\Debug\LibNegocio.dll</HintPath>
     </Reference>
     <Reference Include="System" />
