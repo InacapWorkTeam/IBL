@@ -10,7 +10,9 @@
     <p>
         Estamos en el listar pedido</p>
     <p>
-        Ingrese el rut que desea buscar (0 para buscar todos) = <asp:TextBox ID="txtId" runat="server" Width="136px"></asp:TextBox><asp:Button ID="btnIngresar" runat="server" Text="Ingresar" OnClick="btnIngresar_Click" /></p>
+        Ingrese el rut que desea buscar (0 para buscar todos) = <asp:TextBox ID="txtId" runat="server" Width="136px"></asp:TextBox><asp:Button ID="btnIngresar" runat="server" Text="Buscar" OnClick="btnIngresar_Click" />
+        <asp:Label ID="lblAviso" runat="server" Text="Label"></asp:Label>
+    </p>
     <p>
         <asp:GridView ID="tblListado" runat="server" CellPadding="3" EnableModelValidation="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Width="421px">
                                 <FooterStyle BackColor="White" ForeColor="#000066" />

@@ -128,7 +128,6 @@ public partial class Pedido_Articulos : System.Web.UI.Page
 
     }
 
-     
 
     public void definirDropListArticulos()
     {

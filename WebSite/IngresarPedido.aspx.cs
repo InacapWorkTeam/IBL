@@ -94,8 +94,7 @@ public partial class IngresarPedido : System.Web.UI.Page
 
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
-        // para guardar el dato del drop = DropCliente.SelectedItem.ToString();
-
+        
         try
         {
 
@@ -119,9 +118,10 @@ public partial class IngresarPedido : System.Web.UI.Page
                 lblaviso.Text = objPedido.Mensaje;
             }
         }
-        catch
+        catch(Exception ex)
         {
-
+            lblaviso.Visible = true;
+            lblaviso.Text = "Excepcion Capturar: " + ex.Message;
         }
     }
 }

@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibData">
-      <HintPath>..\..\LibData\LibData\obj\Debug\LibData.dll</HintPath>
+      <HintPath>..\..\LibData\LibData\bin\Debug\LibData.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

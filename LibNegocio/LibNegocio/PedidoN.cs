@@ -210,45 +210,71 @@ namespace LibNegocio
         //metodo listar pedido
         public PedidoN listarPedido(PedidoN objPedido)
         {
-            BaseDato objDB = new BaseDato();
+            try
+            {
+                BaseDato objDB = new BaseDato();
             objPedido = objDB.listarPedido(objPedido);
-
+            }
+            catch (Exception e)
+            {
+                objPedido.Mensaje = e.Message;
+            }
             return objPedido;
         }//fin metodo listar
 
         //metodo listar Cliente
         public PedidoN listarCliente(PedidoN objCliente)
         {
+            try { 
             BaseDato objDB = new BaseDato();
             objCliente = objDB.listarCliente(objCliente);
-
+            }
+            catch (Exception e)
+            {
+                objCliente.Mensaje = e.Message;
+            }
             return objCliente;
         }//fin metodo listar Cliente
 
         //metodo listar Vendedor
         public PedidoN listarVendedor(PedidoN objVendedor)
         {
+            try { 
             BaseDato objDB = new BaseDato();
             objVendedor = objDB.listarVendedor(objVendedor);
-
+            }
+            catch (Exception e)
+            {
+                objVendedor.Mensaje = e.Message;
+            }
             return objVendedor;
         }//fin metodo listar Vendedor
 
         //metodo modificar
         public PedidoN modificarPedido(PedidoN objPedido)
         {
+            try { 
             BaseDato objDB = new BaseDato();
             objPedido = objDB.modificarPedido(objPedido);
-
+            }
+            catch (Exception e)
+            {
+                objPedido.Mensaje = e.Message;
+            }
             return objPedido;
         }//fin metodo modificar
         
         //metodo eliminar
         public PedidoN eliminar(PedidoN objPedido)
         {
+            try { 
             BaseDato objDB = new BaseDato();
             objPedido = objDB.eliminarPedido(objPedido);
-
+            }
+            catch (Exception e)
+            {
+                objPedido.Mensaje = e.Message;
+            }
             return objPedido;
         }//fin metodo eliminar
         #endregion
