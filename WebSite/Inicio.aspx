@@ -4,6 +4,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <p>
-    INICIO PÁGINA WEB</p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;Este sitio web permite la administración del sistema de Inventario y pedidos de la tienda INACAP Baseball League</p>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
 </asp:Content>
 
