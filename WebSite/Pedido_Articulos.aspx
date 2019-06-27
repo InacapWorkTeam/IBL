@@ -49,9 +49,6 @@
         .auto-style26 {
             width: 103px;
         }
-        .auto-style28 {
-            width: 319px;
-        }
         .auto-style29 {
             width: 24px;
             text-align: center;
@@ -78,7 +75,6 @@
             height: 26px;
         }
         .auto-style35 {
-            width: 319px;
             height: 26px;
         }
         .auto-style36 {
@@ -162,7 +158,7 @@
                 <asp:Label ID="Label1" runat="server" Text="Listar"></asp:Label>
                 <br />
                 </div>
-                <table class="auto-style14">
+                <table class="auto-style14" border="1">
                     <tr>
                         <td class="auto-style10">
                             <asp:Label ID="Label5" runat="server" Text="Ingresar 0 o un ID para listar:"></asp:Label>
@@ -213,17 +209,17 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style16" colspan="5">
+            <td class="auto-style5" colspan="6">
                 <asp:Label ID="Label3" runat="server" Text="Ingresar"></asp:Label>
                 <br />
-                <table class="auto-style1">
+                <table class="auto-style1" border="0">
                     <tr>
                         <td class="auto-style26">ID Pedido Asoc.</td>
                         <td class="auto-style29">
                             <h4><strong>:</strong></h4>
                         </td>
-                        <td class="auto-style28">
-                            <asp:DropDownList ID="dropListPedidos" runat="server" Height="16px" Width="128px">
+                        <td>
+                            <asp:DropDownList ID="dropListPedidos" runat="server" Height="16px" Width="176px">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -232,8 +228,8 @@
                         <td class="auto-style29">
                             <h4><strong>:</strong></h4>
                         </td>
-                        <td class="auto-style28">
-                            <asp:DropDownList ID="droplistArticulos" runat="server" AutoPostBack="True" Height="16px" OnSelectedIndexChanged="droplistArticulos_SelectedIndexChanged" Width="128px">
+                        <td>
+                            <asp:DropDownList ID="droplistArticulos" runat="server" AutoPostBack="True" Height="19px" OnSelectedIndexChanged="droplistArticulos_SelectedIndexChanged" Width="176px">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -242,7 +238,7 @@
                         <td class="auto-style29">
                             <h4><strong>:</strong></h4>
                         </td>
-                        <td class="auto-style28">
+                        <td>
                             <asp:TextBox ID="txtTamano" runat="server" ReadOnly="True" Enabled="False"></asp:TextBox>
                         </td>
                     </tr>
@@ -251,7 +247,7 @@
                         <td class="auto-style29">
                             <h4><strong>:</strong></h4>
                         </td>
-                        <td class="auto-style28">
+                        <td>
                             <asp:TextBox ID="txtColor" runat="server" ReadOnly="True" Enabled="False"></asp:TextBox>
                         </td>
                     </tr>
@@ -260,7 +256,7 @@
                         <td class="auto-style29">
                             <h4><strong>:</strong></h4>
                         </td>
-                        <td class="auto-style28">
+                        <td>
                             <asp:TextBox ID="txtUnidades" runat="server"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtUnidades" ErrorMessage="Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
                         </td>
@@ -278,7 +274,7 @@
                         <td class="auto-style26">&nbsp;</td>
                         <td class="auto-style29">
                             &nbsp;</td>
-                        <td class="auto-style28">
+                        <td>
                             <asp:Label ID="lblMensajeIngreso" runat="server" Text="[lblMensaje]" Visible="False"></asp:Label>
                         </td>
                     </tr>
@@ -286,13 +282,11 @@
                         <td class="auto-style26">&nbsp;</td>
                         <td class="auto-style29">
                             &nbsp;</td>
-                        <td class="auto-style28">
+                        <td>
                             <asp:Button ID="btnIngresar" runat="server" OnClick="btnIngresar_Click" Text="Ingresar" Width="111px" />
                         </td>
                     </tr>
                 </table>
-            </td>
-            <td class="auto-style16">
             </td>
             <td class="auto-style5">
                 </td>
@@ -323,14 +317,14 @@
             <td class="auto-style38" colspan="3">
                 <asp:Label ID="Label2" runat="server" Text="Modificar"></asp:Label>
                 <br />
-                <table class="auto-style52">
+                <table class="auto-style52" border="0">
                     <tr>
                         <td class="auto-style43">ID Pedido Articulos</td>
                         <td class="auto-style42">
                             <h4>:</h4>
                         </td>
                         <td class="auto-style48">
-                            <asp:DropDownList ID="dropListIDPedidoArticulosModificar" runat="server" AutoPostBack="True" Height="18px" OnSelectedIndexChanged="dropListIDPedidoArticulosModificar_SelectedIndexChanged" Width="128px">
+                            <asp:DropDownList ID="dropListIDPedidoArticulosModificar" runat="server" AutoPostBack="True" Height="22px" OnSelectedIndexChanged="dropListIDPedidoArticulosModificar_SelectedIndexChanged" Width="164px">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -340,7 +334,7 @@
                             <h4>:</h4>
                         </td>
                         <td class="auto-style48">
-                            <asp:DropDownList ID="dropListIDPedidoModificar" runat="server" AutoPostBack="True" Height="16px" Width="128px">
+                            <asp:DropDownList ID="dropListIDPedidoModificar" runat="server" AutoPostBack="True" Height="16px" Width="163px">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -350,7 +344,7 @@
                             <h4>:</h4>
                         </td>
                         <td class="auto-style41">
-                            <asp:DropDownList ID="dropListArticuloModificar" runat="server" AutoPostBack="True" Height="16px" OnSelectedIndexChanged="dropListArticuloModificar_SelectedIndexChanged" Width="128px">
+                            <asp:DropDownList ID="dropListArticuloModificar" runat="server" AutoPostBack="True" Height="16px" OnSelectedIndexChanged="dropListArticuloModificar_SelectedIndexChanged" Width="164px">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -416,7 +410,8 @@
         </tr>
         <tr>
             <td class="auto-style16" colspan="6">
-                <table class="auto-style1">
+                <br />
+                <table class="auto-style1" border="0">
                     <tr>
                         <td class="auto-style8" colspan="3">
                 <asp:Label ID="Label4" runat="server" Text="Eliminar"></asp:Label>
@@ -428,7 +423,7 @@
                             <h4>:</h4>
                         </td>
                         <td>
-                            <asp:DropDownList ID="dropListIDPedidoArticulosEliminar" runat="server" Height="16px" Width="126px">
+                            <asp:DropDownList ID="dropListIDPedidoArticulosEliminar" runat="server" Height="20px" Width="172px">
                             </asp:DropDownList>
                         </td>
                     </tr>
