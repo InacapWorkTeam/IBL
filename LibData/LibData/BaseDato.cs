@@ -412,6 +412,35 @@ namespace LibData
 
 
 
+        public PedidoArticulos eliminarPedidoArticulos(PedidoArticulos objPedidoArticulos)
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            try
+            {
+                cmd.Connection = new SqlConnection(strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "pa_eliminarPedidoArticulos";
+
+                cmd.Parameters.Add("@id_pedido_articulos", SqlDbType.Int).Value = objPedidoArticulos.Id_pedido_articulos;
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+
+                cmd.Connection.Close();
+                objPedidoArticulos.Exito = true;
+
+            }
+            catch (Exception ex)
+            {
+                objPedidoArticulos.Exito = false;
+                objPedidoArticulos.Mensaje = "Excepcion capturada:   " + ex.Message;
+            }
+
+            return objPedidoArticulos;
+        }
 
         #endregion
 

@@ -145,6 +145,13 @@
         .auto-style52 {
             width: 127%;
         }
+        .auto-style53 {
+            width: 162px;
+        }
+        .auto-style54 {
+            width: 17px;
+            text-align: center;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -192,7 +199,7 @@
                     </tr>
                     <tr>
                         <td class="auto-style12" colspan="5">
-                            <asp:GridView ID="tblListado" runat="server" CellPadding="3" EnableModelValidation="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Width="421px">
+                            <asp:GridView ID="tblListado" runat="server" CellPadding="3" EnableModelValidation="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Width="421px" >
                                 <FooterStyle BackColor="White" ForeColor="#000066" />
                                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
                                 <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
@@ -409,7 +416,39 @@
         </tr>
         <tr>
             <td class="auto-style16" colspan="6">
+                <table class="auto-style1">
+                    <tr>
+                        <td class="auto-style8" colspan="3">
                 <asp:Label ID="Label4" runat="server" Text="Eliminar"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style53">ID Pedido Articulo</td>
+                        <td class="auto-style54">
+                            <h4>:</h4>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="dropListIDPedidoArticulosEliminar" runat="server" Height="16px" Width="126px">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style53">&nbsp;</td>
+                        <td class="auto-style54">
+                            <h4></h4>
+                        </td>
+                        <td>
+                            <asp:Label ID="lblMensajeEliminar" runat="server" Text="[lblMensaje]" Visible="False"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style53">&nbsp;</td>
+                        <td class="auto-style54">&nbsp;</td>
+                        <td>
+                            <asp:Button ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" Text="Eliminar" />
+                        </td>
+                    </tr>
+                </table>
             </td>
             <td class="auto-style5">
                 &nbsp;</td>

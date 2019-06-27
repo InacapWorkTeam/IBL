@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using LibNegocio;
 using System.Data;
+using System.Text.RegularExpressions;
 
 public partial class Pedido_Articulos : System.Web.UI.Page
 {
@@ -168,8 +169,9 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         objPedidoArticulos.listar(objPedidoArticulos);
 
 
-        dropListIDPedidoArticulosModificar.Items.Add(" Seleccionar ID  ");
+        dropListIDPedidoArticulosModificar.Items.Add("-- Seleccionar item -- ");
 
+        dropListIDPedidoArticulosEliminar.Items.Add("-- Seleccionar item -- ");
 
         if (objPedidoArticulos.Exito)
         {
@@ -177,6 +179,8 @@ public partial class Pedido_Articulos : System.Web.UI.Page
             foreach (DataRow row in objPedidoArticulos.Ds.Tables[0].Rows)
             {
                 dropListIDPedidoArticulosModificar.Items.Add(Convert.ToString(row[0]));
+
+                dropListIDPedidoArticulosEliminar.Items.Add(Convert.ToString(row[0]));
             }
 
         }
@@ -200,7 +204,7 @@ public partial class Pedido_Articulos : System.Web.UI.Page
 
         string articulo = droplistArticulos.SelectedItem.ToString();
 
-        objPedidoArticulos.Id_articulo = Convert.ToInt32(articulo.Substring(0, 1));
+        objPedidoArticulos.Id_articulo = Convert.ToInt32(regexNumerico(articulo));
         objPedidoArticulos.listarDatosArticulo(objPedidoArticulos);
 
         if (objPedidoArticulos.Exito)
@@ -235,7 +239,7 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         {
 
             objPedidoArticulos.Id_pedido = Convert.ToInt32(dropListPedidos.SelectedItem.ToString());
-            objPedidoArticulos.Id_articulo = Convert.ToInt32(droplistArticulos.SelectedItem.ToString().Substring(0, 1));
+            objPedidoArticulos.Id_articulo = Convert.ToInt32(regexNumerico(droplistArticulos.SelectedItem.ToString()));
             objPedidoArticulos.Tamano_articulo = txtTamano.Text;
             objPedidoArticulos.Color_articulo = txtColor.Text;
             objPedidoArticulos.Unidades_articulo = Convert.ToInt32(txtUnidades.Text);
@@ -291,7 +295,7 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         }
         else
         {
-            objPedidoArticulos.Id_pedido_articulos = Convert.ToInt32(pedido_articulo.Substring(0, 1));
+            objPedidoArticulos.Id_pedido_articulos = Convert.ToInt32(regexNumerico(pedido_articulo));
             objPedidoArticulos.listar(objPedidoArticulos);
 
 
@@ -337,7 +341,7 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         {
             string articulo = dropListArticuloModificar.SelectedItem.ToString();
 
-            objPedidoArticulos.Id_articulo = Convert.ToInt32(articulo.Substring(0, 1));
+            objPedidoArticulos.Id_articulo = Convert.ToInt32(regexNumerico(articulo));
             objPedidoArticulos.listarDatosArticulo(objPedidoArticulos);
 
             if (objPedidoArticulos.Exito)
@@ -373,7 +377,7 @@ public partial class Pedido_Articulos : System.Web.UI.Page
 
             objPedidoArticulos.Id_pedido_articulos = Convert.ToInt32(dropListIDPedidoArticulosModificar.SelectedItem.ToString());
             objPedidoArticulos.Id_pedido = Convert.ToInt32(dropListIDPedidoModificar.SelectedItem.ToString());
-            objPedidoArticulos.Id_articulo = Convert.ToInt32(dropListArticuloModificar.SelectedItem.ToString().Substring(0, 1));
+            objPedidoArticulos.Id_articulo = Convert.ToInt32(regexNumerico(dropListArticuloModificar.SelectedItem.ToString()));
             objPedidoArticulos.Tamano_articulo = txtTamanoModificar.Text;
             objPedidoArticulos.Color_articulo = txtColorModificar.Text;
             objPedidoArticulos.Unidades_articulo = Convert.ToInt32(txtUnidadesModificar.Text);
@@ -406,4 +410,57 @@ public partial class Pedido_Articulos : System.Web.UI.Page
 
 
     #endregion
+
+
+    #region Eliminar
+
+    protected void btnEliminar_Click(object sender, EventArgs e)
+    {
+        PedidoArticulos objPedidoArticulos = new PedidoArticulos();
+
+        if (dropListIDPedidoArticulosEliminar.SelectedIndex == 0)
+        {
+            //No hacer nada
+        }
+        else
+        {
+            objPedidoArticulos.Id_pedido_articulos = Convert.ToInt32(dropListIDPedidoArticulosEliminar.SelectedItem.ToString());
+            objPedidoArticulos.eliminar(objPedidoArticulos);
+
+            if (objPedidoArticulos.Exito)
+            {
+                lblMensajeEliminar.Text = "Se ha eliminado el registro exitosamente";
+                lblMensajeEliminar.Visible = true;
+            }
+            else
+            {
+                lblMensajeEliminar.Text = objPedidoArticulos.Mensaje;
+                lblMensajeEliminar.Visible = true;
+            }
+
+        }
+
+    }
+
+    #endregion
+
+
+
+
+
+    /// <summary>
+    /// Metodo que devuelve solo los valores numericos de un string
+    /// </summary>
+    /// <param name="input">String a procesar</param>
+    /// <returns>El valor numerico que contiene el string</returns>
+    public string regexNumerico(string input)
+    {
+        string output;
+
+        output = Regex.Replace(input, @"[^\d]", ""); 
+
+        return output;
+    }
+
+
 }
