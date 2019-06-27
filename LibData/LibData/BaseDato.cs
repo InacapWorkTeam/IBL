@@ -9,11 +9,16 @@ using LibNegocio;
 
 namespace LibData
 {
+    /// <summary>
+    /// Clase que contiene la lógica de acceso la base de datos 
+    /// </summary>
     public class BaseDato
     {
+        //Se obtienen los detalles de la conexión a la base de datos desde el archivo de configuración del ejecutable
         string strConn = ConfigurationManager.AppSettings["strConn"];
 
         #region Pedido
+
         //Inicio metodo ingresar Pedidos
         public PedidoN ingresarPedido(PedidoN objPedido)
         {
@@ -194,6 +199,11 @@ namespace LibData
 
         #region Pedido_Articulos
 
+        /// <summary>
+        /// Método para obtener los registros de la tabla Pedido_Articulos
+        /// </summary>
+        /// <param name="objPedidoArticulos"> Un objeto PedidoArticulos con los datos necesarios para el procedimiento almacenado </param>
+        /// <returns> Un objeto PedidoArticulos con los datos de la consulta y confirmación del procedimiento </returns>
         public PedidoArticulos listarPedidoArticulos(PedidoArticulos objPedidoArticulos)
         {
             SqlCommand cmd = new SqlCommand();
@@ -222,8 +232,14 @@ namespace LibData
             }
 
             return objPedidoArticulos;
-        }
+        }//Fin listarPedidoArticulos
 
+
+        /// <summary>
+        /// Método que obtiene los registros de la tabla Pedido_Articulos según ID_Pedido
+        /// </summary>
+        /// <param name="objPedidoArticulos"> Un objeto PedidoArticulos con los datos necesarios para el procedimiento almacenado </param>
+        /// <returns> Un objeto PedidoArticulos con los datos de la consulta y confirmación del procedimiento </returns>
         public PedidoArticulos listarPedidoArticulosPorPedido(PedidoArticulos objPedidoArticulos)
         {
             SqlCommand cmd = new SqlCommand();
@@ -251,8 +267,14 @@ namespace LibData
             }
 
             return objPedidoArticulos;
-        }
+        }//Fin listarPedidoArticulosPorPedido
 
+
+        /// <summary>
+        /// Método para recuperar pedidos
+        /// </summary>
+        /// <param name="objPedidoArticulos"> Un objeto PedidoArticulos con los datos necesarios para el procedimiento almacenado </param>
+        /// <returns> Un objeto PedidoArticulos con los datos de la consulta y confirmación del procedimiento </returns>
         public PedidoArticulos listarPedidosListBox(PedidoArticulos objPedidoArticulos)
         {
 
@@ -279,8 +301,14 @@ namespace LibData
             }
 
             return objPedidoArticulos;
-        }
+        }//Fin listarPedidosListBox
 
+
+        /// <summary>
+        /// Método para recuperar Articulos
+        /// </summary>
+        /// <param name="objPedidoArticulos"> Un objeto PedidoArticulos con los datos necesarios para el procedimiento almacenado </param>
+        /// <returns> Un objeto PedidoArticulos con los datos de la consulta y confirmación del procedimiento </returns>
         public PedidoArticulos listaArticulosDropList(PedidoArticulos objPedidoArticulos)
         {
 
@@ -307,9 +335,14 @@ namespace LibData
             }
 
             return objPedidoArticulos;
-        }
+        }//Fin listaArticulosDropList
 
 
+        /// <summary>
+        /// Método para recuperar los datos de un Articulo
+        /// </summary>
+        /// <param name="objPedidoArticulos"> Un objeto PedidoArticulos con los datos necesarios para el procedimiento almacenado </param>
+        /// <returns> Un objeto PedidoArticulos con los datos de la consulta y confirmación del procedimiento </returns>
         public PedidoArticulos listarDatosArticulo(PedidoArticulos objPedidoArticulos)
         {
 
@@ -337,9 +370,15 @@ namespace LibData
             }
 
             return objPedidoArticulos;
-        }
+        }//Fin listarDatosArticulo
 
 
+
+        /// <summary>
+        /// Método para ingresar un registro en la tabla Pedido_Articulos
+        /// </summary>
+        /// <param name="objPedidoArticulos"> Un objeto PedidoArticulos con los datos necesarios para el procedimiento almacenado </param>
+        /// <returns> Un objeto PedidoArticulos con los datos de la consulta y confirmación del procedimiento </returns>
         public PedidoArticulos ingresarPedidoArticulos(PedidoArticulos objPedidoArticulos)
         {
 
@@ -372,11 +411,15 @@ namespace LibData
             }
 
             return objPedidoArticulos;
-        }
+        }//Fin ingresarPedidoArticulos
 
 
 
-
+        /// <summary>
+        /// Metodo para modificar registro en la tabla Pedido_Articulos
+        /// </summary>
+        /// <param name="objPedidoArticulos"> Un objeto PedidoArticulos con los datos necesarios para el procedimiento almacenado </param>
+        /// <returns> Un objeto PedidoArticulos con los datos de la consulta y confirmación del procedimiento </returns>
         public PedidoArticulos modificarPedidoArticulos(PedidoArticulos objPedidoArticulos)
         {
 
@@ -411,10 +454,14 @@ namespace LibData
             }
 
             return objPedidoArticulos;
-        }
+        }//Fin modificarPedidoArticulos
 
 
-
+        /// <summary>
+        /// Método para realizar un borrado lógico de un registro de la tabla Pedido_Articulos
+        /// </summary>
+        /// <param name="objPedidoArticulos"> Un objeto PedidoArticulos con los datos necesarios para el procedimiento almacenado </param>
+        /// <returns> Un objeto PedidoArticulos con los datos de la consulta y confirmación del procedimiento </returns>
         public PedidoArticulos eliminarPedidoArticulos(PedidoArticulos objPedidoArticulos)
         {
 
@@ -443,12 +490,12 @@ namespace LibData
             }
 
             return objPedidoArticulos;
-        }
-
-
+        }//Fin eliminarPedidoArticulos
 
         #endregion
 
+        #region Articulos
 
+        #endregion
     }
 }

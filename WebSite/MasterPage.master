@@ -60,6 +60,10 @@
         .auto-style11 {
             color: #000000;
         }
+        .auto-style12 {
+            height: 23px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -84,7 +88,9 @@
                                     <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Quienes Somos.aspx" CssClass="auto-style11">Quienes Somos</asp:HyperLink>
                                     </h4>
                                 </td>
-                                <td class="auto-style5"></td>
+                                <td class="auto-style12">
+                                    <asp:Image ID="Image2" runat="server" Height="80px" ImageUrl="~/Image/baseballleague.png" Width="200px" />
+                                </td>
                                 <td class="auto-style5"></td>
                                 <td class="auto-style5"></td>
                             </tr>
@@ -167,9 +173,9 @@
                 </tr>
                 <tr>
                     <td class="auto-style4">
-                        <asp:Label ID="lblUsuario" runat="server" BorderStyle="None" Text="[lblUsuario]"></asp:Label>
+                        <asp:Label ID="lblUsuario" runat="server" BorderStyle="None" Text="[lblUsuario]" Visible="False"></asp:Label>
                         <br />
-                        <asp:Button ID="Button1" runat="server" Text="LogOut" />
+                        <asp:Button ID="Button1" runat="server" Text="LogOut" OnClick="Button1_Click" />
                     </td>
                 </tr>
             </table>

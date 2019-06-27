@@ -6,6 +6,9 @@ using LibData;
 
 namespace LibNegocio
 {
+    /// <summary>
+    /// Clase que contiene la logica de negocio para conectar con la capa de datos para Pedido
+    /// </summary>
     public class PedidoN
     {
         #region Atributos
@@ -25,19 +28,7 @@ namespace LibNegocio
         int _nombreVendedor;
         #endregion
 
-        #region Propiedades
-        public string Mensaje
-        {
-            get
-            {
-                return _mensaje;
-            }
 
-            set
-            {
-                _mensaje = value;
-            }
-        }
         public PedidoN(DateTime _fecha, int _total, int _id_vendedor, int _id_cliente, bool _estado)
         {
             this._fecha = _fecha;
@@ -51,6 +42,138 @@ namespace LibNegocio
         {
 
         }
+
+
+        #region Metodos
+
+        /// <summary>
+        /// metodo ingresar pedido
+        /// </summary>
+        /// <param name="objPedido"></param>
+        /// <returns></returns>
+        public PedidoN ingresarPedido(PedidoN objPedido)
+        {
+            try
+            {
+                BaseDato objDB = new BaseDato();
+                objPedido = objDB.ingresarPedido(objPedido);
+            }
+            catch(Exception e)
+            {
+                objPedido.Mensaje = e.Message;
+            }
+           
+
+            return objPedido;
+        }//fin metodo ingresar
+
+        /// <summary>
+        /// metodo listar pedido
+        /// </summary>
+        /// <param name="objPedido"></param>
+        /// <returns></returns>
+        public PedidoN listarPedido(PedidoN objPedido)
+        {
+            try
+            {
+                BaseDato objDB = new BaseDato();
+            objPedido = objDB.listarPedido(objPedido);
+            }
+            catch (Exception e)
+            {
+                objPedido.Mensaje = e.Message;
+            }
+            return objPedido;
+        }//fin metodo listar
+
+        /// <summary>
+        /// metodo listar Cliente
+        /// </summary>
+        /// <param name="objCliente"></param>
+        /// <returns></returns>
+        public PedidoN listarCliente(PedidoN objCliente)
+        {
+            try { 
+            BaseDato objDB = new BaseDato();
+            objCliente = objDB.listarCliente(objCliente);
+            }
+            catch (Exception e)
+            {
+                objCliente.Mensaje = e.Message;
+            }
+            return objCliente;
+        }//fin metodo listar Cliente
+
+        /// <summary>
+        /// metodo listar Vendedor
+        /// </summary>
+        /// <param name="objVendedor"></param>
+        /// <returns></returns>
+        public PedidoN listarVendedor(PedidoN objVendedor)
+        {
+            try { 
+            BaseDato objDB = new BaseDato();
+            objVendedor = objDB.listarVendedor(objVendedor);
+            }
+            catch (Exception e)
+            {
+                objVendedor.Mensaje = e.Message;
+            }
+            return objVendedor;
+        }//fin metodo listar Vendedor
+
+        /// <summary>
+        /// metodo modificar
+        /// </summary>
+        /// <param name="objPedido"></param>
+        /// <returns></returns>
+        public PedidoN modificarPedido(PedidoN objPedido)
+        {
+            try { 
+            BaseDato objDB = new BaseDato();
+            objPedido = objDB.modificarPedido(objPedido);
+            }
+            catch (Exception e)
+            {
+                objPedido.Mensaje = e.Message;
+            }
+            return objPedido;
+        }//fin metodo modificar
+
+        /// <summary>
+        /// metodo eliminar
+        /// </summary>
+        /// <param name="objPedido"></param>
+        /// <returns></returns>
+        public PedidoN eliminar(PedidoN objPedido)
+        {
+            try { 
+            BaseDato objDB = new BaseDato();
+            objPedido = objDB.eliminarPedido(objPedido);
+            }
+            catch (Exception e)
+            {
+                objPedido.Mensaje = e.Message;
+            }
+            return objPedido;
+        }//fin metodo eliminar
+        #endregion
+
+
+        #region getters & setters
+        public string Mensaje
+        {
+            get
+            {
+                return _mensaje;
+            }
+
+            set
+            {
+                _mensaje = value;
+            }
+        }
+
 
 
 
@@ -189,95 +312,6 @@ namespace LibNegocio
         }
         #endregion
 
-        #region getter and setter
-        //metodo ingresar pedido
-        public PedidoN ingresarPedido(PedidoN objPedido)
-        {
-            try
-            {
-                BaseDato objDB = new BaseDato();
-                objPedido = objDB.ingresarPedido(objPedido);
-            }
-            catch(Exception e)
-            {
-                objPedido.Mensaje = e.Message;
-            }
-           
-
-            return objPedido;
-        }//fin metodo ingresar
-
-        //metodo listar pedido
-        public PedidoN listarPedido(PedidoN objPedido)
-        {
-            try
-            {
-                BaseDato objDB = new BaseDato();
-            objPedido = objDB.listarPedido(objPedido);
-            }
-            catch (Exception e)
-            {
-                objPedido.Mensaje = e.Message;
-            }
-            return objPedido;
-        }//fin metodo listar
-
-        //metodo listar Cliente
-        public PedidoN listarCliente(PedidoN objCliente)
-        {
-            try { 
-            BaseDato objDB = new BaseDato();
-            objCliente = objDB.listarCliente(objCliente);
-            }
-            catch (Exception e)
-            {
-                objCliente.Mensaje = e.Message;
-            }
-            return objCliente;
-        }//fin metodo listar Cliente
-
-        //metodo listar Vendedor
-        public PedidoN listarVendedor(PedidoN objVendedor)
-        {
-            try { 
-            BaseDato objDB = new BaseDato();
-            objVendedor = objDB.listarVendedor(objVendedor);
-            }
-            catch (Exception e)
-            {
-                objVendedor.Mensaje = e.Message;
-            }
-            return objVendedor;
-        }//fin metodo listar Vendedor
-
-        //metodo modificar
-        public PedidoN modificarPedido(PedidoN objPedido)
-        {
-            try { 
-            BaseDato objDB = new BaseDato();
-            objPedido = objDB.modificarPedido(objPedido);
-            }
-            catch (Exception e)
-            {
-                objPedido.Mensaje = e.Message;
-            }
-            return objPedido;
-        }//fin metodo modificar
-        
-        //metodo eliminar
-        public PedidoN eliminar(PedidoN objPedido)
-        {
-            try { 
-            BaseDato objDB = new BaseDato();
-            objPedido = objDB.eliminarPedido(objPedido);
-            }
-            catch (Exception e)
-            {
-                objPedido.Mensaje = e.Message;
-            }
-            return objPedido;
-        }//fin metodo eliminar
-        #endregion
 
     }//fin class
 }//fin namespace

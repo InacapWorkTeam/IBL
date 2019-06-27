@@ -7,8 +7,8 @@
     <ProjectGuid>{5A92E607-26FB-4009-BAF2-83F0B5187B64}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LibData</RootNamespace>
-    <AssemblyName>LibData</AssemblyName>
+    <RootNamespace>C3LDataG4ArriagadaSepulvedaVidal</RootNamespace>
+    <AssemblyName>C3LDataG4ArriagadaSepulvedaVidal</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

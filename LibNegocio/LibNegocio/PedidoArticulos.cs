@@ -6,6 +6,9 @@ using System.Text;
 
 namespace LibNegocio
 {
+    /// <summary>
+    /// Clase que contiene la logica de negocio entre para el acceso a la capa de datos
+    /// </summary>
     public class PedidoArticulos
     {
         #region atributos
@@ -22,14 +25,20 @@ namespace LibNegocio
 
         #endregion
 
-        //Constructor por defecto
+        /// <summary>
+        /// Constructor por defecto
+        /// </summary>
         public PedidoArticulos()
         {
 
         }
 
-
-        //Método para el ingreso del objeto en la capa de datos
+        #region Metodos
+        /// <summary>
+        /// Método para el ingreso del objeto en la capa de datos 
+        /// </summary>
+        /// <param name="objPedidoArticulos"></param>
+        /// <returns></returns>
         public PedidoArticulos ingresar(PedidoArticulos objPedidoArticulos)
         {
           try
@@ -48,7 +57,11 @@ namespace LibNegocio
         }//Fin ingresar
 
 
-        //Método para obtener los resultados desde la capa de dato
+        /// <summary>
+        /// Método para obtener los resultados desde la capa de datos
+        /// </summary>
+        /// <param name="objPedidoArticulos"></param>
+        /// <returns></returns>
         public PedidoArticulos listar(PedidoArticulos objPedidoArticulos)
         {
             try
@@ -66,7 +79,11 @@ namespace LibNegocio
             return objPedidoArticulos;
         }//Fin listar
 
-
+        /// <summary>
+        /// Método para obtener los datos desde la capa de datos segun IDPedido
+        /// </summary>
+        /// <param name="objPedidoArticulos"></param>
+        /// <returns></returns>
         public PedidoArticulos listarPorPedido(PedidoArticulos objPedidoArticulos)
         {
             try
@@ -84,9 +101,14 @@ namespace LibNegocio
 
 
             return objPedidoArticulos;
-        }
+        }//Fin listarPorPedidos
 
 
+        /// <summary>
+        /// Método para listar los pedidos desde la capa de datos
+        /// </summary>
+        /// <param name="objPedidoArticulos"></param>
+        /// <returns></returns>
         public PedidoArticulos listarPedidosListBox(PedidoArticulos objPedidoArticulos)
         {
 
@@ -106,9 +128,15 @@ namespace LibNegocio
 
 
             return objPedidoArticulos;
-        }
+        }//Fin listarPedidosListBox
 
 
+
+        /// <summary>
+        /// Método para listar listar los articulos desde la capa de datos
+        /// </summary>
+        /// <param name="objPedidoArticulos"></param>
+        /// <returns></returns>
         public PedidoArticulos listarArticulosDropList(PedidoArticulos objPedidoArticulos)
         {
 
@@ -127,9 +155,15 @@ namespace LibNegocio
 
 
             return objPedidoArticulos;
-        }
+        }//Fin listarArticulosDropList
 
 
+
+        /// <summary>
+        /// Método para obtener los datos de los articulos desde la capa de datos
+        /// </summary>
+        /// <param name="objPedidoArticulos"></param>
+        /// <returns></returns>
         public PedidoArticulos listarDatosArticulo(PedidoArticulos objPedidoArticulos)
         {
 
@@ -146,9 +180,15 @@ namespace LibNegocio
             }
 
             return objPedidoArticulos;
-        }
+        }//Fin listarDatosArticulos
 
-        //Método para generar la modificación desde la capa de dato
+
+
+        /// <summary>
+        /// Método para generar la modificación desde la capa de dato
+        /// </summary>
+        /// <param name="objPedidoArticulos"></param>
+        /// <returns></returns>
         public PedidoArticulos modificar(PedidoArticulos objPedidoArticulos)
         {
             try
@@ -167,7 +207,11 @@ namespace LibNegocio
         }//Fin modificar
 
 
-        //Método para generar la petición de borrado lógico en la capa de dato
+        /// <summary>
+        /// Método para generar la petición de borrado lógico en la capa de dato
+        /// </summary>
+        /// <param name="objPedidoArticulos"></param>
+        /// <returns></returns>
         public PedidoArticulos eliminar(PedidoArticulos objPedidoArticulos)
         {
             try
@@ -183,6 +227,10 @@ namespace LibNegocio
 
             return objPedidoArticulos;
         }//Fin eliminar
+
+
+        #endregion
+
 
         #region getters & setters
         public long Id_pedido_articulos
