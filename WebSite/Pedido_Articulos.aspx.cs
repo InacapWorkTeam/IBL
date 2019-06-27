@@ -14,9 +14,10 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         {
             definirDropListIDPedidos();
             definirDropListArticulos();
+            definirDropListPedidoArticulos();
 
         }
-        }
+    }
 
 
     protected void btnListar_Click1(object sender, EventArgs e)
@@ -95,6 +96,8 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         lblMensaje.Visible = false;
     }
 
+
+    #region Listar
     public void definirDropListIDPedidos()
     {
 
@@ -104,10 +107,14 @@ public partial class Pedido_Articulos : System.Web.UI.Page
 
         if (objPedidoArticulos.Exito)
         {
+
+            dropListIDPedidoModificar.Items.Add("-- Seleccione un item --");
+
             DataSet ds = objPedidoArticulos.Ds;
             foreach (DataRow row in objPedidoArticulos.Ds.Tables[0].Rows)
             {
                 dropListPedidos.Items.Add(Convert.ToString(row[0]));
+                dropListIDPedidoModificar.Items.Add(Convert.ToString(row[0]));
             }
         
         }
@@ -128,12 +135,16 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         objPedidoArticulos.listarArticulosDropList(objPedidoArticulos);
 
 
+        droplistArticulos.Items.Add("-- Seleccione un item --");
+        dropListArticuloModificar.Items.Add("--Seleccione un item--");
+
         if (objPedidoArticulos.Exito)
         {
            
             foreach (DataRow row in objPedidoArticulos.Ds.Tables[0].Rows)
             {
                 droplistArticulos.Items.Add(Convert.ToString(row[0])+". "+Convert.ToString(row[1]));
+                dropListArticuloModificar.Items.Add(Convert.ToString(row[0]) + ". " + Convert.ToString(row[1]));
             }
 
         }
@@ -146,6 +157,43 @@ public partial class Pedido_Articulos : System.Web.UI.Page
 
     }
 
+
+    public void definirDropListPedidoArticulos()
+    {
+
+        PedidoArticulos objPedidoArticulos = new PedidoArticulos();
+
+        objPedidoArticulos.Id_pedido_articulos = 0;
+
+        objPedidoArticulos.listar(objPedidoArticulos);
+
+
+        dropListIDPedidoArticulosModificar.Items.Add(" Seleccionar ID  ");
+
+
+        if (objPedidoArticulos.Exito)
+        {
+
+            foreach (DataRow row in objPedidoArticulos.Ds.Tables[0].Rows)
+            {
+                dropListIDPedidoArticulosModificar.Items.Add(Convert.ToString(row[0]));
+            }
+
+        }
+        else
+        {
+            lblMensajeModificar.Text = objPedidoArticulos.Mensaje;
+            lblMensajeModificar.Visible = true;
+
+        }
+
+    }
+
+    /// <summary>
+    /// Listener de droplistArticulos el cual carga los datos asociados Articulos en 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     protected void droplistArticulos_SelectedIndexChanged(object sender, EventArgs e)
     {
         PedidoArticulos objPedidoArticulos = new PedidoArticulos();
@@ -174,11 +222,16 @@ public partial class Pedido_Articulos : System.Web.UI.Page
        
     }
 
+    /// <summary>
+    /// Listener botón ingresar el cual carga los datos ingresados en el formulario
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     protected void btnIngresar_Click(object sender, EventArgs e)
     {
         PedidoArticulos objPedidoArticulos = new PedidoArticulos();
 
-        if (!(txtUnidades.Text.Equals("")))
+        if (!(txtUnidades.Text.Trim().Equals("")))
         {
 
             objPedidoArticulos.Id_pedido = Convert.ToInt32(dropListPedidos.SelectedItem.ToString());
@@ -203,7 +256,7 @@ public partial class Pedido_Articulos : System.Web.UI.Page
             }else
             {
 
-                lblMensajeIngreso.Text = objPedidoArticulos.Mensaje;
+                lblMensajeIngreso.Text = "No pueden quedar campos vacios";
                 lblMensajeIngreso.Visible = true;
             }
 
@@ -215,4 +268,142 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         }
 
     }
+
+    #endregion
+
+    #region Modificar
+
+    /// <summary>
+    /// Listener de dropListIDPedidoArticulosModificar el cual precarga los datos en el formulario
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void dropListIDPedidoArticulosModificar_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        PedidoArticulos objPedidoArticulos = new PedidoArticulos();
+
+        string pedido_articulo = dropListIDPedidoArticulosModificar.SelectedItem.ToString();
+
+        if (dropListIDPedidoArticulosModificar.SelectedIndex == 0)
+        {
+          //  lblMensajeModificar.Text = "Seleccionar un ID Pedido Articulo Válido";
+            //lblMensajeModificar.Visible = true;
+        }
+        else
+        {
+            objPedidoArticulos.Id_pedido_articulos = Convert.ToInt32(pedido_articulo.Substring(0, 1));
+            objPedidoArticulos.listar(objPedidoArticulos);
+
+
+            if (objPedidoArticulos.Exito)
+            {
+
+                foreach (DataRow row in objPedidoArticulos.Ds.Tables[0].Rows)
+                {
+                    txtTamanoModificar.Text = Convert.ToString(row[3]);
+                    txtColorModificar.Text = Convert.ToString(row[4]);
+                    txtUnidadesModificar.Text = Convert.ToString(row[5]);
+                    txtPrecioModificar.Text = Convert.ToString(row[6]);
+
+
+                    //dropListArticuloModificar.Items.FindByText(Convert.ToString(row[2])).Selected = true;
+                }
+            }
+            else
+            {
+                lblMensajeModificar.Text = objPedidoArticulos.Mensaje;
+                lblMensajeModificar.Visible = true;
+
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Listener de la selección del dropListArticuloModificar el cual carga los datos asociados al articulo en el formulario
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void dropListArticuloModificar_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        PedidoArticulos objPedidoArticulos = new PedidoArticulos();
+
+        if (dropListArticuloModificar.SelectedIndex == 0)
+        {
+
+            //No hacer nada
+        }
+        else
+        {
+            string articulo = dropListArticuloModificar.SelectedItem.ToString();
+
+            objPedidoArticulos.Id_articulo = Convert.ToInt32(articulo.Substring(0, 1));
+            objPedidoArticulos.listarDatosArticulo(objPedidoArticulos);
+
+            if (objPedidoArticulos.Exito)
+            {
+
+                foreach (DataRow row in objPedidoArticulos.Ds.Tables[0].Rows)
+                {
+                    txtColorModificar.Text = Convert.ToString(row[3]);
+                    txtTamanoModificar.Text = Convert.ToString(row[4]);
+                    txtPrecioModificar.Text = Convert.ToString(row[5]);
+                }
+            }
+            else
+            {
+                lblMensajeModificar.Text = objPedidoArticulos.Mensaje;
+                lblMensajeModificar.Visible = true;
+
+            }
+
+        }
+    }
+
+    /// <summary>
+    /// Listener del botón para modificar un registro en la tabla Pedido_Articulos
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void btnModificar_Click(object sender, EventArgs e)
+    {
+        PedidoArticulos objPedidoArticulos = new PedidoArticulos();
+
+        if (!(txtUnidadesModificar.Text.Trim().Equals(""))) {
+
+            objPedidoArticulos.Id_pedido_articulos = Convert.ToInt32(dropListIDPedidoArticulosModificar.SelectedItem.ToString());
+            objPedidoArticulos.Id_pedido = Convert.ToInt32(dropListIDPedidoModificar.SelectedItem.ToString());
+            objPedidoArticulos.Id_articulo = Convert.ToInt32(dropListArticuloModificar.SelectedItem.ToString().Substring(0, 1));
+            objPedidoArticulos.Tamano_articulo = txtTamanoModificar.Text;
+            objPedidoArticulos.Color_articulo = txtColorModificar.Text;
+            objPedidoArticulos.Unidades_articulo = Convert.ToInt32(txtUnidadesModificar.Text);
+            objPedidoArticulos.Precio_u_articulo = Convert.ToInt32(txtPrecioModificar.Text);
+
+
+            objPedidoArticulos.modificar(objPedidoArticulos);
+
+            if (objPedidoArticulos.Exito)
+            {
+
+                lblMensajeModificar.Text = "Se ha modificado exitosamente";
+                lblMensajeModificar.Visible = true;
+
+            }else
+            {
+                lblMensajeModificar.Text = objPedidoArticulos.Mensaje;
+                lblMensajeModificar.Visible = true;
+            }
+
+
+        }
+        else
+        {
+            lblMensajeModificar.Text = "No pueden quedar campos vacios";
+            lblMensajeModificar.Visible = true;
+        }
+
+    }
+
+
+    #endregion
 }

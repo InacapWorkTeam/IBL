@@ -15,11 +15,11 @@ public partial class IngresarPedido : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        valores = new string[] { txtboxrut.Text, txtboxnombre.Text,  // se inicializa un array valores con los textbox
-                                 txtboxpaterno.Text, txtboxmaterno.Text,
-                                 txtboxdireccion.Text, txtboxcomuna.Text,
-                                 txtboxfono.Text, txtboxemail.Text };
-        vacio = false;
+       /// valores = new string[] { txtboxrut.Text, txtboxnombre.Text,  // se inicializa un array valores con los textbox
+          //                       txtboxpaterno.Text, txtboxmaterno.Text,
+         //                        txtboxdireccion.Text, txtboxcomuna.Text,
+            //                     txtboxfono.Text, txtboxemail.Text };
+        //vacio = false;
     }
 
     protected void Button2_Click(object sender, EventArgs e)
@@ -35,11 +35,11 @@ public partial class IngresarPedido : System.Web.UI.Page
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
         //barra de despliegue que mostrara los vendedores
-        Pedido objPedido = new Pedido();
+       // Pedido objPedido = new Pedido();
         //objPedido.Rut = txtRut.Text;
-        objVendedor = objVendedor.listarPedido(objAmistades);
-        dgListar.DataSource = objAmistades.Ds;
-        dgListar.DataBind();
+      //  objVendedor = objVendedor.listarPedido(objAmistades);
+       // dgListar.DataSource = objAmistades.Ds;
+       // dgListar.DataBind();
 
     }//fin 
 

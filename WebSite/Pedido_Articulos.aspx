@@ -65,7 +65,7 @@
             height: 23px;
         }
         .auto-style32 {
-            width: 492px;
+            width: 438px;
             height: 23px;
         }
         .auto-style33 {
@@ -81,12 +81,76 @@
             width: 319px;
             height: 26px;
         }
+        .auto-style36 {
+            height: 277px;
+        }
+        .auto-style37 {
+            width: 508px;
+            height: 23px;
+        }
+        .auto-style38 {
+            width: 731px;
+            height: 23px;
+            text-align: center;
+        }
+        .auto-style39 {
+            width: 164px;
+        }
+        .auto-style41 {
+            text-align: left;
+        }
+        .auto-style42 {
+            height: 23px;
+            text-align: center;
+            width: 22px;
+        }
+        .auto-style43 {
+            width: 164px;
+            height: 23px;
+            text-align: left;
+        }
+        .auto-style44 {
+            width: 164px;
+            text-align: left;
+        }
+        .auto-style45 {
+            height: 23px;
+            width: 22px;
+        }
+        .auto-style46 {
+            text-align: center;
+            width: 22px;
+        }
+        .auto-style47 {
+            width: 22px;
+        }
+        .auto-style48 {
+            height: 23px;
+            text-align: left;
+        }
+        .auto-style49 {
+            width: 164px;
+            text-align: left;
+            height: 26px;
+        }
+        .auto-style50 {
+            text-align: center;
+            width: 22px;
+            height: 26px;
+        }
+        .auto-style51 {
+            text-align: left;
+            height: 26px;
+        }
+        .auto-style52 {
+            width: 127%;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="auto-style1">
         <tr>
-            <td colspan="6">
+            <td colspan="7" class="auto-style36">
                 <div class="auto-style24">
                 <asp:Label ID="Label1" runat="server" Text="Listar"></asp:Label>
                 <br />
@@ -142,7 +206,7 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style16" colspan="4">
+            <td class="auto-style16" colspan="5">
                 <asp:Label ID="Label3" runat="server" Text="Ingresar"></asp:Label>
                 <br />
                 <table class="auto-style1">
@@ -152,7 +216,7 @@
                             <h4><strong>:</strong></h4>
                         </td>
                         <td class="auto-style28">
-                            <asp:DropDownList ID="dropListPedidos" runat="server" Height="16px" Width="125px">
+                            <asp:DropDownList ID="dropListPedidos" runat="server" Height="16px" Width="128px">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -172,7 +236,7 @@
                             <h4><strong>:</strong></h4>
                         </td>
                         <td class="auto-style28">
-                            <asp:TextBox ID="txtTamano" runat="server" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtTamano" runat="server" ReadOnly="True" Enabled="False"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -181,7 +245,7 @@
                             <h4><strong>:</strong></h4>
                         </td>
                         <td class="auto-style28">
-                            <asp:TextBox ID="txtColor" runat="server" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtColor" runat="server" ReadOnly="True" Enabled="False"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -200,7 +264,7 @@
                             <h4><strong>:</strong></h4>
                         </td>
                         <td class="auto-style35">
-                            <asp:TextBox ID="txtPrecio" runat="server" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtPrecio" runat="server" ReadOnly="True" Enabled="False"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -231,39 +295,127 @@
                 &nbsp;</td>
             <td class="auto-style31">
                 &nbsp;</td>
-            <td class="auto-style30">
+            <td class="auto-style30" colspan="2">
                 &nbsp;</td>
-            <td class="auto-style16">
+            <td class="auto-style37">
                 &nbsp;</td>
             <td class="auto-style16">
                 &nbsp;</td>
             <td class="auto-style5">
                 &nbsp;</td>
-        </tr>
-        <tr>
-            <td class="auto-style16" colspan="4">
-                </td>
-            <td class="auto-style16">
-                </td>
-            <td class="auto-style5">
-                </td>
         </tr>
         <tr>
             <td class="auto-style16" colspan="5">
+                </td>
+            <td class="auto-style16">
+                </td>
+            <td class="auto-style5">
+                </td>
+        </tr>
+        <tr>
+            <td class="auto-style38" colspan="3">
                 <asp:Label ID="Label2" runat="server" Text="Modificar"></asp:Label>
+                <br />
+                <table class="auto-style52">
+                    <tr>
+                        <td class="auto-style43">ID Pedido Articulos</td>
+                        <td class="auto-style42">
+                            <h4>:</h4>
+                        </td>
+                        <td class="auto-style48">
+                            <asp:DropDownList ID="dropListIDPedidoArticulosModificar" runat="server" AutoPostBack="True" Height="18px" OnSelectedIndexChanged="dropListIDPedidoArticulosModificar_SelectedIndexChanged" Width="128px">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style43">ID Pedido</td>
+                        <td class="auto-style45">
+                            <h4>:</h4>
+                        </td>
+                        <td class="auto-style48">
+                            <asp:DropDownList ID="dropListIDPedidoModificar" runat="server" AutoPostBack="True" Height="16px" Width="128px">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style44">ID Articulo</td>
+                        <td class="auto-style46">
+                            <h4>:</h4>
+                        </td>
+                        <td class="auto-style41">
+                            <asp:DropDownList ID="dropListArticuloModificar" runat="server" AutoPostBack="True" Height="16px" OnSelectedIndexChanged="dropListArticuloModificar_SelectedIndexChanged" Width="128px">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style43">Tamaño</td>
+                        <td class="auto-style45">
+                            <h4>:</h4>
+                        </td>
+                        <td class="auto-style48">
+                            <asp:TextBox ID="txtTamanoModificar" runat="server" Enabled="False"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style43">Color</td>
+                        <td class="auto-style45">
+                            <h4>:</h4>
+                        </td>
+                        <td class="auto-style48">
+                            <asp:TextBox ID="txtColorModificar" runat="server" Enabled="False"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style49">Unidades</td>
+                        <td class="auto-style50">
+                            <h4>:</h4>
+                        </td>
+                        <td class="auto-style51">
+                            <asp:TextBox ID="txtUnidadesModificar" runat="server"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtUnidadesModificar" ErrorMessage="Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style44">Precio Unitario</td>
+                        <td class="auto-style46">:</td>
+                        <td class="auto-style41">
+                            <asp:TextBox ID="txtPrecioModificar" runat="server" Enabled="False"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style39">&nbsp;</td>
+                        <td class="auto-style47">
+                            <h4></h4>
+                        </td>
+                        <td class="auto-style41">
+                            <asp:Label ID="lblMensajeModificar" runat="server" Text="[lblMensaje]" Visible="False"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style39">&nbsp;</td>
+                        <td class="auto-style47">
+                            <h4></h4>
+                        </td>
+                        <td class="auto-style41">
+                            <asp:Button ID="btnModificar" runat="server" OnClick="btnModificar_Click" Text="Modificar" />
+                        </td>
+                    </tr>
+                </table>
             </td>
+            <td class="auto-style16" colspan="3">
+                &nbsp;</td>
             <td class="auto-style5">
                 &nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style16" colspan="5">
+            <td class="auto-style16" colspan="6">
                 <asp:Label ID="Label4" runat="server" Text="Eliminar"></asp:Label>
             </td>
             <td class="auto-style5">
                 &nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style16" colspan="5">
+            <td class="auto-style16" colspan="6">
                 &nbsp;</td>
             <td class="auto-style5">
                 &nbsp;</td>
