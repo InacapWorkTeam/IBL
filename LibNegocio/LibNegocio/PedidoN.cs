@@ -312,6 +312,6 @@ namespace LibNegocio
         }
         #endregion
 
-
+    
     }//fin class
 }//fin namespace

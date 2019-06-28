@@ -107,7 +107,7 @@
                 <td class="auto-style19">Costo :</td>
                 <td class="auto-style11">
                     <asp:TextBox ID="txtCosto" runat="server" CssClass="auto-style16" Width="115px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="SOLO NUMEROS" ControlToValidate="txtCosto">*</asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="SOLO NUMEROS" ControlToValidate="txtCosto" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -130,7 +130,7 @@
                 &nbsp;&nbsp;&nbsp; <span class="auto-style23">
                     <br />
                     ID :</span>
-                    <asp:TextBox ID="TextBox1" runat="server" Width="26px"></asp:TextBox>
+                    <asp:TextBox ID="txtId" runat="server" Width="26px"></asp:TextBox>
                     <br />
                     <br />
                     <asp:Button ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" Text="ELIMINAR" Width="110px" />

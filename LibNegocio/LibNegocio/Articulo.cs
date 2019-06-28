@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibData;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
@@ -179,43 +180,66 @@ namespace LibNegocio
             }
         }
         #endregion
-
-        #region Constructores
+        
+        #region Mteodos
         //Ingresar nuevo articulo
         public Articulo ingresarArticulo(Articulo objArticulo)
         {
-            //BaseDatos objDB = new BaseDatos();
-            //objServTecnico = objDB.ingresar(objServTecnico);
-
+            try
+            {
+                BaseDato objBaseDato = new BaseDato();
+                objArticulo = objBaseDato.ingresarArticulo(objArticulo);
+            }
+            catch (Exception ex)
+            {
+                objArticulo.Mensaje = " " + ex;
+            }
             return objArticulo;
-        }//Fin ingresar
+        }//fin metodo ingresar articulo
 
-        //Listar articulo
         public Articulo listarArticulo(Articulo objArticulo)
         {
-            //BaseDatos objDB = new BaseDatos();
-            //objServTecnico = objDB.ingresar(objServTecnico);
-
+            try
+            {
+                BaseDato objBaseDato = new BaseDato();
+                objArticulo = objBaseDato.listarArticulo(objArticulo);
+            }
+            catch (Exception ex)
+            {
+                objArticulo.Mensaje = " " + ex;
+            }
             return objArticulo;
-        }//Fin listar
+        }//fin metodo listar articulo
 
-        //Modificar articulo
-        public Articulo modificarArticulo(Articulo objArticulo)
+        public Articulo actualizarArticulo(Articulo objArticulo)
         {
-            //BaseDatos objDB = new BaseDatos();
-            //objServTecnico = objDB.ingresar(objServTecnico);
-
+            try
+            {
+                BaseDato objBaseDato = new BaseDato();
+                objArticulo = objBaseDato.actualizarArticulo(objArticulo);
+            }
+            catch (Exception ex)
+            {
+                objArticulo.Mensaje = " " + ex;
+            }
             return objArticulo;
-        }//Fin modificar
+        }//fin metodo listar articulo
 
-        //Eliminar articulo
         public Articulo eliminarArticulo(Articulo objArticulo)
         {
-            //BaseDatos objDB = new BaseDatos();
-            //objServTecnico = objDB.ingresar(objServTecnico);
-
+            try
+            {
+                BaseDato objBaseDato = new BaseDato();
+               objArticulo = objBaseDato.eliminarArticulo(objArticulo);
+            }
+            catch (Exception ex)
+            {
+                objArticulo.Mensaje = " " + ex;
+            }
             return objArticulo;
-        }//Fin eliminar
-        #endregion
+        }//fin metodo listar articulo
     }
+    #endregion
+    
 }
+

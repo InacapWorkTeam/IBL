@@ -3,19 +3,27 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LibNegocio;
 
 public partial class Articulo : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        mostrar();
+        try
+        {
+            mostrar();
+        }
+        catch (Exception ex)
+        {
+            lblMensaje.Text = "ERROR " + ex;
+        }
     }
 
     protected void btnIngresar_Click(object sender, EventArgs e)
     {
         try
         {
-            Articulo objArticulo = new Articulo();
+            LibNegocio.Articulo objArticulo = new LibNegocio.Articulo();
 
             objArticulo.Nombre = txtNombre.Text;
             objArticulo.Descripcion = txtDescripcion.Text;
@@ -30,8 +38,13 @@ public partial class Articulo : System.Web.UI.Page
             if (objArticulo.Exito == true)
             {
                 lblMensaje.Text = "INGRESADO CORRECTAMENTE";
+                lblMensaje.Visible = true;
                 limpiar();
                 mostrar();
+            }
+            else
+            {
+                lblMensaje.Text = objArticulo.Mensaje;
             }
 
         }
@@ -50,7 +63,7 @@ public partial class Articulo : System.Web.UI.Page
     {
         try
         {
-            Articulo objArticulo = new Articulo();
+            LibNegocio.Articulo objArticulo = new LibNegocio.Articulo();
             objArticulo.listarArticulo(objArticulo);
             dgListar.DataSource = objArticulo.Data;
             dgListar.DataBind();
@@ -76,7 +89,7 @@ public partial class Articulo : System.Web.UI.Page
     {
         try
         {
-            Articulo objArticulo = new Articulo();
+            LibNegocio.Articulo objArticulo = new LibNegocio.Articulo();
             objArticulo.Id = int.Parse(txtId.Text);
             objArticulo.eliminarArticulo(objArticulo);
 
@@ -97,7 +110,7 @@ public partial class Articulo : System.Web.UI.Page
     {
         try
         {
-            Articulo objArticulo = new Articulo();
+            LibNegocio.Articulo objArticulo = new LibNegocio.Articulo();
 
             objArticulo.Id = int.Parse(txtId.Text);
             objArticulo.Nombre = txtNombre.Text;
