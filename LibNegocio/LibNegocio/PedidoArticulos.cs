@@ -32,7 +32,7 @@ namespace LibNegocio
         {
 
         }
-        
+
         #region Metodos
         /// <summary>
         /// Método para el ingreso del objeto en la capa de datos 
@@ -68,7 +68,7 @@ namespace LibNegocio
             {
                 BaseDato bd = new BaseDato();
 
-               objPedidoArticulos = bd.listarPedidoArticulos(objPedidoArticulos);
+                objPedidoArticulos = bd.listarPedidoArticulos(objPedidoArticulos);
 
             }
             catch (Exception e)

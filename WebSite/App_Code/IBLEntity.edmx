@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_PAAC4G4ArriagadaSepulvedaVidalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="100" />
+          <Property Name="numero_telefono" Type="bigint" />
+          <Property Name="correo" Type="varchar" MaxLength="50" />
+          <Property Name="id_equipo" Type="int" />
+        </EntityType>
+        <EntityType Name="Comision">
+          <Key>
+            <PropertyRef Name="id_comision" />
+          </Key>
+          <Property Name="id_comision" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" />
+          <Property Name="porcentaje" Type="float" />
+        </EntityType>
+        <EntityType Name="Equipo">
+          <Key>
+            <PropertyRef Name="id_equipo" />
+          </Key>
+          <Property Name="id_equipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="cant_jugadores" Type="int" />
+        </EntityType>
+        <EntityType Name="Queja">
+          <Key>
+            <PropertyRef Name="id_queja" />
+          </Key>
+          <Property Name="id_queja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="detalle" Type="varchar" MaxLength="500" />
+          <Property Name="id_vendedor" Type="int" />
+          <Property Name="id_cliente" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblArticulo">
+          <Key>
+            <PropertyRef Name="id_articulo" />
+          </Key>
+          <Property Name="id_articulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="color" Type="varchar" MaxLength="20" />
+          <Property Name="tamano" Type="varchar" MaxLength="10" />
+          <Property Name="precio" Type="int" />
+          <Property Name="coste_u_mayorista" Type="int" />
+          <Property Name="unidades" Type="int" />
+          <Property Name="id_categoria" Type="int" />
+          <Property Name="eliminado" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblPedido">
+          <Key>
+            <PropertyRef Name="id_pedido" />
+          </Key>
+          <Property Name="id_pedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="total" Type="int" />
+          <Property Name="id_vendedor" Type="int" />
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+          <Property Name="existencia" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tblPedido_Articulos">
+          <Key>
+            <PropertyRef Name="id_pedido_articulos" />
+          </Key>
+          <Property Name="id_pedido_articulos" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pedido" Type="int" />
+          <Property Name="id_articulo" Type="int" />
+          <Property Name="tamano_articulo" Type="varchar" MaxLength="10" />
+          <Property Name="color_articulo" Type="varchar" MaxLength="20" />
+          <Property Name="unidades_articulo" Type="int" />
+          <Property Name="precio_u_articulo" Type="int" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Vendedor">
+          <Key>
+            <PropertyRef Name="id_vendedor" />
+          </Key>
+          <Property Name="id_vendedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="100" />
+          <Property Name="numero_telefono" Type="bigint" />
+          <Property Name="correo" Type="varchar" MaxLength="50" />
+          <Property Name="id_comision" Type="int" />
+        </EntityType>
+        <EntityContainer Name="DB_PAAC4G4ArriagadaSepulvedaVidalModelStoreContainer">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comision" EntityType="Self.Comision" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipo" EntityType="Self.Equipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Queja" EntityType="Self.Queja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblArticulo" EntityType="Self.tblArticulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPedido" EntityType="Self.tblPedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPedido_Articulos" EntityType="Self.tblPedido_Articulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendedor" EntityType="Self.Vendedor" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_PAAC4G4ArriagadaSepulvedaVidalModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="numero_telefono" Type="Int64" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_equipo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Comision">
+          <Key>
+            <PropertyRef Name="id_comision" />
+          </Key>
+          <Property Name="id_comision" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="porcentaje" Type="Double" />
+        </EntityType>
+        <EntityType Name="Equipo">
+          <Key>
+            <PropertyRef Name="id_equipo" />
+          </Key>
+          <Property Name="id_equipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cant_jugadores" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Queja">
+          <Key>
+            <PropertyRef Name="id_queja" />
+          </Key>
+          <Property Name="id_queja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="detalle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="id_vendedor" Type="Int32" />
+          <Property Name="id_cliente" Type="Int32" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblPedido_Articulos">
+          <Key>
+            <PropertyRef Name="id_pedido_articulos" />
+          </Key>
+          <Property Name="id_pedido_articulos" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido" Type="Int32" />
+          <Property Name="id_articulo" Type="Int32" />
+          <Property Name="tamano_articulo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="color_articulo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="unidades_articulo" Type="Int32" />
+          <Property Name="precio_u_articulo" Type="Int32" />
+          <Property Name="estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Vendedor">
+          <Key>
+            <PropertyRef Name="id_vendedor" />
+          </Key>
+          <Property Name="id_vendedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="numero_telefono" Type="Int64" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_comision" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="DB_PAAC4G4ArriagadaSepulvedaVidalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Comision" EntityType="Self.Comision" />
+          <EntitySet Name="Equipo" EntityType="Self.Equipo" />
+          <EntitySet Name="Queja" EntityType="Self.Queja" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tblPedido_Articulos" EntityType="Self.tblPedido_Articulos" />
+          <EntitySet Name="Vendedor" EntityType="Self.Vendedor" />
+          <EntitySet Name="tblArticulo" EntityType="DB_PAAC4G4ArriagadaSepulvedaVidalModel.tblArticulo" />
+          <EntitySet Name="tblPedido" EntityType="DB_PAAC4G4ArriagadaSepulvedaVidalModel.tblPedido" />
+        </EntityContainer>
+        <EntityType Name="tblArticulo">
+          <Key>
+            <PropertyRef Name="id_articulo" />
+          </Key>
+          <Property Name="id_articulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tamano" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Int32" />
+          <Property Name="coste_u_mayorista" Type="Int32" />
+          <Property Name="unidades" Type="Int32" />
+          <Property Name="id_categoria" Type="Int32" />
+          <Property Name="eliminado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblPedido">
+          <Key>
+            <PropertyRef Name="id_pedido" />
+          </Key>
+          <Property Name="id_pedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="total" Type="Int32" />
+          <Property Name="id_vendedor" Type="Int32" />
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="existencia" Type="Byte" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_PAAC4G4ArriagadaSepulvedaVidalModelStoreContainer" CdmEntityContainer="DB_PAAC4G4ArriagadaSepulvedaVidalEntities">
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="DB_PAAC4G4ArriagadaSepulvedaVidalModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="DB_PAAC4G4ArriagadaSepulvedaVidalModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="numero_telefono" ColumnName="numero_telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comision">
+            <EntityTypeMapping TypeName="DB_PAAC4G4ArriagadaSepulvedaVidalModel.Comision">
+              <MappingFragment StoreEntitySet="Comision">
+                <ScalarProperty Name="id_comision" ColumnName="id_comision" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipo">
+            <EntityTypeMapping TypeName="DB_PAAC4G4ArriagadaSepulvedaVidalModel.Equipo">
+              <MappingFragment StoreEntitySet="Equipo">
+                <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="cant_jugadores" ColumnName="cant_jugadores" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Queja">
+            <EntityTypeMapping TypeName="DB_PAAC4G4ArriagadaSepulvedaVidalModel.Queja">
+              <MappingFragment StoreEntitySet="Queja">
+                <ScalarProperty Name="id_queja" ColumnName="id_queja" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="id_vendedor" ColumnName="id_vendedor" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_PAAC4G4ArriagadaSepulvedaVidalModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPedido_Articulos">
+            <EntityTypeMapping TypeName="DB_PAAC4G4ArriagadaSepulvedaVidalModel.tblPedido_Articulos">
+              <MappingFragment StoreEntitySet="tblPedido_Articulos">
+                <ScalarProperty Name="id_pedido_articulos" ColumnName="id_pedido_articulos" />
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+                <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+                <ScalarProperty Name="tamano_articulo" ColumnName="tamano_articulo" />
+                <ScalarProperty Name="color_articulo" ColumnName="color_articulo" />
+                <ScalarProperty Name="unidades_articulo" ColumnName="unidades_articulo" />
+                <ScalarProperty Name="precio_u_articulo" ColumnName="precio_u_articulo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendedor">
+            <EntityTypeMapping TypeName="DB_PAAC4G4ArriagadaSepulvedaVidalModel.Vendedor">
+              <MappingFragment StoreEntitySet="Vendedor">
+                <ScalarProperty Name="id_vendedor" ColumnName="id_vendedor" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="numero_telefono" ColumnName="numero_telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="id_comision" ColumnName="id_comision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblArticulo">
+            <EntityTypeMapping TypeName="DB_PAAC4G4ArriagadaSepulvedaVidalModel.tblArticulo">
+              <MappingFragment StoreEntitySet="tblArticulo">
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="unidades" ColumnName="unidades" />
+                <ScalarProperty Name="coste_u_mayorista" ColumnName="coste_u_mayorista" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="tamano" ColumnName="tamano" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPedido">
+            <EntityTypeMapping TypeName="DB_PAAC4G4ArriagadaSepulvedaVidalModel.tblPedido">
+              <MappingFragment StoreEntitySet="tblPedido">
+                <ScalarProperty Name="existencia" ColumnName="existencia" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id_vendedor" ColumnName="id_vendedor" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>

@@ -15,7 +15,7 @@
         }
         .auto-style13 {
             height: 22px;
-            width: 67px;
+            width: 95px;
         }
         .auto-style14 {
             width: 320px;
@@ -34,7 +34,7 @@
             margin-left: 19px;
         }
         .auto-style19 {
-            width: 67px;
+            width: 95px;
         }
         .auto-style20 {
             margin-left: 150px;
@@ -42,32 +42,13 @@
         .auto-style21 {
             margin-left: 346px;
         }
-        .auto-style22 {
-            width: 88%;
-            height: 23px;
-            text-align: left;
-            margin-left: 150px;
-            margin-right: 84px;
-        }
-        .auto-style23 {
-            font-size: large;
-        }
-        .auto-style24 {
-            width: 67px;
-            height: 34px;
-        }
-        .auto-style25 {
-            width: 320px;
-            color: #000000;
-            height: 34px;
-        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <p class="auto-style10">
         INGRESO DE NUEVOS ARTICULOS</p>
     <p>
-        <table class="auto-style22">
+        <table class="auto-style12">
             <tr>
                 <td class="auto-style13">Nombre :</td>
                 <td class="auto-style14">
@@ -107,7 +88,7 @@
                 <td class="auto-style19">Costo :</td>
                 <td class="auto-style11">
                     <asp:TextBox ID="txtCosto" runat="server" CssClass="auto-style16" Width="115px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="SOLO NUMEROS" ControlToValidate="txtCosto" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="SOLO NUMEROS" ControlToValidate="txtCosto">*</asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -119,23 +100,12 @@
             </tr>
             <tr>
                 <td class="auto-style19">&nbsp;</td>
-                <td class="auto-style11">
-                    <asp:Label ID="lblMensaje" runat="server"></asp:Label>
-                </td>
+                <td class="auto-style11">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style24"></td>
-                <td class="auto-style25">
+                <td class="auto-style19">&nbsp;</td>
+                <td class="auto-style11">
                     <asp:Button ID="btnIngresar" runat="server" CssClass="auto-style15" OnClick="btnIngresar_Click" Text="INGRESAR" Width="228px" />
-                &nbsp;&nbsp;&nbsp; <span class="auto-style23">
-                    <br />
-                    ID :</span>
-                    <asp:TextBox ID="txtId" runat="server" Width="26px"></asp:TextBox>
-                    <br />
-                    <br />
-                    <asp:Button ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" Text="ELIMINAR" Width="110px" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="btnAct" runat="server" OnClick="btnAct_Click" Text="ACTUALIZAR" Width="106px" />
                 </td>
             </tr>
         </table>
@@ -145,6 +115,9 @@
     <p>
         <asp:GridView ID="dgListar" runat="server" CellPadding="4" CssClass="auto-style20" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Width="732px">
             <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:CommandField ShowCancelButton="False" ShowDeleteButton="True" ShowEditButton="True" />
+            </Columns>
             <EditRowStyle BackColor="#7C6F57" />
             <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />

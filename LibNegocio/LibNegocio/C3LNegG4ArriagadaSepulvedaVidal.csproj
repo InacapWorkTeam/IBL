@@ -7,8 +7,8 @@
     <ProjectGuid>{02AB853B-C013-4CCE-874F-2602E9DE3E3A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>C3LNegG4ArriagadaSepulvedaVidal</RootNamespace>
-    <AssemblyName>C3LNegG4ArriagadaSepulvedaVidal</AssemblyName>
+    <RootNamespace>LibNegocio</RootNamespace>
+    <AssemblyName>LibNegocio</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="C3LDataG4ArriagadaSepulvedaVidal">
-      <HintPath>..\..\LibData\LibData\bin\Debug\C3LDataG4ArriagadaSepulvedaVidal.dll</HintPath>
+    <Reference Include="LibData">
+      <HintPath>..\..\LibData\LibData\bin\Debug\LibData.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

@@ -30,8 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="C3LNegG4ArriagadaSepulvedaVidal">
-      <HintPath>..\..\LibNegocio\LibNegocio\bin\Debug\C3LNegG4ArriagadaSepulvedaVidal.dll</HintPath>
+    <Reference Include="LibNegocio, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LibNegocio\LibNegocio\bin\Debug\LibNegocio.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

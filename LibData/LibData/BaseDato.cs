@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using LibNegocio;
 
+
 namespace LibData
 {
     /// <summary>
@@ -17,7 +18,7 @@ namespace LibData
         string strConn = ConfigurationManager.AppSettings["strConn"];
 
         #region Pedido
-        
+
         //Inicio metodo ingresar Pedidos
         public PedidoN ingresarPedido(PedidoN objPedido)
         {
@@ -493,125 +494,8 @@ namespace LibData
 
         #endregion
 
-        
         #region Articulos
-        //metodo ingresar articulo
-        public Articulo ingresarArticulo(Articulo objArticulo)
-        {
-            SqlCommand cmd = new SqlCommand();
-            try
-            {
-                cmd.Connection = new SqlConnection(strConn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "pa_ingresarArticulo";
 
-                cmd.Parameters.Add("@nombre", SqlDbType.VarChar, 20).Value = objArticulo.Nombre;
-                cmd.Parameters.Add("@descripcion", SqlDbType.VarChar, 200).Value = objArticulo.Descripcion;
-                cmd.Parameters.Add("@color", SqlDbType.VarChar, 20).Value = objArticulo.Color;
-                cmd.Parameters.Add("@tamaño", SqlDbType.VarChar, 10).Value = objArticulo.Tamaño;
-                cmd.Parameters.Add("@precio", SqlDbType.Int).Value = objArticulo.Precio;
-                cmd.Parameters.Add("@coste_u_mayorista", SqlDbType.Int).Value = objArticulo.Coste_u_mayorista;
-                cmd.Parameters.Add("@unidades", SqlDbType.Int).Value = objArticulo.Unidades;
-
-                cmd.Connection.Open();
-                cmd.ExecuteNonQuery();
-                cmd.Connection.Close();
-                objArticulo.Exito = true;
-            }
-            catch (Exception ex)
-            {
-                objArticulo.Exito = false;
-                objArticulo.Mensaje = "Excepcion capturada:  " + ex.Message;
-            }//fin try-catch
-
-            return objArticulo;
-        }
-        //fin ingresar
-        //metodo listar articulo
-        public Articulo listarArticulo(Articulo objArticulo)
-        {
-            SqlCommand cmd = new SqlCommand();
-            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-
-            try
-            {
-                cmd.Connection = new SqlConnection(strConn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "pa_listarArticulo";
-
-                cmd.Connection.Open();
-                cmd.ExecuteNonQuery();
-                sda.Fill(objArticulo.Data);
-                cmd.Connection.Close();
-            }
-            catch (Exception ex)
-            {
-                objArticulo.Mensaje = "Excepcion capturada:  " + ex.Message;
-            }
-
-            return objArticulo;
-        }
-        //fin listar
-        //metodo actualizar articulo
-        public Articulo actualizarArticulo(Articulo objArticulo)
-        {
-            SqlCommand cmd = new SqlCommand();
-            try
-            {
-                cmd.Connection = new SqlConnection(strConn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "pa_actualizarArticulo";
-
-                cmd.Parameters.Add("@id", SqlDbType.Int).Value = objArticulo.Id;
-                cmd.Parameters.Add("@nombre", SqlDbType.VarChar, 20).Value = objArticulo.Nombre;
-                cmd.Parameters.Add("@descripcion", SqlDbType.VarChar, 200).Value = objArticulo.Descripcion;
-                cmd.Parameters.Add("@color", SqlDbType.VarChar, 20).Value = objArticulo.Color;
-                cmd.Parameters.Add("@tamaño", SqlDbType.VarChar, 10).Value = objArticulo.Tamaño;
-                cmd.Parameters.Add("@precio", SqlDbType.Int).Value = objArticulo.Precio;
-                cmd.Parameters.Add("@coste_u_mayorista", SqlDbType.Int).Value = objArticulo.Coste_u_mayorista;
-                cmd.Parameters.Add("@unidades", SqlDbType.Int).Value = objArticulo.Unidades;
-
-                cmd.Connection.Open();
-                cmd.ExecuteNonQuery();
-                cmd.Connection.Close();
-                objArticulo.Exito = true;
-            }
-            catch (Exception ex)
-            {
-                objArticulo.Exito = false;
-                objArticulo.Mensaje = "Excepcion capturada:  " + ex.Message;
-            }//fin try-catch
-
-            return objArticulo;
-        }
-        //fin actualizar
-        //metodoeliminar articulo
-        public Articulo eliminarArticulo(Articulo objArticulo)
-        {
-            SqlCommand cmd = new SqlCommand();
-
-            try
-            {
-                cmd.Connection = new SqlConnection(strConn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "pa_eliminar";
-
-                cmd.Parameters.Add("@id", SqlDbType.Int).Value = objArticulo.Id;
-
-                cmd.Connection.Open();
-                cmd.ExecuteNonQuery();
-                cmd.Connection.Close();
-                objArticulo.Exito = true;
-            }
-            catch (Exception ex)
-            {
-                objArticulo.Exito = false;
-                objArticulo.Mensaje = "Excepcion capturada:  " + ex.Message;
-            }
-            return objArticulo;
-        }
-        //fin eliminar
         #endregion
-    
     }
 }
