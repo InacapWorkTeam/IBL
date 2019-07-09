@@ -109,6 +109,9 @@
           <Property Name="correo" Type="varchar" MaxLength="50" />
           <Property Name="id_comision" Type="int" />
         </EntityType>
+        <Function Name="pa_listarPedidoArticulosPorPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_pedido" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="DB_PAAC4G4ArriagadaSepulvedaVidalModelStoreContainer">
           <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
@@ -214,6 +217,9 @@
           <EntitySet Name="Vendedor" EntityType="Self.Vendedor" />
           <EntitySet Name="tblArticulo" EntityType="DB_PAAC4G4ArriagadaSepulvedaVidalModel.tblArticulo" />
           <EntitySet Name="tblPedido" EntityType="DB_PAAC4G4ArriagadaSepulvedaVidalModel.tblPedido" />
+          <FunctionImport Name="pa_listarPedidoArticulosPorPedido">
+            <Parameter Name="id_pedido" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="tblArticulo">
           <Key>
@@ -361,6 +367,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="pa_listarPedidoArticulosPorPedido" FunctionName="DB_PAAC4G4ArriagadaSepulvedaVidalModel.Store.pa_listarPedidoArticulosPorPedido" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

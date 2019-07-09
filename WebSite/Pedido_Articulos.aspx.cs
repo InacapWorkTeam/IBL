@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using LibNegocio;
 using System.Data;
 using System.Text.RegularExpressions;
+using System.Data.SqlClient;
 
 public partial class Pedido_Articulos : System.Web.UI.Page
 {
@@ -120,54 +121,86 @@ public partial class Pedido_Articulos : System.Web.UI.Page
     /// <param name="e"></param>
     protected void btnListarPorPedido_Click(object sender, EventArgs e)
     {
-       // using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities()) {
+        try {
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities()) {
+              
+                //Se valida que el campo de text no se encuentre vacío
+                if (txtIdPedido.Text != "") {
+                    //Instanciación de la entidad
+                    tblPedido_Articulos objPedidoArticulos = new tblPedido_Articulos();
+                    //Parseo del id_pedido a buscar
+                    objPedidoArticulos.id_pedido = int.Parse(txtIdPedido.Text);
 
-        //    tblPedido_Articulos objPedidoArticulos = new tblPedido_Articulos();
-                
-       ////     var filtroPedido = db.tblPedido_Articulos.
-       // }
+                    //Se realiza una consulta a un procedimiento almacenado mediante el uso del EntityFramework para obtener los registros por id_pedido
+                    var filtroPedido = db.Database.SqlQuery<tblPedido_Articulos>("pa_listarPedidoArticulosPorPedido @id_pedido",
+                        new SqlParameter("@id_pedido", objPedidoArticulos.id_pedido));
+
+                    //Instanciación de un arreglo
+                    List<tblPedido_Articulos> array = new List<tblPedido_Articulos> { };
+
+                    //Recorrido de la consulta
+                    foreach (var objPedidoArticulo in filtroPedido) {
+                        //Ingreso de los registros al arreglo
+                        array.Add(objPedidoArticulo);
+                    }
+
+                    //Definición del datasource con el arreglo con sus atributos
+                    tblListado.DataSource = array;
+                    tblListado.DataBind();
+                }//Fin IF
+            }//Fin using
+
+        } catch (Exception ex) {
+            lblMensajeListaPedido.Text = ex.Message;
+            lblMensajeListaPedido.Visible = true;
+
+        }//Fin try-catch
 
 
-
-            PedidoArticulos objPedidoArticulos = new PedidoArticulos();
+        #region deprecated
+        // PedidoArticulos objPedidoArticulos = new PedidoArticulos();
 
         //Validación de campo vacío
-        if (!(txtIdPedido.Text == ""))
-        {
-            //Parseo
-            objPedidoArticulos.Id_pedido = int.Parse(txtIdPedido.Text);
+        // if (!(txtIdPedido.Text == ""))
+        // {
+        //Parseo
+        //   objPedidoArticulos.Id_pedido = int.Parse(txtIdPedido.Text);
 
-            //Llamado al método para listar por pedido en la capa de negocio
-            objPedidoArticulos.listarPorPedido(objPedidoArticulos);
+        //Llamado al método para listar por pedido en la capa de negocio
+        //   objPedidoArticulos.listarPorPedido(objPedidoArticulos);
 
-            //Validacion de proceso exitoso
-            if (objPedidoArticulos.Exito)
-            {
-                //Se define el data view
-                tblListado.DataSource = objPedidoArticulos.Ds;
-                tblListado.DataBind();
-                limpiar();
-            }
-            else
-            {
-                //En caso contrario se informa
-                lblMensajeListaPedido.Text = objPedidoArticulos.Mensaje;
-                lblMensajeListaPedido.Visible = true;
+        //Validacion de proceso exitoso
+        //   if (objPedidoArticulos.Exito)
+        //   {
+        //Se define el data view
+        //        tblListado.DataSource = objPedidoArticulos.Ds;
+        //      tblListado.DataBind();
+        //      limpiar();
+        //  }
+        // else
+        // {
+        //En caso contrario se informa
+        //      lblMensajeListaPedido.Text = objPedidoArticulos.Mensaje;
+        //     lblMensajeListaPedido.Visible = true;
 
-            }
+        //   }
 
-        }
-        else
-        {
-            //Si esl campo esta vacío se informa
-            lblMensajeListaPedido.Text = "No se puede listar con el campo vacío";
-            lblMensajeListaPedido.Visible = true;
-        }
+        //  }
+        //  else
+        // {
+        //Si esl campo esta vacío se informa
+        //     lblMensajeListaPedido.Text = "No se puede listar con el campo vacío";
+        //     lblMensajeListaPedido.Visible = true;
+        // }
+        #endregion
+
+
     }//Fin btnListarPorPedido
 
 
     /// <summary>
     /// Método que limpia campos de texto y labels de mensaje
+    /// 
     /// </summary>
     public void limpiar()
     {

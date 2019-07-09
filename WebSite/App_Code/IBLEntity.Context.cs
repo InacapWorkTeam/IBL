@@ -10,6 +10,7 @@
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Objects;
 
 public partial class DB_PAAC4G4ArriagadaSepulvedaVidalEntities : DbContext
 {
@@ -33,4 +34,13 @@ public partial class DB_PAAC4G4ArriagadaSepulvedaVidalEntities : DbContext
     public virtual DbSet<Vendedor> Vendedor { get; set; }
     public virtual DbSet<tblArticulo> tblArticulo { get; set; }
     public virtual DbSet<tblPedido> tblPedido { get; set; }
+
+    public virtual int pa_listarPedidoArticulosPorPedido(Nullable<int> id_pedido)
+    {
+        var id_pedidoParameter = id_pedido.HasValue ?
+            new ObjectParameter("id_pedido", id_pedido) :
+            new ObjectParameter("id_pedido", typeof(int));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pa_listarPedidoArticulosPorPedido", id_pedidoParameter);
+    }
 }
