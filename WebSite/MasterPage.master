@@ -78,12 +78,12 @@
                     <td class="auto-style8">
                         <table class="auto-style1">
                             <tr>
-                                <td class="auto-style6">
+                                <td class="auto-style6" style="border-style: solid; border-width: inherit; border-color: #ED1C24; background-color: #ED1C24; font-family: Arial, Helvetica, sans-serif; font-size: large; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; table-layout: inherit;">
                                     <h4>
                                     <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/Inicio.aspx" CssClass="auto-style11">Inicio</asp:HyperLink>
                                     </h4>
                                 </td>
-                                <td class="auto-style7">
+                                <td class="auto-style7" style="border-style: solid; border-width: inherit; border-color: #ED1C24; background-color: #ED1C24; font-family: Arial, Helvetica, sans-serif; font-size: large; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; table-layout: inherit;">
                                     <h4>
                                     <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Quienes Somos.aspx" CssClass="auto-style11">Quienes Somos</asp:HyperLink>
                                     </h4>
@@ -98,7 +98,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
+                    <td class="auto-style2" style="border-style: solid; border-width: inherit; border-color: #ED1C24; background-color: #ED1C24; font-family: Arial, Helvetica, sans-serif; font-size: large; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; table-layout: inherit;">
                         <h4><strong>
                         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Pedido.aspx" CssClass="auto-style11">Pedido</asp:HyperLink>
                             </strong></h4>
@@ -113,56 +113,56 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style10">
+                    <td class="auto-style10" style="border-style: solid; border-width: inherit; border-color: #ED1C24; background-color: #ED1C24; font-family: Arial, Helvetica, sans-serif; font-size: large; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; table-layout: inherit;">
                         <h4><strong>
                         <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Pedido_Articulos.aspx" CssClass="auto-style11">Pedido_Articulos</asp:HyperLink>
                             </strong></h4>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
+                    <td class="auto-style2" style="border-style: solid; border-width: inherit; border-color: #ED1C24; background-color: #ED1C24; font-family: Arial, Helvetica, sans-serif; font-size: large; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; table-layout: inherit;">
                         <h4><strong>
                         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Articulo.aspx" CssClass="auto-style11">Articulo</asp:HyperLink>
                             </strong></h4>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
+                    <td class="auto-style2" style="border-style: solid; border-width: inherit; border-color: #ED1C24; background-color: #ED1C24; font-family: Arial, Helvetica, sans-serif; font-size: large; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; table-layout: inherit;">
                         <h4><strong>
                         <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/EnDesarrollo.aspx" CssClass="auto-style11">Categoria</asp:HyperLink>
                             </strong></h4>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style10">
+                    <td class="auto-style10" style="border-style: solid; border-width: inherit; border-color: #ED1C24; background-color: #ED1C24; font-family: Arial, Helvetica, sans-serif; font-size: large; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; table-layout: inherit;">
                         <h4><strong>
                         <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/EnDesarrollo.aspx" CssClass="auto-style11">Vendedor</asp:HyperLink>
                             </strong></h4>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style10">
+                    <td class="auto-style10" style="border-style: solid; border-width: inherit; border-color: #ED1C24; background-color: #ED1C24; font-family: Arial, Helvetica, sans-serif; font-size: large; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; table-layout: inherit;">
                         <h4><strong>
                         <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/EnDesarrollo.aspx" CssClass="auto-style11">Comisión</asp:HyperLink>
                             </strong></h4>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
+                    <td class="auto-style2" style="border-style: solid; border-width: inherit; border-color: #ED1C24; background-color: #ED1C24; font-family: Arial, Helvetica, sans-serif; font-size: large; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; table-layout: inherit;">
                         <h4><strong>
                         <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/EnDesarrollo.aspx" CssClass="auto-style11">Cliente</asp:HyperLink>
                             </strong></h4>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style10">
+                    <td class="auto-style10" style="border-style: solid; border-width: inherit; border-color: #ED1C24; background-color: #ED1C24; font-family: Arial, Helvetica, sans-serif; font-size: large; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; table-layout: inherit;">
                         <h4><strong>
                         <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/EnDesarrollo.aspx" CssClass="auto-style11">Equipo</asp:HyperLink>
                             </strong></h4>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style10">
+                    <td class="auto-style10" style="border-style: solid; border-width: inherit; border-color: #ED1C24; background-color: #ED1C24; font-family: Arial, Helvetica, sans-serif; font-size: large; font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; table-layout: inherit;">
                         <h4><strong>
                         <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/EnDesarrollo.aspx" CssClass="auto-style11">Queja</asp:HyperLink>
                             </strong></h4>
