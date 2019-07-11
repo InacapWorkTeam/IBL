@@ -36,16 +36,27 @@
         .auto-style19 {
             width: 95px;
         }
-        .auto-style20 {
-            margin-left: 150px;
-        }
         .auto-style21 {
             margin-left: 346px;
+        }
+    .auto-style22 {
+        text-align: center;
+        width: 766px;
+        color: #000000;
+        height: 36px;
+        font-size: large;
+        background-color: #ED1C24;
+    }
+    .auto-style23 {
+        margin-left: 39px;
+    }
+        .auto-style24 {
+            margin-left: 152px;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <p class="auto-style10">
+    <p class="auto-style22">
         INGRESO DE NUEVOS ARTICULOS</p>
     <p>
         <table class="auto-style12">
@@ -100,7 +111,9 @@
             </tr>
             <tr>
                 <td class="auto-style19">&nbsp;</td>
-                <td class="auto-style11">&nbsp;</td>
+                <td class="auto-style11">
+                    <asp:Label ID="lblMensaje" runat="server"></asp:Label>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style19">&nbsp;</td>
@@ -108,16 +121,29 @@
                     <asp:Button ID="btnIngresar" runat="server" CssClass="auto-style15" OnClick="btnIngresar_Click" Text="INGRESAR" Width="228px" />
                 </td>
             </tr>
+            <tr>
+                <td class="auto-style19">&nbsp;</td>
+                <td class="auto-style11">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style19">ID :</td>
+                <td class="auto-style11">
+                    <asp:TextBox ID="txtID" runat="server" Width="40px"></asp:TextBox>
+&nbsp;
+                    <asp:Button ID="btnEliminar" runat="server" CssClass="auto-style23" Height="21px" Text="ELIMINAR" Width="94px" />
+                </td>
+            </tr>
         </table>
     </p>
     <p>
         &nbsp;</p>
     <p>
-        <asp:GridView ID="dgListar" runat="server" CellPadding="4" CssClass="auto-style20" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Width="732px" OnSelectedIndexChanged="dgListar_SelectedIndexChanged">
+        <asp:Button ID="btnListar" runat="server" CssClass="auto-style21" OnClick="btnListar_Click" Text="ACTUALIZAR TABLA" Width="315px" />
+    </p>
+    <p>
+        <asp:GridView ID="dgListar" runat="server" CellPadding="4" CssClass="auto-style24" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Width="624px">
             <AlternatingRowStyle BackColor="White" />
-            <Columns>
-                <asp:CommandField ShowCancelButton="False" ShowDeleteButton="True" ShowEditButton="True" />
-            </Columns>
             <EditRowStyle BackColor="#7C6F57" />
             <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -127,8 +153,7 @@
         </asp:GridView>
     </p>
     <p>
-        <asp:Button ID="btnListar" runat="server" CssClass="auto-style21" OnClick="btnListar_Click" Text="ACTUALIZAR TABLA" Width="315px" />
-    </p>
+        &nbsp;</p>
     <p>
         &nbsp;</p>
     <p>
