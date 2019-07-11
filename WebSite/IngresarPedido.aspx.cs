@@ -24,40 +24,54 @@ public partial class IngresarPedido : System.Web.UI.Page
 
     private void definirDropListVendedor()
     {
-        PedidoN objPedido = new PedidoN();
-        objPedido.listarVendedor(objPedido);
-
-        if (objPedido.Exito)
+        try
         {
-            foreach (DataRow row in objPedido.Ds.Tables[0].Rows)
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
             {
-                DropVendedor.Items.Add(Convert.ToString(row[0]) + ". " + Convert.ToString(row[1]));
+                //Definición del primer item
+                DropVendedor.Items.Add("-- Seleccione un item --");
+
+                var listaIDVendedor = db.Vendedor;
+
+                foreach (var objPedido in listaIDVendedor)
+                {
+                    
+                        DropVendedor.Items.Add(objPedido.id_vendedor + ".- "+objPedido.nombre);
+                }
 
             }
+
         }
-        else
+        catch (Exception ex)
         {
-            lblaviso.Text = objPedido.Mensaje;
+            lblaviso.Text = "" + ex;
             lblaviso.Visible = true;
         }
     }
 
     private void definirDropListCliente()
     {
-        PedidoN objPedido = new PedidoN();
-        objPedido.listarCliente(objPedido);
-
-        if (objPedido.Exito)
+        try
         {
-            foreach(DataRow row in objPedido.Ds.Tables[0].Rows)
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
             {
-                DropCliente.Items.Add(Convert.ToString(row[0]) + ". " + Convert.ToString(row[1]));
+                //Definición del primer item
+                DropCliente.Items.Add("-- Seleccione un item --");
+
+                var listaIDCliente = db.Cliente;
+
+                foreach (var objPedido in listaIDCliente)
+                {
+
+                    DropCliente.Items.Add(objPedido.id_cliente + ".- " + objPedido.nombre);
+                }
 
             }
+
         }
-        else
+        catch (Exception ex)
         {
-            lblaviso.Text = objPedido.Mensaje;
+            lblaviso.Text = "" + ex;
             lblaviso.Visible = true;
         }
 

@@ -14,13 +14,16 @@
     </p>
     <p>
         Estamos en el modificar pedido</p>
+    
     <p>
         Ingrese el ID del pedido que desea modificar =
         &nbsp;<asp:DropDownList ID="DropDownListPedido" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged2" Width="168px">
         </asp:DropDownList>
+        
         <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="DropDownListPedido" ErrorMessage="Ingrese un Id valido EJ: 1 " ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
     </p>
+    
     <p>
         <asp:GridView ID="tblListado" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" EnableModelValidation="True" Width="421px">
             <FooterStyle BackColor="White" ForeColor="#000066" />
