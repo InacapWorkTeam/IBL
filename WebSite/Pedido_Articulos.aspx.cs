@@ -55,7 +55,9 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                         //Se recorren los resultados de la consulta
                         foreach (var objPedido_Articulos in listado) {
                             //Se añade cada registro al List
-                            array.Add(objPedido_Articulos);
+                            if (objPedido_Articulos.estado == true) {
+                                array.Add(objPedido_Articulos);
+                            }
                         }
 
                         //Se ingresan los registros obtenidos de una lista accesible por el DataSource
@@ -64,7 +66,7 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                     }//Fin Else-IF
                 }//Fin IF
             } catch (Exception ex) {
-                lblMensaje.Text = "" + ex;
+                lblMensaje.Text = "" + ex.Message;
                 lblMensaje.Visible = true;
             }//Fin Try-Catch
            
@@ -141,7 +143,9 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                     //Recorrido de la consulta
                     foreach (var objPedidoArticulo in filtroPedido) {
                         //Ingreso de los registros al arreglo
-                        array.Add(objPedidoArticulo);
+                        if (objPedidoArticulo.estado == true) {
+                            array.Add(objPedidoArticulo);
+                        }
                     }
 
                     //Definición del datasource con el arreglo con sus atributos
@@ -226,14 +230,16 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                 var listaIDPedido = db.tblPedido;
 
                 foreach (var objPedido in listaIDPedido) {
-                    dropListPedidos.Items.Add(objPedido.id_pedido + "");
-                    dropListIDPedidoModificar.Items.Add(objPedido.id_pedido + "");
+                    if (objPedido.existencia == 1) {
+                        dropListPedidos.Items.Add(objPedido.id_pedido + "");
+                        dropListIDPedidoModificar.Items.Add(objPedido.id_pedido + "");
+                    }
                 }
 
             }
 
         } catch (Exception ex) {
-            lblMensajeListaPedido.Text = ""+ex;
+            lblMensajeListaPedido.Text = ""+ex.Message;
             lblMensajeListaPedido.Visible = true;
         }
 
@@ -284,14 +290,14 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                 dropListArticuloModificar.Items.Add("--Seleccione un item--");
 
                 foreach (var objArticulo in listaArticulos) {
-
-                    droplistArticulos.Items.Add(objArticulo.id_articulo + ". " + objArticulo.nombre);
-                    dropListArticuloModificar.Items.Add(objArticulo.id_articulo + ". " + objArticulo.nombre);
-
+                    if (objArticulo.eliminado == false) {
+                        droplistArticulos.Items.Add(objArticulo.id_articulo + ". " + objArticulo.nombre);
+                        dropListArticuloModificar.Items.Add(objArticulo.id_articulo + ". " + objArticulo.nombre);
+                    }
                 }
             }
         } catch (Exception ex) {
-            lblMensajeIngreso.Text = "" + ex;
+            lblMensajeIngreso.Text = "" + ex.Message;
             lblMensajeIngreso.Visible = true;
         }
 
@@ -345,14 +351,15 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                 dropListIDPedidoArticulosEliminar.Items.Add("-- Seleccionar item -- ");
 
                 foreach (var objPedidoArticulos in listaPedidoArticulo) {
+                    if (objPedidoArticulos.estado == true) {
+                        dropListIDPedidoArticulosModificar.Items.Add(objPedidoArticulos.id_pedido_articulos + "");
 
-                    dropListIDPedidoArticulosModificar.Items.Add(objPedidoArticulos.id_pedido_articulos + "");
-
-                    dropListIDPedidoArticulosEliminar.Items.Add(objPedidoArticulos.id_pedido_articulos + "");
+                        dropListIDPedidoArticulosEliminar.Items.Add(objPedidoArticulos.id_pedido_articulos + "");
+                    }
                 }
             }
         } catch (Exception ex) {
-            lblMensajeModificar.Text = "" + ex;
+            lblMensajeModificar.Text = "" + ex.Message;
             lblMensajeModificar.Visible = true;
         }
 
@@ -709,27 +716,31 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                 tblPedido_Articulos objPedidoArticulos = new tblPedido_Articulos();
 
                 if (!(txtUnidadesModificar.Text.Trim().Equals("")) ) {
+                    if (dropListIDPedidoModificar.SelectedIndex != 0 && dropListArticuloModificar.SelectedIndex != 0) {
+                        //Parseo de datos
+                        objPedidoArticulos.id_pedido_articulos = Convert.ToInt32(dropListIDPedidoArticulosModificar.SelectedItem.ToString());
 
-                    //Parseo de datos
-                    objPedidoArticulos.id_pedido_articulos = Convert.ToInt32(dropListIDPedidoArticulosModificar.SelectedItem.ToString());
+                        //Se obtiene el registro con el id_pedido_articulos correspondiente
+                        objPedidoArticulos = db.tblPedido_Articulos.Find(objPedidoArticulos.id_pedido_articulos);
 
-                    //Se obtiene el registro con el id_pedido_articulos correspondiente
-                    objPedidoArticulos = db.tblPedido_Articulos.Find(objPedidoArticulos.id_pedido_articulos);
+                        //Se instancian los nuevos atributos para la instancia
+                        objPedidoArticulos.id_pedido = Convert.ToInt32(dropListIDPedidoModificar.SelectedItem.ToString());
+                        objPedidoArticulos.id_articulo = Convert.ToInt32(regexNumerico(dropListArticuloModificar.SelectedItem.ToString()));
+                        objPedidoArticulos.tamano_articulo = txtTamanoModificar.Text;
+                        objPedidoArticulos.color_articulo = txtColorModificar.Text;
+                        objPedidoArticulos.unidades_articulo = Convert.ToInt32(txtUnidadesModificar.Text);
+                        objPedidoArticulos.precio_u_articulo = Convert.ToInt32(txtPrecioModificar.Text);
+                        objPedidoArticulos.estado = true;
 
-                    //Se instancian los nuevos atributos para la instancia
-                    objPedidoArticulos.id_pedido = Convert.ToInt32(dropListIDPedidoModificar.SelectedItem.ToString());
-                    objPedidoArticulos.id_articulo = Convert.ToInt32(regexNumerico(dropListArticuloModificar.SelectedItem.ToString()));
-                    objPedidoArticulos.tamano_articulo = txtTamanoModificar.Text;
-                    objPedidoArticulos.color_articulo = txtColorModificar.Text;
-                    objPedidoArticulos.unidades_articulo = Convert.ToInt32(txtUnidadesModificar.Text);
-                    objPedidoArticulos.precio_u_articulo = Convert.ToInt32(txtPrecioModificar.Text);
+                        //Se guardan los cambios generados a la instancia en la base de datos
+                        db.SaveChanges();
 
-                    //Se guardan los cambios generados a la instancia en la base de datos
-                    db.SaveChanges();
-
-                    lblMensajeModificar.Text = "Registro modificado exitosamente";
-                    lblMensajeModificar.Visible = true;
-
+                        lblMensajeModificar.Text = "Registro modificado exitosamente";
+                        lblMensajeModificar.Visible = true;
+                    }else {
+                        lblMensajeModificar.Text = "Debe seleccionar un item";
+                        lblMensajeModificar.Visible = true;
+                    }
                 }else {
                     lblMensajeModificar.Text = "No pueden quedar campos vacios";
                     lblMensajeModificar.Visible = true;
@@ -815,6 +826,9 @@ public partial class Pedido_Articulos : System.Web.UI.Page
 
                     lblMensajeEliminar.Text = "Registro Eliminado Correctamente";
                     lblMensajeEliminar.Visible = true;
+                }else {
+                    lblMensajeEliminar.Text = "Debe seleccionar un item";
+                    lblMensajeEliminar.Visible = true;
                 }
 
             }
@@ -877,10 +891,4 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         return output;
     }//Fin regexNumerio
 
-
-
-    protected void dropListIDPedidoArticulosEliminar_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
 }//Fin Pedido_Articulos

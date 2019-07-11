@@ -16,7 +16,7 @@
     <p>
         &nbsp;</p>
     <p class="auto-style14">
-        &nbsp;<strong><span class="auto-style13">Este sitio web permite la administración del sistema de inventario, pedidos, y gestión de datos de la tienda INACAP Baseball League.</span></strong></p>
+        &nbsp;<strong><span class="auto-style13" style="font-family: tahoma; font-size: x-large; font-weight: bold; color: #993300">Este sitio web permite la administración del sistema de inventario, pedidos, y gestión de datos de la tienda INACAP Baseball League.</span></strong></p>
     <p>
         &nbsp;</p>
     <p>

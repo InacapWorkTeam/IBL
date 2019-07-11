@@ -29,32 +29,32 @@
         Quienes Somos</p>
     <table border="1" class="auto-style1">
         <tr>
-            <td class="auto-style10" style="background-color: #FFFFFF"><strong>Nombre de proyecto: </strong></td>
-            <td class="auto-style11">C4PAAG4ArriagadaSepulvedaVidal.</td>
+            <td class="auto-style10" style="background-color: #FFFFFF; font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large;"><strong>Nombre de proyecto: </strong></td>
+            <td class="auto-style11" style="font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large; background-color: #FFFFFF;">C4PAAG4ArriagadaSepulvedaVidal.</td>
         </tr>
         <tr>
-            <td class="auto-style10" style="background-color: #FFFFFF"><strong>Nombre Base de datos :</strong></td>
-            <td class="auto-style11">DB_PAAC4G4ArriagadaSepulvedaVidal</td>
+            <td class="auto-style10" style="background-color: #FFFFFF; font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large;"><strong>Nombre Base de datos :</strong></td>
+            <td class="auto-style11" style="font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large; background-color: #FFFFFF;">DB_PAAC4G4ArriagadaSepulvedaVidal</td>
         </tr>
         <tr>
-            <td class="auto-style10" style="background-color: #FFFFFF"><strong>Integrantes</strong></td>
-            <td class="auto-style11">&nbsp;Diego Arriagada - Nicolás Sepulveda - Bastián Vidal</td>
+            <td class="auto-style10" style="background-color: #FFFFFF; font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large;"><strong>Integrantes</strong></td>
+            <td class="auto-style11" style="font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large; background-color: #FFFFFF;">&nbsp;Diego Arriagada - Nicolás Sepulveda - Bastián Vidal</td>
         </tr>
         <tr>
-            <td class="auto-style10" style="background-color: #FFFFFF"><strong>Carrera:</strong></td>
-            <td class="auto-style11">Analista Programador</td>
+            <td class="auto-style10" style="background-color: #FFFFFF; font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large;"><strong>Carrera:</strong></td>
+            <td class="auto-style11" style="font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large; background-color: #FFFFFF;">Analista Programador</td>
         </tr>
         <tr>
-            <td class="auto-style10" style="background-color: #FFFFFF"><strong>Catedra y Sección:</strong></td>
-            <td class="auto-style11">Programación Avanzada de Aplicaciones TIDC11/631</td>
+            <td class="auto-style10" style="background-color: #FFFFFF; font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large;"><strong>Catedra y Sección:</strong></td>
+            <td class="auto-style11" style="font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large; background-color: #FFFFFF;">Programación Avanzada de Aplicaciones TIDC11/631</td>
         </tr>
         <tr>
-            <td class="auto-style14" style="background-color: #FFFFFF"><strong>Sede: </strong></td>
-            <td class="auto-style15">INACAP Perez Rosales</td>
+            <td class="auto-style14" style="background-color: #FFFFFF; font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large;"><strong>Sede: </strong></td>
+            <td class="auto-style15" style="font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large; background-color: #FFFFFF;">INACAP Perez Rosales</td>
         </tr>
         <tr>
-            <td class="auto-style10" style="background-color: #FFFFFF"><strong>Docente:</strong></td>
-            <td class="auto-style11">&nbsp;Luis Díaz</td>
+            <td class="auto-style10" style="background-color: #FFFFFF; font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large;"><strong>Docente:</strong></td>
+            <td class="auto-style11" style="font-family: tahoma; font-weight: bold; color: #1F366B; font-size: large; background-color: #FFFFFF;">&nbsp;Luis Díaz</td>
         </tr>
     </table>
 </asp:Content>

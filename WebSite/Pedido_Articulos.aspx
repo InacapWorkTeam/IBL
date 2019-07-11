@@ -80,8 +80,8 @@
             height: 26px;
         }
         .auto-style55 {
-            width: 296px;
-        }
+        width: 296px;
+    }
     .auto-style56 {
         width: 30px;
     }
@@ -109,8 +109,8 @@
         width: 296px;
     }
     .auto-style62 {
-            width: 295px;
-        }
+        width: 295px;
+    }
     .auto-style63 {
         height: 26px;
         width: 295px;
@@ -145,9 +145,9 @@
         height: 30px;
     }
     .auto-style72 {
-            width: 296px;
-            height: 30px;
-        }
+        width: 296px;
+        height: 30px;
+    }
     .auto-style73 {
         width: 164px;
         text-align: left;
@@ -160,9 +160,9 @@
         height: 30px;
     }
     .auto-style75 {
-            width: 295px;
-            height: 30px;
-        }
+        width: 295px;
+        height: 30px;
+    }
     .auto-style76 {
         width: 131px;
         height: 30px;
@@ -278,7 +278,7 @@
                         <td class="auto-style69" style="table-layout: auto">
                             <strong>:</strong></td>
                         <td style="table-layout: auto">
-                            <asp:DropDownList ID="dropListIDPedidoArticulosEliminar" runat="server" Height="16px" Width="172px" OnSelectedIndexChanged="dropListIDPedidoArticulosEliminar_SelectedIndexChanged">
+                            <asp:DropDownList ID="dropListIDPedidoArticulosEliminar" runat="server" Height="16px" Width="172px" >
                             </asp:DropDownList>
                         </td>
                     </tr>

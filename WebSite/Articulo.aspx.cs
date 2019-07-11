@@ -23,16 +23,19 @@ public partial class Articulo : System.Web.UI.Page
                     precio = int.Parse(txtPrecio.Text),
                     coste_u_mayorista = int.Parse(txtCosto.Text),
                     unidades = int.Parse(txtUnidades.Text),
+                    eliminado = false
                 };
 
                 BDE.tblArticulo.Add(objA);
                 BDE.SaveChanges();
             }
             lblMensaje.Text = "INGRESO EXITOSO";
+            lblMensaje.Visible = true;
             limpiar();
             mostrar();
         } catch (Exception ex) {
-            lblMensaje.Text = "ERROR " + ex;
+            lblMensaje.Text = "ERROR " + ex.Message;
+            lblMensaje.Visible = true;
         }
     }
 
@@ -55,7 +58,7 @@ public partial class Articulo : System.Web.UI.Page
     public void mostrar() {
         try {
             using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities EF = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities()) {
-                IQueryable<tblArticulo> articulos = from q in EF.tblArticulo select q;
+                IQueryable<tblArticulo> articulos = from q in EF.tblArticulo where q.eliminado == false select q;
                 List<tblArticulo> lista = articulos.ToList();
 
                 dgListar.DataSource = lista;
@@ -83,7 +86,7 @@ public partial class Articulo : System.Web.UI.Page
             mostrar();
             limpiar();
         } catch (Exception ex) {
-            lblMensaje.Text = "ERROR " + ex;
+            lblMensaje.Text = "ERROR " + ex.Message;
             lblMensaje.Visible = true;
         }
     }
@@ -109,7 +112,7 @@ public partial class Articulo : System.Web.UI.Page
             limpiar();
             lblMensaje.Text = "DATOS ACTUALIZADOS";
         } catch (Exception ex) {
-            lblMensaje.Text = "ERROR " + ex;
+            lblMensaje.Text = "ERROR " + ex.Message;
         }
     }
 
@@ -134,7 +137,7 @@ public partial class Articulo : System.Web.UI.Page
                 dgListar.DataBind();
             }
         } catch (Exception ex) {
-            lblMensaje.Text = "ERROR " + ex;
+            lblMensaje.Text = "ERROR " + ex.Message;
         }
     }
 
