@@ -23,6 +23,7 @@ public partial class Articulo : System.Web.UI.Page
                     precio = int.Parse(txtPrecio.Text),
                     coste_u_mayorista = int.Parse(txtCosto.Text),
                     unidades = int.Parse(txtUnidades.Text),
+                    eliminado = false
                 };
 
                 BDE.tblArticulo.Add(objA);
@@ -55,7 +56,7 @@ public partial class Articulo : System.Web.UI.Page
     public void mostrar() {
         try {
             using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities EF = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities()) {
-                IQueryable<tblArticulo> articulos = from q in EF.tblArticulo select q;
+                IQueryable<tblArticulo> articulos = from q in EF.tblArticulo where q.eliminado == false select q;
                 List<tblArticulo> lista = articulos.ToList();
 
                 dgListar.DataSource = lista;

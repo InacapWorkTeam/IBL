@@ -71,121 +71,142 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <p class="auto-style22">
-        INGRESO DE NUEVOS ARTICULOS</p>
-    <p>
-        <table class="auto-style12">
-            <tr>
-                <td class="auto-style13">Nombre :</td>
-                <td class="auto-style14">
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="auto-style16" Width="181px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtNombre" ErrorMessage="SOLO LETRAS" ValidationExpression="^[a-z &amp; A-Z]*$">*</asp:RegularExpressionValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style19">Descripción : </td>
-                <td class="auto-style11">
-                    <asp:TextBox ID="txtDescripcion" runat="server" CssClass="auto-style17" Height="50px" Width="178px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtDescripcion" ErrorMessage="SOLO LETRAS" ValidationExpression="^[a-z &amp; A-Z]*$">*</asp:RegularExpressionValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style19">Color :</td>
-                <td class="auto-style11">
-                    <asp:TextBox ID="txtColor" runat="server" CssClass="auto-style17" Width="115px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtColor" ErrorMessage="SOLO LETRAS" ValidationExpression="^[a-z &amp; A-Z]*$">*</asp:RegularExpressionValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style19">Tamaño :</td>
-                <td class="auto-style11">
-                    <asp:TextBox ID="txtTamaño" runat="server" CssClass="auto-style18" Width="114px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtTamaño" ErrorMessage="SOLO LETRAS" ValidationExpression="^[a-z &amp; A-Z]*$">*</asp:RegularExpressionValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style19">Precio :</td>
-                <td class="auto-style11">
-                    <asp:TextBox ID="txtPrecio" runat="server" CssClass="auto-style18" Width="116px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtPrecio" ErrorMessage="SOLO NUMEROS" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style19">Costo :</td>
-                <td class="auto-style11">
-                    <asp:TextBox ID="txtCosto" runat="server" CssClass="auto-style16" Width="115px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="SOLO NUMEROS" ControlToValidate="txtCosto" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style19">Unidades : </td>
-                <td class="auto-style11">
-                    <asp:TextBox ID="txtUnidades" runat="server" CssClass="auto-style16" Width="50px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtUnidades" ErrorMessage="SOLO NUMEROS" ValidationExpression="^\d*\d$">*</asp:RegularExpressionValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style25"></td>
-                <td class="auto-style26">
-                    <asp:Label ID="lblMensaje" runat="server" Visible="False"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style19">&nbsp;</td>
-                <td class="auto-style11">
-                    <asp:Button ID="btnIngresar" runat="server" CssClass="auto-style15" OnClick="btnIngresar_Click" Text="INGRESAR" Width="228px" />
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style19">&nbsp;</td>
-                <td class="auto-style11">
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style19">ID :</td>
-                <td class="auto-style11">
-                    <asp:TextBox ID="txtID" runat="server" Width="40px"></asp:TextBox>
-&nbsp;
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtID" ErrorMessage="SOLO NUMEROS" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
-                    <asp:Button ID="btnEliminar" runat="server" CssClass="auto-style23" Height="21px" Text="ELIMINAR" Width="94px" OnClick="btnEliminar_Click" />
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style19">&nbsp;</td>
-                <td class="auto-style11">
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style19">Buscar :</td>
-                <td class="auto-style11">
-                    <asp:TextBox ID="txtBuscar" runat="server" Height="19px" Width="40px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server" ControlToValidate="txtBuscar" ErrorMessage="SOLO NUMEROS" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
-                    <asp:Button ID="btnBuscarDato" runat="server" CssClass="auto-style27" Height="22px" Text="BUSCAR" Width="93px" OnClick="btnBuscarDato_Click" />
-&nbsp;&nbsp; <span class="auto-style28">*BUSCAR POR ID*</span></td>
-            </tr>
-        </table>
-    </p>
-    <p>
-        &nbsp;</p>
-    <p>
-        <asp:Button ID="btnActualizar" runat="server" CssClass="auto-style21" OnClick="btnActualizar_Click" Text="ACTUALIZAR TABLA" Width="315px" />
-    </p>
-    <p>
-        <asp:GridView ID="dgListar" runat="server" CellPadding="4" CssClass="auto-style24" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Width="624px">
-            <AlternatingRowStyle BackColor="White" />
-            <EditRowStyle BackColor="#7C6F57" />
-            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#E3EAEB" />
-            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-        </asp:GridView>
-    </p>
-    <p>
-        &nbsp;</p>
-    <p>
-        &nbsp;</p>
-    <p>
-        &nbsp;</p>
+     <div class="row">
+        <div class="col-md-4" style="left: 254px; top: 0px; width: 719px">
+            <p>
+                &nbsp;<table style="width: 65%;">
+                    <tr>
+                        <td style="width: 99px">Nombre :</td>
+                        <td style="width: 328px">
+                            <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
+                        &nbsp;&nbsp;&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 99px">Descripcion :</td>
+                        <td style="width: 328px">
+                            <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 99px">Color :</td>
+                        <td style="width: 328px">
+                            <asp:TextBox ID="txtColor" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 99px">Tamaño :</td>
+                        <td style="width: 328px">
+                            <asp:TextBox ID="txtTamaño" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 99px">Precio :</td>
+                        <td style="width: 328px">
+                            <asp:TextBox ID="txtPrecio" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 99px">Coto unitario:</td>
+                        <td style="width: 328px">
+                            <asp:TextBox ID="txtCosto" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 99px">Unidades :</td>
+                        <td style="width: 328px">
+                            <asp:TextBox ID="txtUnidades" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 99px">&nbsp;</td>
+                        <td style="width: 328px">
+                            <asp:Label ID="lblMensaje" runat="server" Text="Label"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 99px">&nbsp;</td>
+                        <td style="width: 328px">
+                            <asp:Button ID="btnIngresar" runat="server" Text="GUARDAR" Width="126px" OnClick="btnIngresar_Click" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 99px">&nbsp;</td>
+                        <td style="width: 328px">
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 99px">&nbsp;</td>
+                        <td style="width: 328px">
+                            <asp:Button ID="btnActualizarDatos" runat="server" OnClick="btnActualizarDatos_Click" Text="ACTUALIZAR DATOS" Width="164px" />
+                        </td>
+                    </tr>
+                </table>
+            </p>
+            <p>
+                &nbsp;</p>
+            <table style="width: 83%;">
+                <tr>
+                    <td style="width: 56px">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="width: 56px">ID :</td>
+                    <td>
+                        <asp:TextBox ID="txtID" runat="server" Width="68px"></asp:TextBox>
+                        <asp:Button ID="btnEliminar" runat="server" Height="21px" OnClick="btnEliminar_Click" style="margin-left: 50px" Text="ELIMINAR" Width="122px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 56px">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="width: 56px">Buscar :</td>
+                    <td>&nbsp;<asp:TextBox ID="txtBuscar" runat="server" Width="69px"></asp:TextBox>
+                        <asp:Button ID="btnBuscarDato" runat="server" Height="21px" OnClick="btnBuscarDato_Click" style="margin-left: 50px" Text="BUSCAR" Width="120px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 56px">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+            <asp:GridView ID="dgListar" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="596px">
+                <AlternatingRowStyle BackColor="White" />
+                <EditRowStyle BackColor="#7C6F57" />
+                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#E3EAEB" />
+                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                <SortedDescendingHeaderStyle BackColor="#15524A" />
+            </asp:GridView>
+            <p>
+                &nbsp;</p>
+            <p>
+                &nbsp;<asp:Button ID="btnActualizar" runat="server" OnClick="btnActualizar_Click" style="margin-left: 176px" Text="ACTUALIZAR TABLA" Width="206px" />
+            </p>
+            <p>
+                <table style="width:100%;">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+    </div>
 </asp:Content>
 
