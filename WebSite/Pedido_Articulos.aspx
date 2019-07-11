@@ -80,8 +80,8 @@
             height: 26px;
         }
         .auto-style55 {
-        width: 238px;
-    }
+            width: 296px;
+        }
     .auto-style56 {
         width: 30px;
     }
@@ -106,14 +106,14 @@
     }
     .auto-style61 {
         height: 26px;
-        width: 238px;
+        width: 296px;
     }
     .auto-style62 {
-        width: 276px;
-    }
+            width: 295px;
+        }
     .auto-style63 {
         height: 26px;
-        width: 276px;
+        width: 295px;
     }
     .auto-style65 {
         width: 22px;
@@ -145,9 +145,9 @@
         height: 30px;
     }
     .auto-style72 {
-        width: 238px;
-        height: 30px;
-    }
+            width: 296px;
+            height: 30px;
+        }
     .auto-style73 {
         width: 164px;
         text-align: left;
@@ -160,9 +160,9 @@
         height: 30px;
     }
     .auto-style75 {
-        width: 276px;
-        height: 30px;
-    }
+            width: 295px;
+            height: 30px;
+        }
     .auto-style76 {
         width: 131px;
         height: 30px;
@@ -188,28 +188,28 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="auto-style1">
         <tr>
-            <td class="auto-style36">
-                <div class="auto-style24">
+            <td class="auto-style36" style="font-family: Tahoma">
+                <div class="auto-style24" style="font-family: tahoma; font-size: large; color: #993300; font-weight: bold">
                 <asp:Label ID="Label1" runat="server" Text="Listar"></asp:Label>
                 <br />
                 </div>
                 <table class="auto-style14" border="1">
                     <tr>
-                        <td class="auto-style10">
+                        <td class="auto-style10" style="background-color: #FFFFFF">
                             <asp:Label ID="Label5" runat="server" Text="Ingresar 0 o un ID para listar:"></asp:Label>
                         </td>
-                        <td class="auto-style17">
+                        <td class="auto-style17" style="font-family: tahoma; font-size: large; color: #993300; font-weight: bold">
                             <asp:TextBox ID="txtId" runat="server"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtId" ErrorMessage="Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtId" ErrorMessage="*Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
                         </td>
                         <td class="auto-style18">
                             &nbsp;</td>
                         <td class="auto-style21">
                             <asp:Label ID="Label6" runat="server" Text="Ingresar ID Pedido:"></asp:Label>
                         </td>
-                        <td class="auto-style22">
+                        <td class="auto-style22" style="font-family: tahoma; font-size: large; color: #993300; font-weight: bold">
                             <asp:TextBox ID="txtIdPedido" runat="server"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtIdPedido" ErrorMessage="Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtIdPedido" ErrorMessage="*Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                     <tr>
@@ -217,7 +217,7 @@
                             <asp:Label ID="lblMensaje" runat="server" Text="[lblMensaje]" Visible="False"></asp:Label>
                         </td>
                         <td class="auto-style25">
-                            <asp:Button ID="btnListar" runat="server" Text="Listar" OnClick="btnListar_Click1" Width="95px" />
+                            <asp:Button ID="btnListar" runat="server" Text="Listar" OnClick="btnListar_Click1" Width="95px" BackColor="#1F366B" BorderColor="White" BorderWidth="1px" Font-Bold="True" Font-Italic="True" ForeColor="White" />
                         </td>
                         <td class="auto-style12">
                             &nbsp;</td>
@@ -225,7 +225,7 @@
                             <asp:Label ID="lblMensajeListaPedido" runat="server" Text="[lblMensaje]" Visible="False"></asp:Label>
                         </td>
                         <td class="auto-style23">
-                            <asp:Button ID="btnListarPorPedido" runat="server" OnClick="btnListarPorPedido_Click" Text="Listar por pedido" />
+                            <asp:Button ID="btnListarPorPedido" runat="server" OnClick="btnListarPorPedido_Click" Text="Listar por pedido" BackColor="#1F366B" BorderColor="White" BorderWidth="1px" Font-Bold="True" Font-Italic="True" ForeColor="White" />
                         </td>
                     </tr>
                     <tr>
@@ -245,15 +245,15 @@
         </tr>
         </table>
 <br />
-                <table class="auto-style1" border="0">
+                <table class="auto-style1" border="0" style="font-family: tahoma">
                     <tr>
-                        <td class="auto-style24" colspan="3">
+                        <td class="auto-style24" colspan="3" style="font-family: tahoma; font-size: large; color: #993300; font-weight: bold">
                 <asp:Label ID="Label3" runat="server" Text="Ingresar"></asp:Label>
                         </td>
-                        <td class="auto-style24" colspan="3">
+                        <td class="auto-style24" colspan="3" style="font-family: tahoma; font-size: large; color: #993300; font-weight: bold">
                 <asp:Label ID="Label2" runat="server" Text="Modificar"></asp:Label>
                         </td>
-                        <td class="auto-style24" colspan="3" style="table-layout: auto">
+                        <td class="auto-style24" colspan="3" style="font-family: tahoma; font-size: large; color: #993300; font-weight: bold;">
                 <asp:Label ID="Label4" runat="server" Text="Eliminar"></asp:Label>
                         </td>
                     </tr>
@@ -326,7 +326,7 @@
                         <td class="auto-style77" style="table-layout: auto">
                         </td>
                         <td class="auto-style78" style="table-layout: auto">
-                            <asp:Button ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" Text="Eliminar" />
+                            <asp:Button ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" Text="Eliminar" BackColor="#1F366B" BorderColor="White" BorderWidth="1px" Font-Bold="True" Font-Italic="True" ForeColor="White" />
                         </td>
                     </tr>
                     <tr>
@@ -355,9 +355,9 @@
                         <td class="auto-style60">
                             <h4 class="auto-style59"><strong>:</strong></h4>
                         </td>
-                        <td class="auto-style55">
+                        <td class="auto-style55" style="font-family: tahoma; font-size: large; color: #993300; font-weight: bold">
                             <asp:TextBox ID="txtUnidades" runat="server"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtUnidades" ErrorMessage="Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtUnidades" ErrorMessage="*Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
                         </td>
                         <td class="auto-style43">Color</td>
                         <td class="auto-style58">
@@ -383,9 +383,9 @@
                         <td class="auto-style49">Unidades</td>
                         <td class="auto-style57">
                             <strong>:</strong></td>
-                        <td class="auto-style63">
+                        <td class="auto-style63" style="font-family: tahoma; font-size: large; color: #993300; font-weight: bold">
                             <asp:TextBox ID="txtUnidadesModificar" runat="server"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtUnidadesModificar" ErrorMessage="Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtUnidadesModificar" ErrorMessage="*Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
                         </td>
                         <td class="auto-style68">
                             &nbsp;</td>
@@ -419,7 +419,7 @@
                         <td class="auto-style29">
                             &nbsp;</td>
                         <td class="auto-style55">
-                            <asp:Button ID="btnIngresar" runat="server" OnClick="btnIngresar_Click" Text="Ingresar" Width="111px" />
+                            <asp:Button ID="btnIngresar" runat="server" OnClick="btnIngresar_Click" Text="Ingresar" Width="111px" BackColor="#1F366B" BorderColor="White" BorderWidth="1px" Font-Bold="True" Font-Italic="True" ForeColor="White" />
                         </td>
                         <td>
                             &nbsp;</td>
@@ -446,7 +446,7 @@
                         <td class="auto-style80">
                         </td>
                         <td class="auto-style75">
-                            <asp:Button ID="btnModificar" runat="server" OnClick="btnModificar_Click" Text="Modificar" Width="116px" />
+                            <asp:Button ID="btnModificar" runat="server" OnClick="btnModificar_Click" Text="Modificar" Width="116px" BackColor="#1F366B" BorderColor="White" BorderWidth="1px" Font-Bold="True" Font-Italic="True" ForeColor="White" />
                         </td>
                         <td class="auto-style76">
                         </td>

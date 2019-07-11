@@ -59,7 +59,7 @@
                 <td class="auto-style2">Password</td>
                 <td class="auto-style4"><strong>:</strong></td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
             </tr>
             <tr>

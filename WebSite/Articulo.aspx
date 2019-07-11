@@ -36,16 +36,42 @@
         .auto-style19 {
             width: 95px;
         }
-        .auto-style20 {
-            margin-left: 150px;
-        }
         .auto-style21 {
             margin-left: 346px;
+        }
+    .auto-style22 {
+        text-align: center;
+        width: 766px;
+        color: #000000;
+        height: 36px;
+        font-size: large;
+        background-color: #ED1C24;
+    }
+    .auto-style23 {
+        margin-left: 39px;
+    }
+        .auto-style24 {
+            margin-left: 152px;
+        }
+        .auto-style25 {
+            width: 95px;
+            height: 23px;
+        }
+        .auto-style26 {
+            width: 320px;
+            color: #000000;
+            height: 23px;
+        }
+        .auto-style27 {
+            margin-left: 48px;
+        }
+        .auto-style28 {
+            font-size: small;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <p class="auto-style10">
+    <p class="auto-style22">
         INGRESO DE NUEVOS ARTICULOS</p>
     <p>
         <table class="auto-style12">
@@ -88,19 +114,21 @@
                 <td class="auto-style19">Costo :</td>
                 <td class="auto-style11">
                     <asp:TextBox ID="txtCosto" runat="server" CssClass="auto-style16" Width="115px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="SOLO NUMEROS" ControlToValidate="txtCosto">*</asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="SOLO NUMEROS" ControlToValidate="txtCosto" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style19">Unidades : </td>
                 <td class="auto-style11">
                     <asp:TextBox ID="txtUnidades" runat="server" CssClass="auto-style16" Width="50px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtUnidades" ErrorMessage="SOLO NUMEROS" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtUnidades" ErrorMessage="SOLO NUMEROS" ValidationExpression="^\d*\d$">*</asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style19">&nbsp;</td>
-                <td class="auto-style11">&nbsp;</td>
+                <td class="auto-style25"></td>
+                <td class="auto-style26">
+                    <asp:Label ID="lblMensaje" runat="server" Visible="False"></asp:Label>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style19">&nbsp;</td>
@@ -108,16 +136,43 @@
                     <asp:Button ID="btnIngresar" runat="server" CssClass="auto-style15" OnClick="btnIngresar_Click" Text="INGRESAR" Width="228px" />
                 </td>
             </tr>
+            <tr>
+                <td class="auto-style19">&nbsp;</td>
+                <td class="auto-style11">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style19">ID :</td>
+                <td class="auto-style11">
+                    <asp:TextBox ID="txtID" runat="server" Width="40px"></asp:TextBox>
+&nbsp;
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtID" ErrorMessage="SOLO NUMEROS" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
+                    <asp:Button ID="btnEliminar" runat="server" CssClass="auto-style23" Height="21px" Text="ELIMINAR" Width="94px" OnClick="btnEliminar_Click" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style19">&nbsp;</td>
+                <td class="auto-style11">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style19">Buscar :</td>
+                <td class="auto-style11">
+                    <asp:TextBox ID="txtBuscar" runat="server" Height="19px" Width="40px"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server" ControlToValidate="txtBuscar" ErrorMessage="SOLO NUMEROS" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
+                    <asp:Button ID="btnBuscarDato" runat="server" CssClass="auto-style27" Height="22px" Text="BUSCAR" Width="93px" OnClick="btnBuscarDato_Click" />
+&nbsp;&nbsp; <span class="auto-style28">*BUSCAR POR ID*</span></td>
+            </tr>
         </table>
     </p>
     <p>
         &nbsp;</p>
     <p>
-        <asp:GridView ID="dgListar" runat="server" CellPadding="4" CssClass="auto-style20" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Width="732px" OnSelectedIndexChanged="dgListar_SelectedIndexChanged">
+        <asp:Button ID="btnActualizar" runat="server" CssClass="auto-style21" OnClick="btnActualizar_Click" Text="ACTUALIZAR TABLA" Width="315px" />
+    </p>
+    <p>
+        <asp:GridView ID="dgListar" runat="server" CellPadding="4" CssClass="auto-style24" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Width="624px">
             <AlternatingRowStyle BackColor="White" />
-            <Columns>
-                <asp:CommandField ShowCancelButton="False" ShowDeleteButton="True" ShowEditButton="True" />
-            </Columns>
             <EditRowStyle BackColor="#7C6F57" />
             <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -127,8 +182,7 @@
         </asp:GridView>
     </p>
     <p>
-        <asp:Button ID="btnListar" runat="server" CssClass="auto-style21" OnClick="btnListar_Click" Text="ACTUALIZAR TABLA" Width="315px" />
-    </p>
+        &nbsp;</p>
     <p>
         &nbsp;</p>
     <p>
