@@ -83,7 +83,11 @@ public partial class ListarPedido : System.Web.UI.Page
                         tblListado.DataSource = array;
                         tblListado.DataBind();
                     }//Fin Else-IF
-                }//Fin IF
+                }else {
+                    lblAviso.Text = "Campo Vacio, Ingrese un ID";
+                    lblAviso.Visible = true;
+                }//fin else-if
+                    
             }
             catch (Exception ex)
             {

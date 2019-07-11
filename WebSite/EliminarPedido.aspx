@@ -13,10 +13,10 @@
         Eliga el pedido que desea eliminar&nbsp;
         <asp:DropDownList ID="DropPedido" runat="server" Height="16px" Width="144px" AutoPostBack="True" OnSelectedIndexChanged="DropPedido_SelectedIndexChanged">
         </asp:DropDownList>
-    </p>
-    <p>
         <asp:Label ID="lblAviso" runat="server" Text="Label"></asp:Label>
     </p>
+    <p>
+        &nbsp;</p>
     <p>
         <asp:Button ID="btnEliminar" runat="server" Height="35px" Text="Eliminar" Width="90px" OnClick="btnEliminar_Click" />
     </p>

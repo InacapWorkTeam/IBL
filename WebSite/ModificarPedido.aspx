@@ -6,6 +6,9 @@
         .auto-style11 {
             width: 219px;
         }
+        .auto-style13 {
+            width: 222px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -21,7 +24,7 @@
         </asp:DropDownList>
         
         <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="DropDownListPedido" ErrorMessage="Ingrese un Id valido EJ: 1 " ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
+        <asp:Label ID="lblAviso2" runat="server" Text="Msje de Error"></asp:Label>
     </p>
     
     <p>
@@ -38,6 +41,9 @@
             <td class="auto-style11"><asp:Label ID="lblFecha" runat="server" Text="Ingrese la nueva Fecha de realizacion"></asp:Label>
             </td>
             <td>
+                <table class="auto-style1">
+                    <tr>
+                        <td class="auto-style13">
                 <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="200px" Width="220px">
                     <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
                     <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
@@ -48,14 +54,21 @@
                     <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
                     <WeekendDayStyle BackColor="#CCCCFF" />
                 </asp:Calendar>
-                
-            </td>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                </table>
+                </td>
         </tr>
         <tr>
             <td class="auto-style11"><asp:Label ID="lblCosto" runat="server" Text="Ingrese el nuevo costo total del pedido"></asp:Label>
             </td>
             <td>
                 <asp:TextBox ID="txtTotal" runat="server" Width="215px"></asp:TextBox>
+                
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtTotal" ErrorMessage="Ingrese un campo valido EJ: 20000 " ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
                 
             </td>
         </tr>

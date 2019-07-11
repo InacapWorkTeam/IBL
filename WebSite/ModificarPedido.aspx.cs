@@ -25,6 +25,7 @@ public partial class ModificarPedido : System.Web.UI.Page
         */
 
         lblaviso.Visible = false;
+        lblAviso2.Visible = false;
         if (!IsPostBack)
         {
             definirDropListCliente();
@@ -70,7 +71,7 @@ public partial class ModificarPedido : System.Web.UI.Page
     {
         PedidoN objPedido = new PedidoN();
         objPedido.listarVendedor(objPedido);
-
+        DropVendedor.Items.Add("-- Seleccione un item --");
         if (objPedido.Exito)
         {
             foreach (DataRow row in objPedido.Ds.Tables[0].Rows)
@@ -88,9 +89,10 @@ public partial class ModificarPedido : System.Web.UI.Page
 
     private void definirDropListCliente()
     {
+        
         PedidoN objPedido = new PedidoN();
         objPedido.listarCliente(objPedido);
-
+        DropCliente.Items.Add("-- Seleccione un item --");
         if (objPedido.Exito)
         {
             foreach (DataRow row in objPedido.Ds.Tables[0].Rows)
@@ -131,28 +133,42 @@ public partial class ModificarPedido : System.Web.UI.Page
     }
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
+        
         try
         {
+            //Aqui se estan modificando los datos
             using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
             {
 
-                tblPedido objPedido = new tblPedido();
+                if (DropDownListPedido.SelectedIndex != 0)
+                {
+                    
+                    tblPedido objPedido = new tblPedido();
 
-                //Se obtiene el registro con el id_pedido correspondiente
-                objPedido.id_pedido = Convert.ToInt32(DropDownListPedido.SelectedItem.ToString());
-                objPedido = db.tblPedido.Find(objPedido.id_pedido);
+                    //Se obtiene el registro con el id_pedido correspondiente
+                    objPedido.id_pedido = Convert.ToInt32(DropDownListPedido.SelectedItem.ToString());
+                    objPedido = db.tblPedido.Find(objPedido.id_pedido);
 
-                //Se instancian los nuevos atributos para la tabla Pedido
-                objPedido.fecha = Calendar1.SelectedDate;
-                objPedido.total = Convert.ToInt32(txtTotal.Text);
-                objPedido.id_cliente = Convert.ToInt32(regexNumerico(DropCliente.SelectedItem.ToString()));
-                objPedido.id_vendedor = Convert.ToInt32(regexNumerico(DropVendedor.SelectedItem.ToString()));
+                    //Se instancian los nuevos atributos para la tabla Pedido
+                    objPedido.fecha = Calendar1.SelectedDate;
+                    objPedido.total = Convert.ToInt32(txtTotal.Text);
+                    objPedido.id_cliente = Convert.ToInt32(regexNumerico(DropCliente.SelectedItem.ToString()));
+                    objPedido.id_vendedor = Convert.ToInt32(regexNumerico(DropVendedor.SelectedItem.ToString()));
+
+                    //Se guardan los cambios generados a la instancia en la base de datos
+                    db.SaveChanges();
+
+                    lblaviso.Text = "Pedido modificado exitosamente";
+                    lblaviso.Visible = true;
+
+                }
+                else
+                {
+                    lblAviso2.Text = "Campo Vacio, Debe seleccionar un ID";
+                    lblAviso2.Visible = true;
+                }
+
                 
-                //Se guardan los cambios generados a la instancia en la base de datos
-                db.SaveChanges();
-
-                lblaviso.Text = "Pedido modificado exitosamente";
-                lblaviso.Visible = true;
                 
             }
         }
@@ -162,41 +178,94 @@ public partial class ModificarPedido : System.Web.UI.Page
             lblaviso.Text = ex.Message;
             lblaviso.Visible = true;
         }
-
-        /*
-         * Antigua Conexion
-        try
+        //Luego para actualizar los datos
+        //Llamado al Contexto de la base de datos
+        using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
         {
-
-            PedidoN objPedido = new PedidoN();
-
-            objPedido.Id_pedido = Convert.ToInt32(txtId.Text);
-            objPedido.Fecha = Calendar1.SelectedDate;
-            objPedido.Total = Convert.ToInt32(txtTotal.Text);
-            objPedido.Id_vendedor = Convert.ToInt32(regexNumerico(DropVendedor.SelectedItem.ToString().Substring(0, 1)));
-            objPedido.Id_cliente = Convert.ToInt32(regexNumerico(DropCliente.SelectedItem.ToString().Substring(0, 1)));
-
-            objPedido.modificarPedido(objPedido);
-            lblaviso.Text = objPedido.Mensaje;
-            if (objPedido.Exito)
+            try
             {
-                lblaviso.Visible = true;
-                lblaviso.Text = "Pedido modificado";
+                //Se conprueba que el ID no venga vacio
+                if (!(DropDownListPedido.Text == ""))
+                {
+                    //Si equivale a un numero distinto de 0 lista el registro filtrado
+                    if (DropDownListPedido.Text != "0")
+                    {
+
+                        //Creacion del objPedido
+                        tblPedido objPedido = new tblPedido();
+                        //Captura del dato ID ingresado por el usario
+                        objPedido.id_pedido = int.Parse(DropDownListPedido.Text);
+                        //Guarda los registros en una variable
+                        var filtro = db.tblPedido.Find(objPedido.id_pedido);
+                        //Si la existencia es nulla, no se deben mostrar los datos
+                        //Captura de existencia
+                        bool existencia = Convert.ToBoolean(filtro.existencia);
+
+                        //Si la existencia es falsa se muestra un mensaje de Pedido eliminado 
+                        if (existencia == false)
+                        {
+                            //Muestra msje de dato eliminado
+                            lblaviso.Text = "Este dato esta eliminado";
+                            lblaviso.Visible = true;
+
+                            //Refresco de datos de la tabla
+                            tblListado.DataSource = new List<tblPedido> { };
+                            tblListado.DataBind();
+                        }
+                        else
+                        {
+                            //Se ingresan los datos obtenidos en una lista accesible por el DataSource
+                            tblListado.DataSource = new List<tblPedido> { filtro };
+                            tblListado.DataBind();
+                        }
+
+                        //Si equivale a 0 lista todos los registros de la tabla
+                    }
+
+                }//Fin IF
             }
-            else
+            catch (Exception ex)
             {
+                lblaviso.Text = "DATO NO EXISTENTE O ELIMINADO <br/> MAS INFO=" + ex;
                 lblaviso.Visible = true;
+            }//Fin Try-Catch
+
+            /*
+             * Antigua Conexion
+            try
+            {
+
+                PedidoN objPedido = new PedidoN();
+
+                objPedido.Id_pedido = Convert.ToInt32(txtId.Text);
+                objPedido.Fecha = Calendar1.SelectedDate;
+                objPedido.Total = Convert.ToInt32(txtTotal.Text);
+                objPedido.Id_vendedor = Convert.ToInt32(regexNumerico(DropVendedor.SelectedItem.ToString().Substring(0, 1)));
+                objPedido.Id_cliente = Convert.ToInt32(regexNumerico(DropCliente.SelectedItem.ToString().Substring(0, 1)));
+
+                objPedido.modificarPedido(objPedido);
                 lblaviso.Text = objPedido.Mensaje;
+                if (objPedido.Exito)
+                {
+                    lblaviso.Visible = true;
+                    lblaviso.Text = "Pedido modificado";
+                }
+                else
+                {
+                    lblaviso.Visible = true;
+                    lblaviso.Text = objPedido.Mensaje;
+                }
             }
+            catch (Exception ex)
+            {
+                lblaviso.Visible = true;
+                lblaviso.Text = "Excepcion Capturar: " + ex.Message;
+            }
+            */
+             }
         }
-        catch (Exception ex)
-        {
-            lblaviso.Visible = true;
-            lblaviso.Text = "Excepcion Capturar: " + ex.Message;
-        }
-        */
-    }
 
+    
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
         //Llamado al Contexto de la base de datos
@@ -208,7 +277,7 @@ public partial class ModificarPedido : System.Web.UI.Page
                 if (!(DropDownListPedido.Text == ""))
                 {
                     //Si equivale a un numero distinto de 0 lista el registro filtrado
-                    if (DropDownListPedido.Text != "0")
+                    if (DropDownListPedido.SelectedIndex != 0)
                     {
 
                         //Creacion del objPedido
@@ -240,6 +309,10 @@ public partial class ModificarPedido : System.Web.UI.Page
                         }
 
                         //Si equivale a 0 lista todos los registros de la tabla
+                    }else
+                    {
+                        lblAviso2.Text = "Campo Vacio, ingrese una opcion";
+                        lblAviso2.Visible = true;
                     }
                     
                 }//Fin IF

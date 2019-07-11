@@ -116,7 +116,7 @@ public partial class EliminarPedido : System.Web.UI.Page
                 }
                 else{
                     //Si el usuario no ha elegido una opcion, se mostrara un msje diciendo que eliga opcion
-                    lblAviso.Text= "Eliga una opcion";
+                    lblAviso.Text= "Campo Vacio, Eliga una opcion";
                     lblAviso.Visible=true;
                 }
 
