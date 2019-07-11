@@ -121,7 +121,7 @@
                     <tr>
                         <td style="width: 99px">&nbsp;</td>
                         <td style="width: 328px">
-                            <asp:Label ID="lblMensaje" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="lblMensaje" runat="server" Text="Label" Visible="False"></asp:Label>
                         </td>
                     </tr>
                     <tr>
