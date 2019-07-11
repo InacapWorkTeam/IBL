@@ -28,7 +28,7 @@ public partial class IngresarPedido : System.Web.UI.Page
         {
             using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
             {
-                //Definición del primer item
+                //Definición del primer item 
                 DropVendedor.Items.Add("-- Seleccione un item --");
 
                 var listaIDVendedor = db.Vendedor;
