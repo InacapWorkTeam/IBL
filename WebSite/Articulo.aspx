@@ -53,6 +53,21 @@
         .auto-style24 {
             margin-left: 152px;
         }
+        .auto-style25 {
+            width: 95px;
+            height: 23px;
+        }
+        .auto-style26 {
+            width: 320px;
+            color: #000000;
+            height: 23px;
+        }
+        .auto-style27 {
+            margin-left: 48px;
+        }
+        .auto-style28 {
+            font-size: small;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -110,9 +125,9 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style19">&nbsp;</td>
-                <td class="auto-style11">
-                    <asp:Label ID="lblMensaje" runat="server"></asp:Label>
+                <td class="auto-style25"></td>
+                <td class="auto-style26">
+                    <asp:Label ID="lblMensaje" runat="server" Visible="False"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -131,8 +146,22 @@
                 <td class="auto-style11">
                     <asp:TextBox ID="txtID" runat="server" Width="40px"></asp:TextBox>
 &nbsp;
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtID" ErrorMessage="SOLO NUMEROS" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
                     <asp:Button ID="btnEliminar" runat="server" CssClass="auto-style23" Height="21px" Text="ELIMINAR" Width="94px" />
                 </td>
+            </tr>
+            <tr>
+                <td class="auto-style19">&nbsp;</td>
+                <td class="auto-style11">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style19">Buscar :</td>
+                <td class="auto-style11">
+                    <asp:TextBox ID="txtBuscar" runat="server" Height="19px" Width="40px"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server" ControlToValidate="txtBuscar" ErrorMessage="SOLO NUMEROS" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
+                    <asp:Button ID="btnBuscarDato" runat="server" CssClass="auto-style27" Height="22px" Text="BUSCAR" Width="93px" />
+&nbsp;&nbsp; <span class="auto-style28">*BUSCAR POR ID*</span></td>
             </tr>
         </table>
     </p>
