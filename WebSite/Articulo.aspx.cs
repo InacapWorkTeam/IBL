@@ -4,38 +4,145 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LibNegocio;
+using System.Linq;
 
 public partial class Articulo : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
+    protected void Page_Load(object sender, EventArgs e) {
+        mostrar();
+    }
+
+    protected void btnIngresar_Click(object sender, EventArgs e) {
+        try {
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities BDE = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities()) {
+                tblArticulo objA = new tblArticulo() {
+                    nombre = txtNombre.Text,
+                    descripcion = txtDescripcion.Text,
+                    color = txtColor.Text,
+                    tamano = txtTamaño.Text,
+                    precio = int.Parse(txtPrecio.Text),
+                    coste_u_mayorista = int.Parse(txtCosto.Text),
+                    unidades = int.Parse(txtUnidades.Text),
+                };
+
+                BDE.tblArticulo.Add(objA);
+                BDE.SaveChanges();
+            }
+            lblMensaje.Text = "INGRESO EXITOSO";
+            limpiar();
+            mostrar();
+        } catch (Exception ex) {
+            lblMensaje.Text = "ERROR " + ex;
+        }
+    }
+
+    protected void btnActualizar_Click(object sender, EventArgs e) {
+        mostrar();
+    }
+
+    public void limpiar() {
+        txtNombre.Text = "";
+        txtDescripcion.Text = "";
+        txtColor.Text = "";
+        txtTamaño.Text = "";
+        txtPrecio.Text = "";
+        txtCosto.Text = "";
+        txtUnidades.Text = "";
+        txtID.Text = "";
+        txtBuscar.Text = "";
+    }
+
+    public void mostrar() {
+        try {
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities EF = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities()) {
+                IQueryable<tblArticulo> articulos = from q in EF.tblArticulo select q;
+                List<tblArticulo> lista = articulos.ToList();
+
+                dgListar.DataSource = lista;
+                dgListar.DataBind();
+            }
+        } catch (Exception ex) {
+            lblMensaje.Text = "ERROR " + ex;
+        }
+    }
+
+    protected void btnEliminar_Click(object sender, EventArgs e) {
+        try {
+            int id = Convert.ToInt32(txtID.Text);
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities bd = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities()) {
+               // var query = (from p in bd.tblArticulo where p.id_articulo == id select p).Single();
+            
+                tblArticulo objArticulo = new tblArticulo();
+                objArticulo.id_articulo = id;
+                objArticulo = bd.tblArticulo.Find(objArticulo.id_articulo);
+                objArticulo.eliminado = true;
+
+               // bd.tblArticulo.Remove(query);
+                bd.SaveChanges();
+            }
+            mostrar();
+            limpiar();
+        } catch (Exception ex) {
+            lblMensaje.Text = "ERROR " + ex;
+            lblMensaje.Visible = true;
+        }
+    }
+
+
+    protected void btnActualizarDatos_Click(object sender, EventArgs e) {
+        try {
+            int id = int.Parse(txtBuscar.Text);
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities bde = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities()) {
+                tblArticulo obja = (from q in bde.tblArticulo where q.id_articulo == id select q).First();
+
+                obja.nombre = txtNombre.Text;
+                obja.descripcion = txtDescripcion.Text;
+                obja.color = txtColor.Text;
+                obja.tamano = txtTamaño.Text;
+                obja.precio = int.Parse(txtPrecio.Text);
+                obja.coste_u_mayorista = int.Parse(txtCosto.Text);
+                obja.unidades = int.Parse(txtUnidades.Text);
+
+                bde.SaveChanges();
+            }
+            mostrar();
+            limpiar();
+            lblMensaje.Text = "DATOS ACTUALIZADOS";
+        } catch (Exception ex) {
+            lblMensaje.Text = "ERROR " + ex;
+        }
+    }
+
+    protected void btnBuscarDato_Click(object sender, EventArgs e) {
+        try {
+            int id = int.Parse(txtBuscar.Text);
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities DBE = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities()) {
+                IQueryable<tblArticulo> objA = from q in DBE.tblArticulo where q.id_articulo == id select q;
+                List<tblArticulo> lista = objA.ToList();
+
+                var art = lista[0];
+
+                txtNombre.Text = art.nombre;
+                txtDescripcion.Text = art.descripcion;
+                txtColor.Text = art.color;
+                txtTamaño.Text = art.tamano;
+                txtPrecio.Text = art.precio.ToString();
+                txtCosto.Text = art.coste_u_mayorista.ToString();
+                txtUnidades.Text = art.unidades.ToString();
+
+                dgListar.DataSource = lista;
+                dgListar.DataBind();
+            }
+        } catch (Exception ex) {
+            lblMensaje.Text = "ERROR " + ex;
+        }
+    }
+
+    protected void btnEliminar_Click1(object sender, EventArgs e) {
 
     }
 
-    protected void btnIngresar_Click(object sender, EventArgs e)
-    {
-        LibNegocio.Articulo objArticulo = new LibNegocio.Articulo();
-        objArticulo.Nombre= txtNombre.Text;
-        objArticulo.Descripcion = txtDescripcion.Text;
-        objArticulo.Color = txtColor.Text;
-        objArticulo.Tamaño = txtTamaño.Text;
-        objArticulo.Precio = int.Parse(txtPrecio.Text);
-        objArticulo.Coste_u_mayorista = int.Parse(txtCosto.Text);
-        objArticulo.Unidades = int.Parse(txtUnidades.Text);
-
-        objArticulo = objArticulo.ingresarArticulo(objArticulo);
-    }
-
-    protected void btnListar_Click(object sender, EventArgs e)
-    {
-        LibNegocio.Articulo objArticulo = new LibNegocio.Articulo();
-        objArticulo = objArticulo.listarArticulo(objArticulo);
-        dgListar.DataSource = objArticulo.Data;
-        dgListar.DataBind();
-    }
-
-    protected void dgListar_SelectedIndexChanged(object sender, EventArgs e)
-    {
+    protected void btnBuscarDato_Click1(object sender, EventArgs e) {
 
     }
 }

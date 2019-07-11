@@ -114,14 +114,14 @@
                 <td class="auto-style19">Costo :</td>
                 <td class="auto-style11">
                     <asp:TextBox ID="txtCosto" runat="server" CssClass="auto-style16" Width="115px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="SOLO NUMEROS" ControlToValidate="txtCosto">*</asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="SOLO NUMEROS" ControlToValidate="txtCosto" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style19">Unidades : </td>
                 <td class="auto-style11">
                     <asp:TextBox ID="txtUnidades" runat="server" CssClass="auto-style16" Width="50px"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtUnidades" ErrorMessage="SOLO NUMEROS" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtUnidades" ErrorMessage="SOLO NUMEROS" ValidationExpression="^\d*\d$">*</asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -147,7 +147,7 @@
                     <asp:TextBox ID="txtID" runat="server" Width="40px"></asp:TextBox>
 &nbsp;
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtID" ErrorMessage="SOLO NUMEROS" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
-                    <asp:Button ID="btnEliminar" runat="server" CssClass="auto-style23" Height="21px" Text="ELIMINAR" Width="94px" />
+                    <asp:Button ID="btnEliminar" runat="server" CssClass="auto-style23" Height="21px" Text="ELIMINAR" Width="94px" OnClick="btnEliminar_Click" />
                 </td>
             </tr>
             <tr>
@@ -160,7 +160,7 @@
                 <td class="auto-style11">
                     <asp:TextBox ID="txtBuscar" runat="server" Height="19px" Width="40px"></asp:TextBox>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server" ControlToValidate="txtBuscar" ErrorMessage="SOLO NUMEROS" ValidationExpression="^[0-9]*$">*</asp:RegularExpressionValidator>
-                    <asp:Button ID="btnBuscarDato" runat="server" CssClass="auto-style27" Height="22px" Text="BUSCAR" Width="93px" />
+                    <asp:Button ID="btnBuscarDato" runat="server" CssClass="auto-style27" Height="22px" Text="BUSCAR" Width="93px" OnClick="btnBuscarDato_Click" />
 &nbsp;&nbsp; <span class="auto-style28">*BUSCAR POR ID*</span></td>
             </tr>
         </table>
@@ -168,7 +168,7 @@
     <p>
         &nbsp;</p>
     <p>
-        <asp:Button ID="btnListar" runat="server" CssClass="auto-style21" OnClick="btnListar_Click" Text="ACTUALIZAR TABLA" Width="315px" />
+        <asp:Button ID="btnActualizar" runat="server" CssClass="auto-style21" OnClick="btnActualizar_Click" Text="ACTUALIZAR TABLA" Width="315px" />
     </p>
     <p>
         <asp:GridView ID="dgListar" runat="server" CellPadding="4" CssClass="auto-style24" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Width="624px">
