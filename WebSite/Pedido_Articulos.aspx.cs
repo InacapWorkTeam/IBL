@@ -716,28 +716,31 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                 tblPedido_Articulos objPedidoArticulos = new tblPedido_Articulos();
 
                 if (!(txtUnidadesModificar.Text.Trim().Equals("")) ) {
+                    if (dropListIDPedidoModificar.SelectedIndex != 0 && dropListArticuloModificar.SelectedIndex != 0) {
+                        //Parseo de datos
+                        objPedidoArticulos.id_pedido_articulos = Convert.ToInt32(dropListIDPedidoArticulosModificar.SelectedItem.ToString());
 
-                    //Parseo de datos
-                    objPedidoArticulos.id_pedido_articulos = Convert.ToInt32(dropListIDPedidoArticulosModificar.SelectedItem.ToString());
+                        //Se obtiene el registro con el id_pedido_articulos correspondiente
+                        objPedidoArticulos = db.tblPedido_Articulos.Find(objPedidoArticulos.id_pedido_articulos);
 
-                    //Se obtiene el registro con el id_pedido_articulos correspondiente
-                    objPedidoArticulos = db.tblPedido_Articulos.Find(objPedidoArticulos.id_pedido_articulos);
+                        //Se instancian los nuevos atributos para la instancia
+                        objPedidoArticulos.id_pedido = Convert.ToInt32(dropListIDPedidoModificar.SelectedItem.ToString());
+                        objPedidoArticulos.id_articulo = Convert.ToInt32(regexNumerico(dropListArticuloModificar.SelectedItem.ToString()));
+                        objPedidoArticulos.tamano_articulo = txtTamanoModificar.Text;
+                        objPedidoArticulos.color_articulo = txtColorModificar.Text;
+                        objPedidoArticulos.unidades_articulo = Convert.ToInt32(txtUnidadesModificar.Text);
+                        objPedidoArticulos.precio_u_articulo = Convert.ToInt32(txtPrecioModificar.Text);
+                        objPedidoArticulos.estado = true;
 
-                    //Se instancian los nuevos atributos para la instancia
-                    objPedidoArticulos.id_pedido = Convert.ToInt32(dropListIDPedidoModificar.SelectedItem.ToString());
-                    objPedidoArticulos.id_articulo = Convert.ToInt32(regexNumerico(dropListArticuloModificar.SelectedItem.ToString()));
-                    objPedidoArticulos.tamano_articulo = txtTamanoModificar.Text;
-                    objPedidoArticulos.color_articulo = txtColorModificar.Text;
-                    objPedidoArticulos.unidades_articulo = Convert.ToInt32(txtUnidadesModificar.Text);
-                    objPedidoArticulos.precio_u_articulo = Convert.ToInt32(txtPrecioModificar.Text);
-                    objPedidoArticulos.estado = true;
+                        //Se guardan los cambios generados a la instancia en la base de datos
+                        db.SaveChanges();
 
-                    //Se guardan los cambios generados a la instancia en la base de datos
-                    db.SaveChanges();
-
-                    lblMensajeModificar.Text = "Registro modificado exitosamente";
-                    lblMensajeModificar.Visible = true;
-
+                        lblMensajeModificar.Text = "Registro modificado exitosamente";
+                        lblMensajeModificar.Visible = true;
+                    }else {
+                        lblMensajeModificar.Text = "Debe seleccionar un item";
+                        lblMensajeModificar.Visible = true;
+                    }
                 }else {
                     lblMensajeModificar.Text = "No pueden quedar campos vacios";
                     lblMensajeModificar.Visible = true;
@@ -822,6 +825,9 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                     db.SaveChanges();
 
                     lblMensajeEliminar.Text = "Registro Eliminado Correctamente";
+                    lblMensajeEliminar.Visible = true;
+                }else {
+                    lblMensajeEliminar.Text = "Debe seleccionar un item";
                     lblMensajeEliminar.Visible = true;
                 }
 

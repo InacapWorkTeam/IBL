@@ -175,7 +175,7 @@
                     <td class="auto-style4">
                         <asp:Label ID="lblUsuario" runat="server" BorderStyle="None" Text="[lblUsuario]" Visible="False"></asp:Label>
                         <br />
-                        <asp:Button ID="Button1" runat="server" Text="LogOut" OnClick="Button1_Click" />
+                        <asp:Button ID="Button1" runat="server" Text="Salir" OnClick="Button1_Click" BackColor="#092668" BorderColor="White" Font-Bold="True" Font-Italic="True" ForeColor="White" Height="33px" Width="84px" />
                     </td>
                 </tr>
             </table>

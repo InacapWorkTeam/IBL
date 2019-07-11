@@ -46,17 +46,17 @@
     
         <table align="center" class="auto-style1">
             <tr>
-                <td class="auto-style9" colspan="3">LOGIN</td>
+                <td class="auto-style9" colspan="3" style="font-family: tahoma; font-size: large; color: #993300; font-weight: bold">LOGIN</td>
             </tr>
             <tr>
-                <td class="auto-style6">Username:</td>
+                <td class="auto-style6" style="font-family: tahoma; font-size: large; color: #993300; font-weight: bold">Username:</td>
                 <td class="auto-style7"><strong>:</strong></td>
                 <td class="auto-style8">
                     <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">Password</td>
+                <td class="auto-style2" style="font-family: tahoma; font-size: large; color: #993300; font-weight: bold">Password</td>
                 <td class="auto-style4"><strong>:</strong></td>
                 <td class="auto-style10">
                     <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
@@ -68,7 +68,7 @@
                 </td>
                 <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style10">
-                    <asp:Button ID="btnLogIn" runat="server" OnClick="btnLogIn_Click" Text="Log in" Width="109px" />
+                    <asp:Button ID="btnLogIn" runat="server" OnClick="btnLogIn_Click" Text="Ingresar" Width="109px" BackColor="#000066" BorderColor="White" BorderWidth="0px" Font-Bold="True" Font-Italic="True" ForeColor="White" Height="30px" />
                 </td>
             </tr>
         </table>

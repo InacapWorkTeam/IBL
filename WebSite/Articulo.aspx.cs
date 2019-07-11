@@ -30,10 +30,12 @@ public partial class Articulo : System.Web.UI.Page
                 BDE.SaveChanges();
             }
             lblMensaje.Text = "INGRESO EXITOSO";
+            lblMensaje.Visible = true;
             limpiar();
             mostrar();
         } catch (Exception ex) {
-            lblMensaje.Text = "ERROR " + ex;
+            lblMensaje.Text = "ERROR " + ex.Message;
+            lblMensaje.Visible = true;
         }
     }
 
@@ -84,7 +86,7 @@ public partial class Articulo : System.Web.UI.Page
             mostrar();
             limpiar();
         } catch (Exception ex) {
-            lblMensaje.Text = "ERROR " + ex;
+            lblMensaje.Text = "ERROR " + ex.Message;
             lblMensaje.Visible = true;
         }
     }
@@ -110,7 +112,7 @@ public partial class Articulo : System.Web.UI.Page
             limpiar();
             lblMensaje.Text = "DATOS ACTUALIZADOS";
         } catch (Exception ex) {
-            lblMensaje.Text = "ERROR " + ex;
+            lblMensaje.Text = "ERROR " + ex.Message;
         }
     }
 
@@ -135,7 +137,7 @@ public partial class Articulo : System.Web.UI.Page
                 dgListar.DataBind();
             }
         } catch (Exception ex) {
-            lblMensaje.Text = "ERROR " + ex;
+            lblMensaje.Text = "ERROR " + ex.Message;
         }
     }
 

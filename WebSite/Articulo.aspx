@@ -13,62 +13,7 @@
             height: 265px;
             margin-left: 232px;
         }
-        .auto-style13 {
-            height: 22px;
-            width: 95px;
-        }
-        .auto-style14 {
-            width: 320px;
-            height: 22px;
-        }
-        .auto-style15 {
-            margin-left: 8px;
-        }
-        .auto-style16 {
-            margin-left: 18px;
-        }
-        .auto-style17 {
-            margin-left: 20px;
-        }
-        .auto-style18 {
-            margin-left: 19px;
-        }
-        .auto-style19 {
-            width: 95px;
-        }
-        .auto-style21 {
-            margin-left: 346px;
-        }
-    .auto-style22 {
-        text-align: center;
-        width: 766px;
-        color: #000000;
-        height: 36px;
-        font-size: large;
-        background-color: #ED1C24;
-    }
-    .auto-style23 {
-        margin-left: 39px;
-    }
-        .auto-style24 {
-            margin-left: 152px;
-        }
-        .auto-style25 {
-            width: 95px;
-            height: 23px;
-        }
-        .auto-style26 {
-            width: 320px;
-            color: #000000;
-            height: 23px;
-        }
-        .auto-style27 {
-            margin-left: 48px;
-        }
-        .auto-style28 {
-            font-size: small;
-        }
-    </style>
+        </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <div class="row">
@@ -104,18 +49,21 @@
                         <td style="width: 99px">Precio :</td>
                         <td style="width: 328px">
                             <asp:TextBox ID="txtPrecio" runat="server"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPrecio" ErrorMessage="* Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 99px">Coto unitario:</td>
                         <td style="width: 328px">
                             <asp:TextBox ID="txtCosto" runat="server"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtCosto" ErrorMessage="* Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 99px">Unidades :</td>
                         <td style="width: 328px">
                             <asp:TextBox ID="txtUnidades" runat="server"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtUnidades" ErrorMessage="* Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                     <tr>
