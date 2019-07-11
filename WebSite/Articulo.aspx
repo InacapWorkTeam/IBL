@@ -113,7 +113,7 @@
     <p>
         &nbsp;</p>
     <p>
-        <asp:GridView ID="dgListar" runat="server" CellPadding="4" CssClass="auto-style20" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Width="732px">
+        <asp:GridView ID="dgListar" runat="server" CellPadding="4" CssClass="auto-style20" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Width="732px" OnSelectedIndexChanged="dgListar_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:CommandField ShowCancelButton="False" ShowDeleteButton="True" ShowEditButton="True" />

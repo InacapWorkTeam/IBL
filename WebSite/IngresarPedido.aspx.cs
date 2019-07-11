@@ -94,7 +94,48 @@ public partial class IngresarPedido : System.Web.UI.Page
 
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
-        
+
+        try
+        {
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
+            {
+
+                tblPedido objPedido = new tblPedido();
+                if (!(txtTotal.Text.Trim().Equals("")))
+                {
+                    
+                    objPedido.fecha = Calendar1.SelectedDate;
+                    objPedido.total = Convert.ToInt32(txtTotal.Text);
+                    objPedido.id_vendedor = Convert.ToInt32(regexNumerico(DropVendedor.SelectedItem.ToString()));
+                    objPedido.id_cliente = Convert.ToInt32(regexNumerico(DropCliente.SelectedItem.ToString()));
+                    objPedido.existencia = 1;
+
+                    db.tblPedido.Add(objPedido);
+                    db.SaveChanges();
+
+                    //Confirmacion Pedido ingresado
+                    lblaviso.Text = "Pedido Ingresado Correctamente";
+                    lblaviso.Visible = true;
+                    //limpieza de datos
+                    txtTotal.Text = "";
+                    
+                }
+                else
+                {
+                    //Caso contrario se informa
+                    lblaviso.Text = "No pueden quedar campos vacios";
+                    lblaviso.Visible = true;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            lblaviso.Text = ex.Message;
+            lblaviso.Visible = true;
+        }
+
+        /*
+        //Antigua Conexion
         try
         {
 
@@ -123,5 +164,7 @@ public partial class IngresarPedido : System.Web.UI.Page
             lblaviso.Visible = true;
             lblaviso.Text = "Excepcion Capturar: " + ex.Message;
         }
+        */
+
     }
 }

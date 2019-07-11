@@ -878,4 +878,9 @@ public partial class Pedido_Articulos : System.Web.UI.Page
     }//Fin regexNumerio
 
 
+
+    protected void dropListIDPedidoArticulosEliminar_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }//Fin Pedido_Articulos

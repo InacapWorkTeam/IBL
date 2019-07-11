@@ -11,6 +11,8 @@ using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Objects;
+//using System.Data.Entity.Core.Objects;
+using System.Linq;
 
 public partial class DB_PAAC4G4ArriagadaSepulvedaVidalEntities : DbContext
 {

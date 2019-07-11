@@ -278,7 +278,7 @@
                         <td class="auto-style69" style="table-layout: auto">
                             <strong>:</strong></td>
                         <td style="table-layout: auto">
-                            <asp:DropDownList ID="dropListIDPedidoArticulosEliminar" runat="server" Height="16px" Width="172px">
+                            <asp:DropDownList ID="dropListIDPedidoArticulosEliminar" runat="server" Height="16px" Width="172px" OnSelectedIndexChanged="dropListIDPedidoArticulosEliminar_SelectedIndexChanged">
                             </asp:DropDownList>
                         </td>
                     </tr>

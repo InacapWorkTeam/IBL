@@ -33,4 +33,9 @@ public partial class Articulo : System.Web.UI.Page
         dgListar.DataSource = objArticulo.Data;
         dgListar.DataBind();
     }
+
+    protected void dgListar_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

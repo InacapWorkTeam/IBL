@@ -29,9 +29,43 @@ public partial class ModificarPedido : System.Web.UI.Page
         {
             definirDropListCliente();
             definirDropListVendedor();
+            definirDropListPedido();
         }
+        
 
     }
+
+    private void definirDropListPedido()
+    {
+        try
+        {
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
+            {
+                //Definición del primer item
+                DropDownListPedido.Items.Add("-- Seleccione un item --");
+
+                var listaIDPedido = db.tblPedido;
+
+                foreach (var objPedido in listaIDPedido)
+                {
+                    if (objPedido.existencia == 1)
+                    {
+                        DropDownListPedido.Items.Add(objPedido.id_pedido + "");
+                    }
+                    
+
+                }
+
+            }
+
+        }
+        catch (Exception ex)
+        {
+            lblaviso.Text = "" + ex;
+            lblaviso.Visible = true;
+        }
+    }
+
     private void definirDropListVendedor()
     {
         PedidoN objPedido = new PedidoN();
@@ -99,6 +133,40 @@ public partial class ModificarPedido : System.Web.UI.Page
     {
         try
         {
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
+            {
+
+                tblPedido objPedido = new tblPedido();
+
+                //Se obtiene el registro con el id_pedido correspondiente
+                objPedido.id_pedido = Convert.ToInt32(DropDownListPedido.SelectedItem.ToString());
+                objPedido = db.tblPedido.Find(objPedido.id_pedido);
+
+                //Se instancian los nuevos atributos para la tabla Pedido
+                objPedido.fecha = Calendar1.SelectedDate;
+                objPedido.total = Convert.ToInt32(txtTotal.Text);
+                objPedido.id_cliente = Convert.ToInt32(regexNumerico(DropCliente.SelectedItem.ToString()));
+                objPedido.id_vendedor = Convert.ToInt32(regexNumerico(DropVendedor.SelectedItem.ToString()));
+                
+                //Se guardan los cambios generados a la instancia en la base de datos
+                db.SaveChanges();
+
+                lblaviso.Text = "Pedido modificado exitosamente";
+                lblaviso.Visible = true;
+                
+            }
+        }
+        catch (Exception ex)
+        {
+
+            lblaviso.Text = ex.Message;
+            lblaviso.Visible = true;
+        }
+
+        /*
+         * Antigua Conexion
+        try
+        {
 
             PedidoN objPedido = new PedidoN();
 
@@ -126,10 +194,66 @@ public partial class ModificarPedido : System.Web.UI.Page
             lblaviso.Visible = true;
             lblaviso.Text = "Excepcion Capturar: " + ex.Message;
         }
+        */
     }
 
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
+        //Llamado al Contexto de la base de datos
+        using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
+        {
+            try
+            {
+                //Se conprueba que el ID no venga vacio
+                if (!(DropDownListPedido.Text == ""))
+                {
+                    //Si equivale a un numero distinto de 0 lista el registro filtrado
+                    if (DropDownListPedido.Text != "0")
+                    {
+
+                        //Creacion del objPedido
+                        tblPedido objPedido = new tblPedido();
+                        //Captura del dato ID ingresado por el usario
+                        objPedido.id_pedido = int.Parse(DropDownListPedido.Text);
+                        //Guarda los registros en una variable
+                        var filtro = db.tblPedido.Find(objPedido.id_pedido);
+                        //Si la existencia es nulla, no se deben mostrar los datos
+                        //Captura de existencia
+                        bool existencia = Convert.ToBoolean(filtro.existencia);
+                        
+                        //Si la existencia es falsa se muestra un mensaje de Pedido eliminado 
+                        if (existencia == false)
+                        {
+                            //Muestra msje de dato eliminado
+                            lblaviso.Text = "Este dato esta eliminado";
+                            lblaviso.Visible = true;
+
+                            //Refresco de datos de la tabla
+                            tblListado.DataSource = new List<tblPedido> { };
+                            tblListado.DataBind();
+                        }
+                        else
+                        {
+                            //Se ingresan los datos obtenidos en una lista accesible por el DataSource
+                            tblListado.DataSource = new List<tblPedido> { filtro };
+                            tblListado.DataBind();
+                        }
+
+                        //Si equivale a 0 lista todos los registros de la tabla
+                    }
+                    
+                }//Fin IF
+            }
+            catch (Exception ex)
+            {
+                lblaviso.Text = "DATO NO EXISTENTE O ELIMINADO <br/> MAS INFO=" + ex;
+                lblaviso.Visible = true;
+            }//Fin Try-Catch
+
+        }//Fin using
+
+        /*
+         * Antigua Conexion
         try
         {
             PedidoN objPedido = new PedidoN();
@@ -181,7 +305,7 @@ public partial class ModificarPedido : System.Web.UI.Page
                 btnModificar.Visible = false;
                 lblaviso.Visible = true;
                 //lblaviso.Text = "Este dato no existe o esta eliminado";
-            }*/
+            }
 
         }
         catch (Exception ex)
@@ -189,5 +313,12 @@ public partial class ModificarPedido : System.Web.UI.Page
             lblaviso.Visible = true;
             lblaviso.Text = "Excepcion Capturar: " + ex.Message;
         }
+        */
+
+    }
+
+    protected void DropDownList1_SelectedIndexChanged2(object sender, EventArgs e)
+    {
+        
     }
 }
