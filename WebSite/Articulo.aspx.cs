@@ -73,7 +73,7 @@ public partial class Articulo : System.Web.UI.Page
                 dgListar.DataBind();
             }
         } catch (Exception ex) {
-            lblMensaje.Text = "ERROR " + ex;
+            lblMensaje.Text = "ERROR " + ex.Message;
         }
     }
 

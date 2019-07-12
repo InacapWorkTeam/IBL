@@ -15,10 +15,7 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         //Impide que se vuelva a cargar datos en los dropList
         if (!IsPostBack)
         {
-            definirDropListIDPedidos();
-            definirDropListArticulos();
-            definirDropListPedidoArticulos();
-
+            actualizarDropLists();
         }
     }
 
@@ -235,6 +232,11 @@ public partial class Pedido_Articulos : System.Web.UI.Page
         try {
             using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities()) {
                 //Definición del primer item
+
+                dropListPedidos.Items.Clear();
+                dropListIDPedidoModificar.Items.Clear();
+
+                dropListPedidos.Items.Add("-- Seleccione un item --");
                 dropListIDPedidoModificar.Items.Add("-- Seleccione un item --");
 
                 var listaIDPedido = db.tblPedido;
@@ -296,6 +298,8 @@ public partial class Pedido_Articulos : System.Web.UI.Page
 
                 var listaArticulos = db.tblArticulo;
                 //Se define el primer item
+                droplistArticulos.Items.Clear();
+                dropListArticuloModificar.Items.Clear();
                 droplistArticulos.Items.Add("-- Seleccione un item --");
                 dropListArticuloModificar.Items.Add("--Seleccione un item--");
 
@@ -353,6 +357,9 @@ public partial class Pedido_Articulos : System.Web.UI.Page
             using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities()) {
 
                 var listaPedidoArticulo = db.tblPedido_Articulos;
+
+                dropListIDPedidoArticulosModificar.Items.Clear();
+                dropListIDPedidoArticulosEliminar.Items.Clear();
 
                 //Se define el primer item del droplist
                 dropListIDPedidoArticulosModificar.Items.Add("-- Seleccionar item -- ");
@@ -500,6 +507,7 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                     txtColor.Text = "";
                     txtUnidades.Text = "";
                     txtPrecio.Text = "";
+                    actualizarDropLists();
                 } else {
                     //Caso contrario se informa
                     lblMensajeIngreso.Text = "No pueden quedar campos vacios";
@@ -747,7 +755,8 @@ public partial class Pedido_Articulos : System.Web.UI.Page
 
                         lblMensajeModificar.Text = "Registro modificado exitosamente";
                         lblMensajeModificar.Visible = true;
-                    }else {
+                        actualizarDropLists();
+                    } else {
                         lblMensajeModificar.Text = "Debe seleccionar un item";
                         lblMensajeModificar.Visible = true;
                     }
@@ -836,7 +845,8 @@ public partial class Pedido_Articulos : System.Web.UI.Page
 
                     lblMensajeEliminar.Text = "Registro Eliminado Correctamente";
                     lblMensajeEliminar.Visible = true;
-                }else {
+                    actualizarDropLists();
+                } else {
                     lblMensajeEliminar.Text = "Debe seleccionar un item";
                     lblMensajeEliminar.Visible = true;
                 }
@@ -900,5 +910,14 @@ public partial class Pedido_Articulos : System.Web.UI.Page
 
         return output;
     }//Fin regexNumerio
+
+    /// <summary>
+    /// Método para actualizar la información de los droplists
+    /// </summary>
+    public void actualizarDropLists() {
+        definirDropListIDPedidos();
+        definirDropListArticulos();
+        definirDropListPedidoArticulos();
+    }
 
 }//Fin Pedido_Articulos
