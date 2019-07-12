@@ -11,26 +11,16 @@ public partial class ModificarPedido : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        /*
-        lblaviso.Visible = false;
-        lblCliente.Visible = false;
-        lblCosto.Visible = false;
-        lblFecha.Visible = false;
-        lblVendedor.Visible = false;
-        Calendar1.Visible = false;
-        txtTotal.Visible = false;
-        DropCliente.Visible = false;
-        DropVendedor.Visible = false;
-        btnModificar.Visible = false;
-        */
-
+        //msjes de errores ocultos para su posible captura
         lblaviso.Visible = false;
         lblAviso2.Visible = false;
         if (!IsPostBack)
         {
+            //relleno de datos de los drop
             definirDropListCliente();
             definirDropListVendedor();
             definirDropListPedido();
+            //Calendario predeterminado para hoy
             Calendar1.SelectedDate = System.DateTime.Today;
         }
         
@@ -39,17 +29,20 @@ public partial class ModificarPedido : System.Web.UI.Page
 
     private void definirDropListPedido()
     {
+        //try y catch para captura de errores
         try
         {
+            //uso de la bd con entity 
             using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
             {
                 //Definición del primer item
                 DropDownListPedido.Items.Add("-- Seleccione un item --");
-
+                //guardado de datos en una variable
                 var listaIDPedido = db.tblPedido;
-
+                //recorrer los datos de la tabla pedido
                 foreach (var objPedido in listaIDPedido)
                 {
+                    //Guardar datos en nuestro DropDownList siempre que sean existentes
                     if (objPedido.existencia == 1)
                     {
                         DropDownListPedido.Items.Add(objPedido.id_pedido + "");
@@ -61,6 +54,7 @@ public partial class ModificarPedido : System.Web.UI.Page
             }
 
         }
+        //captura de errores
         catch (Exception ex)
         {
             lblaviso.Text = "" + ex;
@@ -70,41 +64,63 @@ public partial class ModificarPedido : System.Web.UI.Page
 
     private void definirDropListVendedor()
     {
-        PedidoN objPedido = new PedidoN();
-        objPedido.listarVendedor(objPedido);
-        DropVendedor.Items.Add("-- Seleccione un item --");
-        if (objPedido.Exito)
+        //try y catch para captura de errores
+        try
         {
-            foreach (DataRow row in objPedido.Ds.Tables[0].Rows)
+            //uso de la bd con entity 
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
             {
-                DropVendedor.Items.Add(Convert.ToString(row[0]) + ". " + Convert.ToString(row[1]));
+                //Definición del primer item
+                DropVendedor.Items.Add("-- Seleccione un item --");
+                //guardado de datos en una variable
+                var listaIDVendedor = db.Vendedor;
+                //recorrer los datos de la tabla pedido
+                foreach (var objPedido in listaIDVendedor)
+                {
+                    //Guardar datos en nuestro DropDownList, con el id vendedor y su nombre
+                    DropVendedor.Items.Add(objPedido.id_vendedor + ".- "+objPedido.nombre);
+                    
+                }
 
             }
+
         }
-        else
+        //captura de errores
+        catch (Exception ex)
         {
-            lblaviso.Text = objPedido.Mensaje;
+            lblaviso.Text = "" + ex;
             lblaviso.Visible = true;
         }
     }
 
     private void definirDropListCliente()
     {
-        
-        PedidoN objPedido = new PedidoN();
-        objPedido.listarCliente(objPedido);
-        DropCliente.Items.Add("-- Seleccione un item --");
-        if (objPedido.Exito)
+
+        //try y catch para captura de errores
+        try
         {
-            foreach (DataRow row in objPedido.Ds.Tables[0].Rows)
+            //uso de la bd con entity 
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
             {
-                DropCliente.Items.Add(Convert.ToString(row[0]) + ". " + Convert.ToString(row[1]));
+                //Definición del primer item
+                DropCliente.Items.Add("-- Seleccione un item --");
+                //guardado de datos en una variable
+                var listaIDCliente = db.Cliente;
+                //recorrer los datos de la tabla pedido
+                foreach (var objPedido in listaIDCliente)
+                {
+                    //Guardar datos en nuestro DropDownList, con el id vendedor y su nombre
+                    DropCliente.Items.Add(objPedido.id_cliente + ".- " + objPedido.nombre);
+
+                }
 
             }
+
         }
-        else
+        //captura de errores
+        catch (Exception ex)
         {
-            lblaviso.Text = objPedido.Mensaje;
+            lblaviso.Text = "" + ex;
             lblaviso.Visible = true;
         }
 
@@ -112,6 +128,7 @@ public partial class ModificarPedido : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
+        //vuelta al menu Pedido
         Response.Redirect("Pedido.aspx");
     }
 
@@ -134,16 +151,16 @@ public partial class ModificarPedido : System.Web.UI.Page
     }
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
-        
+        //Try catch para la captura de errores
         try
         {
             //Aqui se estan modificando los datos
             using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
             {
-
+                //Si ninguno de los datos es nullo hacer la siguiente funcion
                 if (!(DropDownListPedido.SelectedIndex.Equals(0)||txtTotal.Text.Trim().Equals("") ||DropVendedor.SelectedIndex.Equals(0)|| DropCliente.SelectedIndex.Equals(0)))
                 {
-                    
+                    //Creacion del objPedido segun la tabla pedido
                     tblPedido objPedido = new tblPedido();
 
                     //Se obtiene el registro con el id_pedido correspondiente
@@ -158,34 +175,33 @@ public partial class ModificarPedido : System.Web.UI.Page
 
                     //Se guardan los cambios generados a la instancia en la base de datos
                     db.SaveChanges();
-
+                    //Aviso de dato Ingresado
                     lblaviso.Text = "Pedido modificado exitosamente";
                     lblaviso.Visible = true;
 
                 }
+                //Captura de error por datos vacios
                 else
                 {
                     lblaviso.Text = "Campos Vacio, debe llenar todos";
                     lblaviso.Visible = true;
                 }
-
-                
-                
             }
         }
+        //Captura de error por conexion
         catch (Exception ex)
         {
-
             lblaviso.Text = ex.Message;
             lblaviso.Visible = true;
         }
 
-        //Luego para actualizar los datos
-        //Llamado al Contexto de la base de datos
+        //Actualizacion de datos luego de haber modificado
         if (!(DropDownListPedido.SelectedIndex.Equals(0)))
         {
+            //Uso de la bd por entity
             using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
             {
+                //try y catch para la captura de datos
                 try
                 {
                     //Se conprueba que el ID no venga vacio
@@ -271,12 +287,16 @@ public partial class ModificarPedido : System.Web.UI.Page
              }
         }
 
-    
+    //boton para ver los datos del ID seleccionado por el usuario
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
+        //try y catch para captura de error por conexion
+        try
+        {
         //Llamado al Contexto de la base de datos
         using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
         {
+            //try y catch para la captura de errores por ingreso
             try
             {
                 //Se conprueba que el ID no venga vacio
@@ -330,7 +350,11 @@ public partial class ModificarPedido : System.Web.UI.Page
             }//Fin Try-Catch
 
         }//Fin using
-
+        }catch(Exception ex)
+        {
+            lblaviso.Text = "Error en la conexion MAS INFO="+ex;
+            lblaviso.Visible = true;
+        }
         /*
          * Antigua Conexion
         try
