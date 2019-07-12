@@ -42,7 +42,7 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                         objPedidoArticulos.id_pedido_articulos = int.Parse(txtId.Text);
                         //Guarda los registros en una variable
                         var filtro = db.tblPedido_Articulos.Find(objPedidoArticulos.id_pedido_articulos);
-                   
+
                         //Se ingresan los registros obtenidos en una lista accesible por el DataSource
                         tblListado.DataSource = new List<tblPedido_Articulos> { filtro };
                         tblListado.DataBind();
@@ -63,7 +63,12 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                         //Se ingresan los registros obtenidos de una lista accesible por el DataSource
                         tblListado.DataSource = array;
                         tblListado.DataBind();
+
+                        lblMensaje.Text = "";
                     }//Fin Else-IF
+                } else {
+                    lblMensaje.Text = "*Campo Vacío";
+                    lblMensaje.Visible = true;
                 }//Fin IF
             } catch (Exception ex) {
                 lblMensaje.Text = "" + ex.Message;
@@ -125,7 +130,7 @@ public partial class Pedido_Articulos : System.Web.UI.Page
     {
         try {
             using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities()) {
-              
+
                 //Se valida que el campo de text no se encuentre vacío
                 if (txtIdPedido.Text != "") {
                     //Instanciación de la entidad
@@ -151,6 +156,11 @@ public partial class Pedido_Articulos : System.Web.UI.Page
                     //Definición del datasource con el arreglo con sus atributos
                     tblListado.DataSource = array;
                     tblListado.DataBind();
+
+                    lblMensajeListaPedido.Text = "";
+                } else {
+                    lblMensajeListaPedido.Text = "*Campo vacío";
+                    lblMensajeListaPedido.Visible = true;
                 }//Fin IF
             }//Fin using
 
