@@ -20,6 +20,9 @@ public partial class IngresarPedido : System.Web.UI.Page
         }
         
 
+        Calendar1.SelectedDate = System.DateTime.Today;
+        
+
     }
 
     private void definirDropListVendedor()
@@ -115,7 +118,7 @@ public partial class IngresarPedido : System.Web.UI.Page
             {
 
                 tblPedido objPedido = new tblPedido();
-                if (!(txtTotal.Text.Trim().Equals("")))
+                if (!(txtTotal.Text.Trim().Equals("") ||DropVendedor.SelectedIndex.Equals(0)|| DropCliente.SelectedIndex.Equals(0)))
                 {
                     
                     objPedido.fecha = Calendar1.SelectedDate;
@@ -132,7 +135,9 @@ public partial class IngresarPedido : System.Web.UI.Page
                     lblaviso.Visible = true;
                     //limpieza de datos
                     txtTotal.Text = "";
-                    
+                    DropCliente.SelectedIndex = 0;
+                    DropVendedor.SelectedIndex = 0;
+
                 }
                 else
                 {
