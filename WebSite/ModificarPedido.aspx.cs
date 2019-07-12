@@ -31,6 +31,7 @@ public partial class ModificarPedido : System.Web.UI.Page
             definirDropListCliente();
             definirDropListVendedor();
             definirDropListPedido();
+            Calendar1.SelectedDate = System.DateTime.Today;
         }
         
 
@@ -140,7 +141,7 @@ public partial class ModificarPedido : System.Web.UI.Page
             using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
             {
 
-                if (DropDownListPedido.SelectedIndex != 0)
+                if (!(DropDownListPedido.SelectedIndex.Equals(0)||txtTotal.Text.Trim().Equals("") ||DropVendedor.SelectedIndex.Equals(0)|| DropCliente.SelectedIndex.Equals(0)))
                 {
                     
                     tblPedido objPedido = new tblPedido();
@@ -164,8 +165,8 @@ public partial class ModificarPedido : System.Web.UI.Page
                 }
                 else
                 {
-                    lblAviso2.Text = "Campo Vacio, Debe seleccionar un ID";
-                    lblAviso2.Visible = true;
+                    lblaviso.Text = "Campos Vacio, debe llenar todos";
+                    lblaviso.Visible = true;
                 }
 
                 
@@ -178,57 +179,62 @@ public partial class ModificarPedido : System.Web.UI.Page
             lblaviso.Text = ex.Message;
             lblaviso.Visible = true;
         }
+
         //Luego para actualizar los datos
         //Llamado al Contexto de la base de datos
-        using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
+        if (!(DropDownListPedido.SelectedIndex.Equals(0)))
         {
-            try
+            using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
             {
-                //Se conprueba que el ID no venga vacio
-                if (!(DropDownListPedido.Text == ""))
+                try
                 {
-                    //Si equivale a un numero distinto de 0 lista el registro filtrado
-                    if (DropDownListPedido.Text != "0")
+                    //Se conprueba que el ID no venga vacio
+                    if (!(DropDownListPedido.Text == ""))
                     {
-
-                        //Creacion del objPedido
-                        tblPedido objPedido = new tblPedido();
-                        //Captura del dato ID ingresado por el usario
-                        objPedido.id_pedido = int.Parse(DropDownListPedido.Text);
-                        //Guarda los registros en una variable
-                        var filtro = db.tblPedido.Find(objPedido.id_pedido);
-                        //Si la existencia es nulla, no se deben mostrar los datos
-                        //Captura de existencia
-                        bool existencia = Convert.ToBoolean(filtro.existencia);
-
-                        //Si la existencia es falsa se muestra un mensaje de Pedido eliminado 
-                        if (existencia == false)
+                        //Si equivale a un numero distinto de 0 lista el registro filtrado
+                        if (DropDownListPedido.Text != "0")
                         {
-                            //Muestra msje de dato eliminado
-                            lblaviso.Text = "Este dato esta eliminado";
-                            lblaviso.Visible = true;
 
-                            //Refresco de datos de la tabla
-                            tblListado.DataSource = new List<tblPedido> { };
-                            tblListado.DataBind();
+                            //Creacion del objPedido
+                            tblPedido objPedido = new tblPedido();
+                            //Captura del dato ID ingresado por el usario
+                            objPedido.id_pedido = int.Parse(DropDownListPedido.Text);
+                            //Guarda los registros en una variable
+                            var filtro = db.tblPedido.Find(objPedido.id_pedido);
+                            //Si la existencia es nulla, no se deben mostrar los datos
+                            //Captura de existencia
+                            bool existencia = Convert.ToBoolean(filtro.existencia);
+
+                            //Si la existencia es falsa se muestra un mensaje de Pedido eliminado 
+                            if (existencia == false)
+                            {
+                                //Muestra msje de dato eliminado
+                                lblaviso.Text = "Este dato esta eliminado";
+                                lblaviso.Visible = true;
+
+                                //Refresco de datos de la tabla
+                                tblListado.DataSource = new List<tblPedido> { };
+                                tblListado.DataBind();
+                            }
+                            else
+                            {
+                                //Se ingresan los datos obtenidos en una lista accesible por el DataSource
+                                tblListado.DataSource = new List<tblPedido> { filtro };
+                                tblListado.DataBind();
+                            }
+
+                            //Si equivale a 0 lista todos los registros de la tabla
                         }
-                        else
-                        {
-                            //Se ingresan los datos obtenidos en una lista accesible por el DataSource
-                            tblListado.DataSource = new List<tblPedido> { filtro };
-                            tblListado.DataBind();
-                        }
 
-                        //Si equivale a 0 lista todos los registros de la tabla
-                    }
-
-                }//Fin IF
+                    }//Fin IF
+                }
+                catch (Exception ex)
+                {
+                    lblaviso.Text = "DATO NO EXISTENTE O ELIMINADO <br/> MAS INFO=" + ex;
+                    lblaviso.Visible = true;
+                }//Fin Try-Catch
             }
-            catch (Exception ex)
-            {
-                lblaviso.Text = "DATO NO EXISTENTE O ELIMINADO <br/> MAS INFO=" + ex;
-                lblaviso.Visible = true;
-            }//Fin Try-Catch
+        
 
             /*
              * Antigua Conexion
