@@ -10,11 +10,13 @@ public partial class ListarPedido : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //ocultar aviso para mostrar errores
         lblAviso.Visible = false;
     }
 
     protected void Button2_Click(object sender, EventArgs e)
     {
+        //Volver al menu
         Response.Redirect("Pedido.aspx");
     }
 
@@ -22,6 +24,7 @@ public partial class ListarPedido : System.Web.UI.Page
         //Llamado al Contexto de la base de datos
         using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
         {
+            //try y catch para la captura de datos
             try
             {
                 //Se conprueba que el ID no venga vacio
@@ -31,13 +34,13 @@ public partial class ListarPedido : System.Web.UI.Page
                     if (txtId.Text != "0")
                     {
 
-                        //Creacion del objPedido
+                        //Creacion del objPedido segun la tabla Pedido
                         tblPedido objPedido = new tblPedido();
                         //Captura del dato ID ingresado por el usario
                         objPedido.id_pedido = int.Parse(txtId.Text);
                         //Guarda los registros en una variable
                         var filtro = db.tblPedido.Find(objPedido.id_pedido);
-                        //Si la existencia es nulla, no se deben mostrar los datos
+                        
                         //Captura de existencia
                         bool existencia = Convert.ToBoolean(filtro.existencia);
                         
@@ -74,7 +77,7 @@ public partial class ListarPedido : System.Web.UI.Page
                             //si la existencia es verdadera, se guardan los datos en mi array
                             if (objPedido.existencia == 1)
                             {
-                                //Se añade cada registro al List
+                                //Se añade cada registro al Array
                                 array.Add(objPedido);
                             }
                         }
@@ -83,6 +86,7 @@ public partial class ListarPedido : System.Web.UI.Page
                         tblListado.DataSource = array;
                         tblListado.DataBind();
                     }//Fin Else-IF
+                    //Aviso por si los campos estan vacios
                 }else {
                     lblAviso.Text = "Campo Vacio, Ingrese un ID";
                     lblAviso.Visible = true;
@@ -91,7 +95,7 @@ public partial class ListarPedido : System.Web.UI.Page
             }
             catch (Exception ex)
             {
-                lblAviso.Text = "DATO NO EXISTENTE O ELIMINADO <br/> MAS INFO=" + ex;
+                lblAviso.Text = "DATO NO EXISTENTE O ELIMINADO";
                 lblAviso.Visible = true;
             }//Fin Try-Catch
 

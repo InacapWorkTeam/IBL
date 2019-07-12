@@ -11,10 +11,12 @@ public partial class EliminarPedido : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //Ocultar mensaje para la captura de errores
         lblAviso.Visible = false;
-
+        
         if (!IsPostBack)
         {
+            //Funcion para rellenar el droplist con Pedidos
             definirDropListPedido();
             
         }
@@ -22,28 +24,26 @@ public partial class EliminarPedido : System.Web.UI.Page
 
     private void definirDropListPedido()
     {
-
+        //TRY Y CATCH para la captura de errores
         try
         {
+            //uso de la BD por entity
             using (DB_PAAC4G4ArriagadaSepulvedaVidalEntities db = new DB_PAAC4G4ArriagadaSepulvedaVidalEntities())
             {
                 //Definición del primer item
                 DropPedido.Items.Add("-- Seleccione un item --");
-
+                //creacion de la variable que contendra los pedidos
                 var listaIDPedido = db.tblPedido;
-
+                //recorrer los datos de la tabla Pedido para ser guardado en el dropList
                 foreach (var objPedido in listaIDPedido)
                 {
+                    //Se guarda el id de pedido en el DropList siempre y cuando exista
                     if (objPedido.existencia == 1)
                     {
                         DropPedido.Items.Add(objPedido.id_pedido + "");
-                    }
-                    
-                    
+                    }   
                 }
-
             }
-
         }
         catch (Exception ex)
         {
@@ -74,6 +74,7 @@ public partial class EliminarPedido : System.Web.UI.Page
         */
     }
 
+    //Vuelta al menu
     protected void Button2_Click(object sender, EventArgs e)
     {
         Response.Redirect("Pedido.aspx");
@@ -111,19 +112,26 @@ public partial class EliminarPedido : System.Web.UI.Page
                     //Se guardan los cambios realizados en la base de datos
                     db.SaveChanges();
 
+                    //Mensaje de aviso por ingreso Correcto
                     lblAviso.Text = "Pedido Eliminado Correctamente";
                     lblAviso.Visible = true;
+                    //Limpieza de drop para actualizacion
+                    DropPedido.Items.Clear();
+                    definirDropListPedido();
+                    
                 }
                 else{
                     //Si el usuario no ha elegido una opcion, se mostrara un msje diciendo que eliga opcion
                     lblAviso.Text= "Campo Vacio, Eliga una opcion";
                     lblAviso.Visible=true;
                 }
+                
 
             }
         }
         catch (Exception ex)
         {
+            //captura de errores por conexion
             lblAviso.Text = ex.Message;
             lblAviso.Visible = true;
         }
