@@ -102,6 +102,7 @@
                     <td style="width: 56px">ID :</td>
                     <td>
                         <asp:TextBox ID="txtID" runat="server" Width="68px"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtID" ErrorMessage="* Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
                         <asp:Button ID="btnEliminar" runat="server" Height="21px" OnClick="btnEliminar_Click" style="margin-left: 50px" Text="ELIMINAR" Width="122px" />
                     </td>
                 </tr>
@@ -112,6 +113,7 @@
                 <tr>
                     <td style="width: 56px">Buscar :</td>
                     <td>&nbsp;<asp:TextBox ID="txtBuscar" runat="server" Width="69px"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtBuscar" ErrorMessage="* Solo numeros" ValidationExpression="^\d*\d$"></asp:RegularExpressionValidator>
                         <asp:Button ID="btnBuscarDato" runat="server" Height="21px" OnClick="btnBuscarDato_Click" style="margin-left: 50px" Text="BUSCAR" Width="120px" />
                     </td>
                 </tr>

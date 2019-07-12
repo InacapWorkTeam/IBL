@@ -17,11 +17,9 @@ public partial class IngresarPedido : System.Web.UI.Page
         if (!IsPostBack){
             definirDropListCliente();
             definirDropListVendedor();
+            Calendar1.SelectedDate = System.DateTime.Today;
         }
-        
-
-        Calendar1.SelectedDate = System.DateTime.Today;
-        
+    
 
     }
 
